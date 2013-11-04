@@ -14,7 +14,7 @@ Readable, repeatable dev box management.
     # basic setup
     ./bin/kiste-bootstrap
 
-    # manually paste in your SSH key and ensure the permissions are correct
+    # manually paste in your SSH key and have kiste check and correct the permissions
     mkdir -p ~/.ssh
     cat > ~/.ssh/id_rsa
     cat > ~/.ssh/id_rsa.pub
