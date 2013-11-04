@@ -7,7 +7,7 @@
     - git: repo=https://github.com/chrisberkhout/dot-vim.git dest=~/stow/dot-vim update=no
       register: dot_vim_clone
       
-    - command: stow dot-vim chdir=~/stow
+    - command: stow -v dot-vim chdir=~/stow
       when: dot_vim_clone.changed
 
     - name: switch to ssh URL (to be able to push without entering credentials)

@@ -7,7 +7,7 @@
     - git: repo=https://github.com/chrisberkhout/dot-other.git dest=~/stow/dot-other update=no
       register: dot_other_clone
       
-    - command: stow dot-other chdir=~/stow
+    - command: stow -v dot-other chdir=~/stow
       when: dot_other_clone.changed
 
     - name: switch to ssh URL (to be able to push without entering credentials)
