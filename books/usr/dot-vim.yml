@@ -6,11 +6,19 @@
 
     - git: repo=https://github.com/chrisberkhout/dot-vim.git dest=~/stow/dot-vim update=no
       register: dot_vim_clone
-      
-    - command: stow -v dot-vim chdir=~/stow
-      when: dot_vim_clone.changed
 
     - name: switch to ssh URL (to be able to push without entering credentials)
       command: git remote set-url origin git@github.com:chrisberkhout/dot-vim.git chdir=~/stow/dot-vim
+      when: dot_vim_clone.changed
+
+    - name: rename conflicting files before stowing
+      shell: >
+        cd ~/stow &&
+        stow -n -v dot-vim 2>&1 |
+          grep -Po '(?<=\* existing target is neither a link nor a directory: ).*' |
+          xargs -Iconflict mv -v '../conflict' '../conflict.pre-stow'
+      when: dot_vim_clone.changed
+      
+    - command: stow -v dot-vim chdir=~/stow
       when: dot_vim_clone.changed
 
