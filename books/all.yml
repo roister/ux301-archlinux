@@ -1,10 +1,11 @@
 ---
 
 - include: sys/basics.yml
+
 - include: usr/ssh-key.yml
 - include: usr/dot-other.yml
 - include: usr/dot-vim.yml
-- include: sys/ack-grep.yml
 
+- include: sys/ack-grep.yml
 - include: sys/cheese.yml
 
