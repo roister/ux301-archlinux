@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+echo "=====> installing ansible via ppa"
+sudo add-apt-repository 'deb http://ppa.launchpad.net/rquillo/ansible/ubuntu raring main'
+#sudo apt-get update
+sudo apt-get install ansible
+
+echo "=====> enabling passwordless sudo for user $USER"
+echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
+sudo chmod 0440 /etc/sudoers.d/$USER
+
+echo "=====> done"
+

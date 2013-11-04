@@ -1,0 +1,8 @@
+---
+
+- include: sys/basics.yml
+- include: usr/dot-other.yml
+- include: sys/ack-grep.yml
+- include: sys/cheese.yml
+- include: usr/ssh-key.yml
+

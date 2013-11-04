@@ -1,0 +1,11 @@
+---
+- hosts: all
+  sudo: true
+  tasks:
+
+  - apt: pkg=ack-grep state=present
+
+  - name: divert ack to ack-grep # http://serverfault.com/questions/97315/ack-grep-to-ack-in-ubuntu
+    command: dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
+             creates=/usr/bin/ack
+
