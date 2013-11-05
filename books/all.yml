@@ -12,4 +12,6 @@
 - include: sys/chromium.yml
 - include: sys/opera.yml
 - include: sys/sublime.yml
+- include: sys/sox.yml
+- include: sys/gdal.yml
 

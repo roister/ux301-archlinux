@@ -1,0 +1,8 @@
+---
+- name: sox audio tools
+  hosts: all
+  sudo: true
+  tasks:
+
+  - apt: pkg=sox state=present
+
