@@ -7,6 +7,9 @@ sudo add-apt-repository 'deb http://ppa.launchpad.net/rquillo/ansible/ubuntu rar
 sudo apt-get update
 sudo apt-get install ansible
 
+echo "=====> installing git"
+sudo apt-get install git
+
 echo "=====> enabling passwordless sudo for user $USER"
 echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
 sudo chmod 0440 /etc/sudoers.d/$USER

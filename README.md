@@ -11,20 +11,25 @@ Readable, repeatable dev box management.
     rm kiste.zip
     cd kiste
 
-    # basic setup
+    # get kiste running
     ./bin/kiste-bootstrap
 
-    # manually paste in your SSH key and have kiste check and correct the permissions
+    # manually place your SSH key, have kiste check and correct the permissions
     mkdir -p ~/.ssh
     cat > ~/.ssh/id_rsa
     cat > ~/.ssh/id_rsa.pub
     ./bin/kiste usr/ssh-key
+
+    # git-ize kiste
+    git init .
+    git remote add origin git@github.com:chrisberkhout/kiste.git
+    git fetch
+    git checkout master --force  # discards any chanages in working dir
 
     # build the the box
     ./bin/kiste
 
 ## TODO
 
-* Convert kiste dir into git repo if created from zip
 * Alert about books missing from all.yml
 
