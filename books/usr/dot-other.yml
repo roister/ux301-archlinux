@@ -2,23 +2,23 @@
   hosts: all
   tasks:
 
-    - file: path=~/stow state=directory
+  - file: path=~/stow state=directory
 
-    - git: repo=https://github.com/chrisberkhout/dot-other.git dest=~/stow/dot-other update=no
-      register: dot_other_clone
+  - git: repo=https://github.com/chrisberkhout/dot-other.git dest=~/stow/dot-other update=no
+    register: dot_other_clone
 
-    - name: switch to ssh URL (to be able to push without entering credentials)
-      command: git remote set-url origin git@github.com:chrisberkhout/dot-other.git chdir=~/stow/dot-other
-      when: dot_other_clone.changed
+  - name: switch to ssh URL (to be able to push without entering credentials)
+    command: git remote set-url origin git@github.com:chrisberkhout/dot-other.git chdir=~/stow/dot-other
+    when: dot_other_clone.changed
 
-    - name: rename conflicting files before stowing
-      shell: >
-        cd ~/stow &&
-        stow -n -v dot-other 2>&1 |
-          grep -Po '(?<=\* existing target is neither a link nor a directory: ).*' |
-          xargs -Iconflict mv -v '../conflict' '../conflict.pre-stow'
-      when: dot_other_clone.changed
-      
-    - command: stow -v dot-other chdir=~/stow
-      when: dot_other_clone.changed
+  - name: rename conflicting files before stowing
+    shell: >
+      cd ~/stow &&
+      stow -n -v dot-other 2>&1 |
+        grep -Po '(?<=\* existing target is neither a link nor a directory: ).*' |
+        xargs -Iconflict mv -v '../conflict' '../conflict.pre-stow'
+    when: dot_other_clone.changed
+    
+  - command: stow -v dot-other chdir=~/stow
+    when: dot_other_clone.changed
 
