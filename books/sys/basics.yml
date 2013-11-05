@@ -9,5 +9,6 @@
     - git
     - stow
     - vim
+    - tmux
     - gdebi # installs .deb files (like dpkg), with automatic dependency resolution (unlike dpkg)
 
