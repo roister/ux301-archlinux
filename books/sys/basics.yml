@@ -18,4 +18,5 @@
     - mesa-utils # generate debugging info: `LIBGL_DEBUG=verbose glxinfo`
     - nux-tools # generate debugging info: `/usr/lib/nux/unity_support_test -p`
     - compizconfig-settings-manager # view/edit advanced graphics settings: `ccsm`
+    - arandr # GUI for changing display resolutions and relative positions
 
