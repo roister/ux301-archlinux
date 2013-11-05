@@ -12,3 +12,12 @@
     - tmux
     - gdebi # installs .deb files (like dpkg), with automatic dependency resolution (unlike dpkg)
 
+  - name: various graphics stuff
+    apt: pkg=$item state=present
+    with_items:
+    # - libgl1-mesa-glx   # reinstall after purging fglrx driver
+    # - libgl1-mesa-dri   # reinstall after purging fglrx driver
+    # - xserver-xorg-core # reinstall after purging fglrx driver
+    - mesa-utils # generates debugging info: `LIBGL_DEBUG=verbose glxinfo`
+    - compizconfig-settings-manager # lets you change advanced settings: `ccsm`
+
