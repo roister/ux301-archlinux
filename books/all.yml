@@ -10,5 +10,6 @@
 - include: sys/cheese.yml
 - include: sys/chrome.yml
 - include: sys/chromium.yml
+- include: sys/opera.yml
 - include: sys/sublime.yml
 
