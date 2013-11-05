@@ -6,9 +6,10 @@ Readable, repeatable dev box management.
 
     # get the files
     cd ~
-    wget https://github.com/chrisberkhout/kiste/archive/master.zip -O kiste.zip
-    unzip kiste.zip
-    rm kiste.zip
+    wget https://github.com/chrisberkhout/kiste/archive/master.zip -O kiste-master.zip
+    unzip kiste-master.zip
+    rm kiste-master.zip
+    mv kiste-master kiste
     cd kiste
 
     # get kiste running
