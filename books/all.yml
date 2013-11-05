@@ -14,4 +14,5 @@
 - include: sys/sublime.yml
 - include: sys/sox.yml
 - include: sys/gdal.yml
+- include: sys/qgis.yml
 
