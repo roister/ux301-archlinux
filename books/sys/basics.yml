@@ -9,4 +9,5 @@
       - git
       - stow
       - vim
+      - gdebi # installs .deb files (like dpkg), with automatic dependency resolution (unlike dpkg)
 
