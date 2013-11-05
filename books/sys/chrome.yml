@@ -1,0 +1,20 @@
+---
+- name: google chrome browser
+  hosts: all
+  sudo: true
+  tasks:
+
+  # http://www.howopensource.com/2011/10/install-google-chrome-in-ubuntu-11-10-11-04-10-10-10-04/
+
+  - apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub id=7FAC5991
+             keyring=/etc/apt/trusted.gpg.d/google_linux_signing_key.gpg
+
+  - apt_repository: repo="deb http://dl.google.com/linux/chrome/deb/ stable main"
+                    state=present update_cache=yes
+
+  - apt: pkg=$item state=present
+    with_items:
+      - google-chrome-stable
+      # - google-chrome-beta
+      # - google-chrome-unstable
+

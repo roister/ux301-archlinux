@@ -1,0 +1,8 @@
+---
+- name: chromium browser
+  hosts: all
+  sudo: true
+  tasks:
+
+  - apt: pkg=chromium-browser state=present
+

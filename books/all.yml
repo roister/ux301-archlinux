@@ -8,4 +8,6 @@
 
 - include: sys/ack-grep.yml
 - include: sys/cheese.yml
+- include: sys/chrome.yml
+- include: sys/chromium.yml
 
