@@ -6,17 +6,12 @@
 
   - apt: pkg=$item state=present
     with_items:
+    - build-essential
+    - libssl-dev
     - git
     - stow
     - vim
+    - curl
     - tmux
     - gdebi # installs .deb files (like dpkg), with automatic dependency resolution (unlike dpkg)
-
-  - name: graphics troubleshooting stuff
-    apt: pkg=$item state=present
-    with_items:
-    - mesa-utils # generate debugging info: `LIBGL_DEBUG=verbose glxinfo`
-    - nux-tools # generate debugging info: `/usr/lib/nux/unity_support_test -p`
-    - compizconfig-settings-manager # view/edit advanced graphics settings: `ccsm`
-    - arandr # GUI for changing display resolutions and relative positions
 
