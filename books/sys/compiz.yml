@@ -13,9 +13,9 @@
     - compiz-plugins
     - compizconfig-settings-manager
 
-  - name: TODO: make sure compiz settings are in dot-other
+  # - name: TODO make sure compiz settings are in dot-other
 
-  - name: TODO: activate compiz to be used by default
+  # - name: TODO activate compiz to be used by default
 
-  - name: TODO: switch back to Greybird window titlebar theme
+  # - name: TODO switch back to Greybird window titlebar theme
   
