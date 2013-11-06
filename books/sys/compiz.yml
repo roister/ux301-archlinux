@@ -4,6 +4,8 @@
   sudo: true
   tasks:
 
+  # http://www.webupd8.org/2012/11/how-to-set-up-compiz-in-xubuntu-1210-or.html
+
   - apt: pkg=$item state=present
     with_items:
     - compiz
@@ -11,3 +13,9 @@
     - compiz-plugins
     - compizconfig-settings-manager
 
+  - name: TODO: make sure compiz settings are in dot-other
+
+  - name: TODO: activate compiz to be used by default
+
+  - name: TODO: switch back to Greybird window titlebar theme
+  
