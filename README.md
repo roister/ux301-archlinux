@@ -32,5 +32,6 @@ Readable, repeatable dev box management.
 
 ## TODO
 
+* Deal with xfce4 terminal overwritting settings link into dot-other
 * Alert about books missing from all.yml
 
