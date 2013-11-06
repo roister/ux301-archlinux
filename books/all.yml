@@ -1,19 +1,39 @@
 ---
 
+# sys basics
+
 - include: sys/basics.yml
+
+# user basics
 
 - include: usr/ssh-key.yml
 - include: usr/dot-other.yml
 - include: usr/dot-vim.yml
 
+# graphics setup
+
+- include: sys/graphics-troubleshooting.yml
+- include: sys/compiz.yml
+- include: sys/arandr.yml
+
+# command line
+
 - include: sys/ack-grep.yml
+- include: sys/sox.yml
+
+# apps
+
 - include: sys/cheese.yml
 - include: sys/vlc.yml
+
 - include: sys/chrome.yml
 - include: sys/chromium.yml
 - include: sys/opera.yml
+
 - include: sys/sublime.yml
-- include: sys/sox.yml
+
+# gis
+
 - include: sys/gdal.yml
 - include: sys/qgis.yml
 

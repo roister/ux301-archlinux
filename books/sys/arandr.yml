@@ -1,0 +1,8 @@
+---
+- name: arandr - better extended display management
+  hosts: all
+  sudo: true
+  tasks:
+
+  - apt: pkg=arandr state=present
+
