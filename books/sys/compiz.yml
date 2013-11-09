@@ -9,13 +9,16 @@
   - apt: pkg=$item state=present
     with_items:
     - compiz
-    - compiz-core
     - compiz-plugins
     - compizconfig-settings-manager
+    - dconf-tools
+    - gnome-tweak-tool
 
-  # - name: TODO make sure compiz settings are in dot-other
+  - name: user autostart dir
+    file: path=~/.config/autostart state=directory
+    sudo: false 
 
-  # - name: TODO activate compiz to be used by default
+  - name: autostart compiz for user
+    copy: src=compiz/Compiz.desktop dest=~/.config/autostart/Compiz.desktop
+    sudo: false
 
-  # - name: TODO switch back to Greybird window titlebar theme
-  
