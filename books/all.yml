@@ -2,6 +2,7 @@
 
 # fix graphics
 
+- include: sys/compton.yml
 
 # sys basics
 
