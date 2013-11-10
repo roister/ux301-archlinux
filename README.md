@@ -30,6 +30,10 @@ Readable, repeatable dev box management.
     # build the the box
     ./bin/kiste
 
+## OS install
+
+* http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx
+
 ## TODO
 
 * Check out https://wiki.gnome.org/Kupfer/
