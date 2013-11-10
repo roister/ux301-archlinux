@@ -32,6 +32,6 @@ Readable, repeatable dev box management.
 
 ## TODO
 
-* Deal with xfce4 terminal overwritting settings link into dot-other
+* Check out https://wiki.gnome.org/Kupfer/
 * Alert about books missing from all.yml
 
