@@ -2,7 +2,6 @@
 
 # fix graphics
 
-- include: sys/xfce4-upgrade.yml
 
 # sys basics
 
