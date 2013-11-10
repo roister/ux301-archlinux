@@ -13,6 +13,5 @@
     - vim
     - curl
     - tmux
-    - gdebi # installs .deb files (like dpkg), with automatic dependency resolution (unlike dpkg)
-    - synaptic
+    - gdebi
 

@@ -1,13 +1,12 @@
 ---
 
+# fix graphics
+
+- include: sys/xfce4-upgrade.yml
+
 # sys basics
 
 - include: sys/basics.yml
-
-# graphics setup
-
-- include: sys/xfce4-upgrade.yml
-- include: sys/arandr.yml
 
 # user basics
 
@@ -21,6 +20,9 @@
 - include: sys/sox.yml
 
 # apps
+
+- include: sys/arandr.yml
+- include: sys/synaptic.yml
 
 - include: sys/cheese.yml
 - include: sys/vlc.yml
