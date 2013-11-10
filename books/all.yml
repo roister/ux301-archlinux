@@ -4,17 +4,16 @@
 
 - include: sys/basics.yml
 
+# graphics setup
+
+- include: sys/xfce4-upgrade.yml
+- include: sys/arandr.yml
+
 # user basics
 
 - include: usr/ssh-key.yml
 - include: usr/dot-other.yml
 - include: usr/dot-vim.yml
-
-# graphics setup
-
-- include: sys/graphics-troubleshooting.yml
-- include: sys/compiz.yml
-- include: sys/arandr.yml
 
 # command line
 

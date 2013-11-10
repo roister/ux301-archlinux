@@ -1,0 +1,28 @@
+---
+- name: upgrade xfce4 to fix tearing issues
+  hosts: all
+  sudo: true
+  tasks:
+
+  # how to upgrade xfce to fix tearing:
+  #   * http://www.webupd8.org/2013/10/xfwm4-4110-released-with-sync-to-vblank.html
+
+  # about tearing:
+  #   * http://en.wikipedia.org/wiki/Screen_tearing
+  #   * http://www.youtube.com/watch?v=ceX18O9pvLs
+
+  # alternative ways to resolve the tearing issue:
+  #   * install compton: http://duncanlock.net/blog/2013/06/07/how-to-switch-to-compton-for-beautiful-tear-free-compositing-in-xfce/
+  #   * install compiz
+
+  - apt_repository: repo="ppa:xubuntu-dev/xfce-4.10" state=present
+  - apt_repository: repo="ppa:xubuntu-dev/xfce-4.12" state=present update_cache=yes
+    register: xfce_ppa_source
+
+  - apt: pkg=xfce4 state=latest
+    when: xfce_ppa_source.changed
+
+  - name: place basic config for user, with sync_to_vblank option enabled
+    copy: src=xfce4-upgrade/xfwm4.xml dest=~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml backup=yes
+    sudo: false
+
