@@ -13,6 +13,7 @@
     - curl
     - tmux
     - gdebi
+    - python-pip
 
   - name: needed to build rubies
     apt: pkg=$item state=present
