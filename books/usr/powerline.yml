@@ -2,7 +2,8 @@
   hosts: all
   tasks:
 
-  # https://github.com/Lokaltog/powerline 
+  # project: https://github.com/Lokaltog/powerline 
+  # more config advice: http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
 
   - name: ensure there is a user opt dir
     file: path=~/opt state=directory
