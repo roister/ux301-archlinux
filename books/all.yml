@@ -24,6 +24,14 @@
 - include: usr/ruby.yml
 - include: usr/node.yml
 
+- include: sys/postgresql.yml
+
+# gis
+
+- include: sys/gdal.yml
+- include: sys/qgis.yml
+- include: sys/postgis.yml
+
 # apps
 
 - include: sys/arandr.yml
@@ -38,8 +46,5 @@
 
 - include: sys/sublime.yml
 
-# gis
-
-- include: sys/gdal.yml
-- include: sys/qgis.yml
+- include: sys/pgadmin.yml
 
