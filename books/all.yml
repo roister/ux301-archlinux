@@ -22,6 +22,7 @@
 # programming
 
 - include: usr/ruby.yml
+- include: usr/node.yml
 
 # apps
 
