@@ -22,3 +22,7 @@
   - command: stow -v dot-other chdir=~/stow
     when: dot_other_clone.changed
 
+  - name: rebuild fonts cache
+    command: fc-cache -vf ~/.fonts
+    when: dot_other_clone.changed
+

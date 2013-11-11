@@ -1,0 +1,14 @@
+- name: powerline
+  hosts: all
+  tasks:
+
+  # https://github.com/Lokaltog/powerline 
+
+  - name: ensure there is a user opt dir
+    file: path=~/opt state=directory
+
+  - name: clone powerline
+    git: repo=https://github.com/Lokaltog/powerline.git dest=~/opt/powerline update=no
+
+  - debug: msg="Specialty font placement and activation of powerline happens in dotfiles."
+
