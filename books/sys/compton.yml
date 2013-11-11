@@ -31,6 +31,10 @@
     copy: src=compton/compton.conf dest=~/.config/compton.conf.example
     sudo: false
 
+  - name: make sure .config and autostart dirs are present
+    file: path=~/.config/autostart state=directory
+    sudo: false
+
   - name: copy in basic compton config for user, if non exists
     shell: cp ~/.config/compton.conf.example ~/.config/compton.conf
            creates=~/.config/compton.conf
