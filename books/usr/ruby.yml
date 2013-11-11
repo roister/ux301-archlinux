@@ -1,0 +1,24 @@
+- name: set up ruby environment
+  hosts: all
+  tasks:
+
+  - name: install a system ruby
+    apt: pkg=ruby state=present
+    sudo: true
+
+  # use rbenv for managing dev rubies:
+  #   * https://github.com/sstephenson/rbenv#basic-github-checkout
+  #   * https://github.com/sstephenson/ruby-build
+
+  - name: place rbenv
+    git: repo=https://github.com/sstephenson/rbenv.git dest=~/.rbenv update=no
+    register: rbenv_clone
+
+  - name: ensure there is a rbenv plugins directory
+    file: path=~/.rbenv/plugins state=directory
+
+  - name: place ruby-build plugin
+    git: repo=https://github.com/sstephenson/ruby-build.git dest=~/.rbenv/plugins/ruby-build update=no
+
+  - debug: msg="To use rbenv it needs to be activated in you shell start script."
+

@@ -19,6 +19,10 @@
 - include: sys/ack-grep.yml
 - include: sys/sox.yml
 
+# programming
+
+- include: usr/ruby.yml
+
 # apps
 
 - include: sys/arandr.yml
