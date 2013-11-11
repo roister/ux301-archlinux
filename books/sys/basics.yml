@@ -4,11 +4,9 @@
   sudo: true
   tasks:
 
-  - name: general stuff
+  - name: used by user
     apt: pkg=$item state=present
     with_items:
-    - build-essential
-    - libssl-dev
     - git
     - stow
     - vim
@@ -16,7 +14,7 @@
     - tmux
     - gdebi
 
-  - name: stuff needed to build rubies
+  - name: needed to build rubies
     apt: pkg=$item state=present
     with_items:
     - bison
@@ -31,4 +29,10 @@
     - libxslt1-dev
     - subversion
     - autoconf
+
+  - name: needed to build node
+    apt: pkg=$item state=present
+    with_items:
+    - build-essential
+    - libssl-dev
 
