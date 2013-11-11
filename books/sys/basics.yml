@@ -4,7 +4,8 @@
   sudo: true
   tasks:
 
-  - apt: pkg=$item state=present
+  - name: general stuff
+    apt: pkg=$item state=present
     with_items:
     - build-essential
     - libssl-dev
@@ -14,4 +15,20 @@
     - curl
     - tmux
     - gdebi
+
+  - name: stuff needed to build rubies
+    apt: pkg=$item state=present
+    with_items:
+    - bison
+    - openssl
+    - zlib1g-dev
+    - libreadline6-dev
+    - libssl-dev
+    - libyaml-dev
+    - libsqlite3-dev
+    - sqlite3
+    - libxml2-dev
+    - libxslt1-dev
+    - subversion
+    - autoconf
 
