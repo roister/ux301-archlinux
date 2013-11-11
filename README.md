@@ -37,5 +37,6 @@ Readable, repeatable dev box management.
 ## TODO
 
 * Check out https://wiki.gnome.org/Kupfer/
+* Check out http://wiki.xfce.org/recommendedapps
 * Alert about books missing from all.yml
 
