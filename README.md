@@ -2,7 +2,8 @@
 
 Readable, repeatable dev box management.
 
-## Get started
+
+## Get started with Kiste
 
     # get the files
     cd ~
@@ -30,9 +31,41 @@ Readable, repeatable dev box management.
     # build the the box
     ./bin/kiste
 
+
 ## OS install
 
+These notes relate to `MacBookPro8,2`.
+
+### Create distribution install media and boot it
+
 * http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx
+
+### Use integrated graphics for install
+
+### Use discrete graphics via EFI stub boot method
+
+### Activate HDMI audio output
+
+### Wireless
+
+The `MacBookPro8,2` has BCM4331. For improved wireless reliability, remove the
+`wl` "Proprietary Broadcom STA Wireless driver" (package: `bcmwl-kernel-source`)
+and use the b43 driver. Use to the documentation:
+
+* [Ubuntu: WifiDocs/Driver/bcm43xx](https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx#b43%20-%20Internet%20access) (for instructions)
+* [Linux Wireless wiki](http://wireless.kernel.org/en/users/Drivers/b43) (for background)
+
+The procedure is:
+
+    sudo apt-get update
+    sudo apt-get install firmware-b43-installer
+    sudo modprobe -r b43 ssb wl brcmfmac brcmsmac bcma
+    sudo modprobe b43
+    # wait... try disabling and reenabling wi-fi through the GUI
+    sudo apt-get purge bcmwl-kernel-source  # optional - if permanently using b43 driver
+
+### Add compton compositor to fix screen tearing issue
+
 
 ## TODO
 
