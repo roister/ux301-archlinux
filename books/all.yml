@@ -11,6 +11,8 @@
 # user basics
 
 - include: usr/ssh-key.yml
+- include: usr/autoenv.yml
+- include: usr/powerline.yml
 - include: usr/dot-other.yml
 - include: usr/dot-vim.yml
 
