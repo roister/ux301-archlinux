@@ -1,0 +1,10 @@
+---
+- name: extra stuff for git
+  hosts: all
+  sudo: true
+  tasks:
+
+  - apt: pkg=$item state=present
+    with_items:
+    - gitk
+

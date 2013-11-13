@@ -28,6 +28,8 @@
 
 - include: sys/postgresql.yml
 
+- include: sys/git-extras.yml
+
 # gis
 
 - include: sys/gdal.yml
