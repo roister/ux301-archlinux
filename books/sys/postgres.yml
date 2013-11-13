@@ -1,5 +1,5 @@
 ---
-- name: postgresql database
+- name: postgresql database for dev
   hosts: all
   sudo: true
   tasks:
@@ -12,7 +12,6 @@
 
   - set_fact: normal_user={{ lookup('env','USER') }}
     sudo: false
- 
   - set_fact: normal_user_home={{ lookup('env','HOME') }}
     sudo: false
 
@@ -25,4 +24,16 @@
     shell: sudo -u postgres createdb --encoding=UTF8 --echo $normal_user && 
            touch $normal_user_home/.postgresql_db_created
            creates=$normal_user_home/.postgresql_db_created
+
+  - name: allow all local users to connect to the DB via IPv4 as any role
+    lineinfile: dest=/etc/postgresql/9.1/main/pg_hba.conf
+                regexp='host    all             all             127.0.0.1/32'
+                  line='host    all             all             127.0.0.1/32            trust'
+                state=present backup=yes
+    notify: restart postgresql
+
+  handlers:
+
+  - name: restart postgresql
+    service: name=postgresql state=restarted
 
