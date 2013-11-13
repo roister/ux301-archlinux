@@ -36,7 +36,7 @@ Readable, repeatable dev box management.
 
 ## TODO
 
-* Check out https://wiki.gnome.org/Kupfer/
+* Alternative to pow rack dev server: https://github.com/ysbaddaden/prax
 * Check out http://wiki.xfce.org/recommendedapps
 * Alert about books missing from all.yml
 
