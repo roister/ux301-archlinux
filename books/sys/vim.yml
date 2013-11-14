@@ -1,0 +1,9 @@
+---
+- name: vim editor
+  hosts: all
+  sudo: true
+  tasks:
+
+  - name: a big vim with lots of stuff supported
+    apt: pkg=vim-gtk state=present
+

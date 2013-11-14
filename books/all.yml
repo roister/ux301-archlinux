@@ -7,6 +7,7 @@
 # sys basics
 
 - include: sys/basics.yml
+- include: sys/vim.yml
 
 # user basics
 

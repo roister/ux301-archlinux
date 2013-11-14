@@ -9,7 +9,6 @@
     with_items:
     - git
     - stow
-    - vim
     - curl
     - tmux
     - gdebi
