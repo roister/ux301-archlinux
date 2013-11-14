@@ -62,7 +62,9 @@ The procedure is:
     sudo modprobe -r b43 ssb wl brcmfmac brcmsmac bcma
     sudo modprobe b43
     # wait... try disabling and reenabling wi-fi through the GUI
-    sudo apt-get purge bcmwl-kernel-source  # optional - if permanently using b43 driver
+    sudo apt-get purge bcmwl-kernel-source  # so this doesn't take over again
+
+### Pin/remove grub so it doesn't reinstall itself on every update and overwrite refind
 
 ### Add compton compositor to fix screen tearing issue
 
@@ -70,6 +72,7 @@ The procedure is:
 ## TODO
 
 * Alternative to pow rack dev server: https://github.com/ysbaddaden/prax
+* Clipboard manager: http://parcellite.sourceforge.net/?page_id=2
 * Check out http://wiki.xfce.org/recommendedapps
 * Alert about books missing from all.yml
 
