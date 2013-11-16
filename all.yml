@@ -39,6 +39,8 @@
 
 # apps
 
+- include: sys/dropbox.yml
+
 - include: sys/arandr.yml
 - include: sys/synaptic.yml
 

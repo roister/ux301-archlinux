@@ -1,0 +1,31 @@
+---
+- name: dropbox
+  hosts: all
+  sudo: true
+  tasks:
+
+  # How to install Dropbox in Xubuntu and get Thunar integration (XFCE):
+  #   http://www.webupd8.org/2012/08/how-to-install-dropbox-in-xubuntu-and.html
+
+  - name: install dropbox from dist
+    apt: pkg=nautilus-dropbox state=present
+
+  - name: make sure .config and autostart dirs are present
+    file: path=~/.config/autostart state=directory
+    sudo: false
+
+  - name: autostart dropbox for user
+    file: src=/usr/share/applications/dropbox.desktop dest=~/.config/autostart/dropbox.desktop
+          state=link
+    sudo: false
+
+  - name: fetch Thunar extension
+    get_url: url=http://packages.crunchbang.org/waldorf/pool/main/thunar-dropbox-plugin_0.2.0-1_amd64.deb
+             dest=/var/cache/apt/archives/thunar-dropbox-plugin_0.2.0-1_amd64.deb
+             sha256sum=b872a91d0be16ee6aa76949c317b35891194da0b5661e1623289a3021bfd8f4d
+    register: thunar_extension_fetch
+
+  - name: install Thunar extension
+    command: dpkg -i /var/cache/apt/archives/thunar-dropbox-plugin_0.2.0-1_amd64.deb
+    when: thunar_extension_fetch.changed
+
