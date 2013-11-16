@@ -17,6 +17,15 @@
 - include: usr/dot-other.yml
 - include: usr/dot-vim.yml
 
+# more sys stuff
+
+- include: sys/arandr.yml
+- include: sys/synaptic.yml
+
+- include: sys/wine.yml
+
+- include: sys/dropbox.yml
+
 # command line
 
 - include: sys/ack-grep.yml
@@ -38,11 +47,6 @@
 - include: sys/postgis.yml
 
 # apps
-
-- include: sys/dropbox.yml
-
-- include: sys/arandr.yml
-- include: sys/synaptic.yml
 
 - include: sys/cheese.yml
 - include: sys/vlc.yml
