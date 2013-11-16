@@ -9,6 +9,7 @@
     with_items:
     - git
     - stow
+    - checkinstall
     - curl
     - tmux
     - gdebi
