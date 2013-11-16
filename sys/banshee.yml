@@ -1,0 +1,13 @@
+---
+- name: banshee music player
+  hosts: all
+  sudo: true
+  tasks:
+
+  # http://banshee.fm/
+
+  - apt_repository: repo="ppa:banshee-team/ppa"
+                    state=present update_cache=yes
+
+  - apt: pkg=banshee state=present
+
