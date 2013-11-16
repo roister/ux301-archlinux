@@ -27,7 +27,7 @@
 - include: usr/ruby.yml
 - include: usr/node.yml
 
-- include: sys/postgresql.yml
+- include: sys/postgres.yml
 
 - include: sys/git-extras.yml
 
