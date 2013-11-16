@@ -44,6 +44,7 @@
 
 - include: sys/cheese.yml
 - include: sys/vlc.yml
+- include: sys/calibre.yml
 
 - include: sys/chrome.yml
 - include: sys/chromium.yml

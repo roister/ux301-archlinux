@@ -1,0 +1,21 @@
+---
+- name: calibre ebook library
+  hosts: all
+  sudo: true
+  tasks:
+
+  # http://calibre-ebook.com/download_linux
+
+  # The recommended Calibre installer makes a lot of changes outside of /opt/calibre.
+  # (install script: http://status.calibre-ebook.com/linux_installer)
+  # (post install: https://github.com/kovidgoyal/calibre/blob/master/src/calibre/linux.py)
+  #
+  # Running the installer via checkinstall generated a package that tried to modify a file
+  # owned by another package. A full list of files in the generated package (which excludes
+  # the /opt files), is here: https://gist.github.com/chrisberkhout/457a3b6e01dec6032915
+  #
+  # This version of Calibre does include an uninstaller: /usr/bin/calibre-uninstall
+
+  - shell: PYTHONIOENCODING="UTF-8" python -c "import sys; py3 = sys.version_info[0] > 2; u = __import__('urllib.request' if py3 else 'urllib', fromlist=1); exec(u.urlopen('http://status.calibre-ebook.com/linux_installer').read()); main(install_dir='/opt')"
+           creates=/opt/calibre/calibre
+
