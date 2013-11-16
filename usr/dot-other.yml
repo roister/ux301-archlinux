@@ -18,7 +18,7 @@
         grep -Po '(?<=\* existing target is neither a link nor a directory: ).*' |
         xargs -Iconflict mv -v '../conflict' '../conflict.pre-stow'
     when: dot_other_clone.changed
-    
+
   - command: stow -v dot-other chdir=~/stow
     when: dot_other_clone.changed
 
