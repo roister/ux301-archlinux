@@ -35,10 +35,9 @@
 
 - include: usr/ruby.yml
 - include: usr/node.yml
-
 - include: sys/postgres.yml
-
 - include: sys/git-extras.yml
+- include: sys/zeal.yml
 
 # gis
 
