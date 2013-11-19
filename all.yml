@@ -19,6 +19,8 @@
 
 # more sys stuff
 
+- include: sys/java.yml
+
 - include: sys/arandr.yml
 - include: sys/synaptic.yml
 
