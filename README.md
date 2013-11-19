@@ -68,6 +68,10 @@ The procedure is:
 
 ### Add compton compositor to fix screen tearing issue
 
+## Keyboard troubleshooting
+
+* http://askubuntu.com/questions/12502/how-do-i-get-the-apple-wireless-keyboard-working-in-10-10
+* http://askubuntu.com/questions/148981/how-do-i-use-a-bluetooth-mac-keyboard-on-ubuntu
 
 ## TODO
 
@@ -80,4 +84,5 @@ The procedure is:
 * Check out http://wiki.xfce.org/recommendedapps
 * Alert about books missing from all.yml
 * https://apps.ubuntu.com/cat/applications/d4x/
+* http://askubuntu.com/questions/68809/how-to-format-a-usb-or-external-drive
 
