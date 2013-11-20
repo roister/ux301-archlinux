@@ -1,0 +1,13 @@
+---
+- name: nixnote - evernote client
+  hosts: all
+  sudo: true
+  tasks:
+
+  # http://nevernote.sourceforge.net/
+
+  - apt_repository: repo="ppa:vincent-c/nevernote"
+                    state=present update_cache=yes
+
+  - apt: pkg=nixnote state=present
+

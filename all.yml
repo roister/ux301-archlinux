@@ -53,6 +53,7 @@
 - include: sys/vlc.yml
 - include: sys/banshee.yml
 - include: sys/calibre.yml
+- include: sys/nixnote.yml
 
 - include: sys/chrome.yml
 - include: sys/chromium.yml
