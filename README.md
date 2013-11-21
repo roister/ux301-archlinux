@@ -75,10 +75,7 @@ The procedure is:
 
 ## TODO
 
-* evernote web as application shortcut:
-      ./.gnome/apps/chrome-https___www.evernote.com_Home.action#st=p&n=b4a64987-abff-469f-91d4-9ea748e90236.desktop
-      ./.local/share/applications/chrome-https___www.evernote.com_Home.action#st=p&n=b4a64987-abff-469f-91d4-9ea748e90236.desktop
-      ./.local/share/icons/hicolor/16x16/apps/chrome-https___www.evernote.com_Home.action#st=p&n=b4a64987-abff-469f-91d4-9ea748e90236.png
+* Heroku toolbelt: https://toolbelt.herokuapp.com/debian
 * Alternative to pow rack dev server: https://github.com/ysbaddaden/prax
 * Clipboard manager: http://parcellite.sourceforge.net/?page_id=2
 * Check out http://wiki.xfce.org/recommendedapps
