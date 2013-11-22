@@ -1,0 +1,8 @@
+---
+- name: shutter - screenshot tool
+  hosts: all
+  sudo: true
+  tasks:
+
+  - apt: pkg=shutter state=present
+
