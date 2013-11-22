@@ -5,6 +5,9 @@ Readable, repeatable dev box management.
 
 ## Get started with Kiste
 
+After OS install (see below), software and config can be set up with kiste
+as follows:
+
     # get the files
     cd ~
     wget https://github.com/chrisberkhout/kiste/archive/master.zip -O kiste-master.zip
@@ -14,13 +17,13 @@ Readable, repeatable dev box management.
     cd kiste
 
     # get kiste running
-    ./bin/kiste-bootstrap
+    ./kiste-bootstrap
 
     # manually place your SSH key, have kiste check and correct the permissions
     mkdir -p ~/.ssh
     cat > ~/.ssh/id_rsa
     cat > ~/.ssh/id_rsa.pub
-    ./bin/kiste usr/ssh-key
+    ./kiste usr/ssh-key.yml
 
     # git-ize kiste
     git init .
@@ -29,24 +32,26 @@ Readable, repeatable dev box management.
     git checkout master --force  # discards any chanages in working dir
 
     # build the the box
-    ./bin/kiste
+    ./kiste
 
 
-## OS install
+## OS install and resolved issues
 
-These notes relate to `MacBookPro8,2`.
+These notes relate to running Xubuntu 13.10 Saucy on `MacBookPro8,2`.
 
-### Create distribution install media and boot it
+### Create distribution install media and boot it (manual)
 
 * http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx
 
-### Use integrated graphics for install
+### Installation graphics support using the integrated graphics card (manual)
 
-### Use discrete graphics via EFI stub boot method
+### Discrete graphics activation via EFI stub boot method (manual)
 
-### Activate HDMI audio output
+### Pin/remove grub so update doesn't overwrite refind (manual)
 
-### Wireless
+### Activate HDMI audio output (manual)
+
+### Switch wireless driver (manual)
 
 The `MacBookPro8,2` has BCM4331. For improved wireless reliability, remove the
 `wl` "Proprietary Broadcom STA Wireless driver" (package: `bcmwl-kernel-source`)
@@ -64,22 +69,100 @@ The procedure is:
     # wait... try disabling and reenabling wi-fi through the GUI
     sudo apt-get purge bcmwl-kernel-source  # so this doesn't take over again
 
-### Pin/remove grub so it doesn't reinstall itself on every update and overwrite refind
+### Fix screen tearing with compton compositor (via kiste)
 
-### Add compton compositor to fix screen tearing issue
+### Apply remembered display config via a script (via kiste)
 
-## Keyboard troubleshooting
+XFCE desktop doesn't remember different display configurations, but this can be
+[scripted](https://github.com/chrisberkhout/dot-other/blob/master/bin/fix-attachments.sh)
+using `xrandr` and `arandr`.
+
+
+## Remaining issues
+
+### Tearing reappears after display changes
+
+There is a useful test pattern [on YouTube](www.youtube.com/watch?v=ceX18O9pvLs).
+
+This isn't fixed by any of the following:
+
+    killall compton && sleep 1 && compton -b
+    xfdesktop --reload
+    killall -HUP xfdesktop
+
+It is fixed by logging out and back in.
+It is fixed by going to "Switch User" (even switching immediately back to the same user).
+
+It would be good to be able to trigger this reset from the command line.
+
+### Bash in tmux sometimes splits commands
+
+For example:
+
+* `ls` expands to `ls --color=auto`, but then runs as separate commands
+  `ls` and `--color=auto`.
+* `git status` runs as `git` and `status`.
+
+It only happens in tmux.
+Double sourcing the startup files in plain bash doesn't produce the issue.
+
+[Discussion on the tmux mailing list](http://sourceforge.net/mailarchive/forum.php?thread_name=3rl7x75rnx2d7gu396ju2lyd.1384763818147%40email.android.com&forum_name=tmux-users)
+
+### ctrlp.vim freezes
+
+When trying to open a file in a split with `<C-s>` (instead of `<C-x>`).
+
+### Internet doesn't work well
+
+This issue has persisted after changing wireless drivers as described above. It
+also seems to happen with wired connections.
+
+It shows hostname resolution issues. It may be a networking issue rather than a
+hardware one.
+
+### Apple bluetooth keyboard
+
+Sometimes won't connect. Here are some relevant resources:
 
 * http://askubuntu.com/questions/12502/how-do-i-get-the-apple-wireless-keyboard-working-in-10-10
 * http://askubuntu.com/questions/148981/how-do-i-use-a-bluetooth-mac-keyboard-on-ubuntu
+
+Sometimes sticks on keys. Last successful resolution:
+
+* Shut down laptop
+* Take out and put back in keyboard batteries
+* Boot laptop
+
+Sometimes disconnects.
+
+### No easy switching between discrete and integrated graphics
+
+This would be useful for extending battery life.
+
+### Apple IR remote control
+
+Parole Media Player recognises play/pause.
+VLC recognises nothing.
+
+### Terminal font resize from keyboard
+
+This doesn't seem to be possible with `xfce4-terminal`.
+
+
+## Questions
+
+* Adding PPA source for different distro release.
+* Ignore some stuff from a PPA (e.g. when one PPA has multiple things and you only want one).
+* APT keys - do they matter?
+* Where to put downloaded archives extracted into `/opt` and `/usr/local/src`.
+
 
 ## TODO
 
 * Heroku toolbelt: https://toolbelt.herokuapp.com/debian
 * Alternative to pow rack dev server: https://github.com/ysbaddaden/prax
-* Clipboard manager: http://parcellite.sourceforge.net/?page_id=2
-* Check out http://wiki.xfce.org/recommendedapps
-* Alert about books missing from all.yml
-* https://apps.ubuntu.com/cat/applications/d4x/
 * http://askubuntu.com/questions/68809/how-to-format-a-usb-or-external-drive
+* Clipboard manager: http://parcellite.sourceforge.net/?page_id=2
+* https://apps.ubuntu.com/cat/applications/d4x/
+* Check out http://wiki.xfce.org/recommendedapps
 
