@@ -102,8 +102,14 @@ It would be good to be able to trigger this reset from the command line.
 This issue has persisted after changing wireless drivers as described above. It
 also seems to happen with wired connections.
 
-It shows hostname resolution issues. It may be a networking issue rather than a
-hardware one.
+It often seems to fail on hostname lookup, so may be a DNS issue.
+
+Some releated resources:
+
+* [Ubuntu forums: Extremely slow internet with Ubuntu, esp. DNS lookup times](http://ubuntuforums.org/showthread.php?t=1487409)
+* [ask ubuntu: 10.10 - Slow DNS Resolution](http://askubuntu.com/questions/8704/slow-dns-resolution)
+* [ask ubuntu: 12.10 - Extrememly slow DNS lookup](http://askubuntu.com/questions/272358/extrememly-slow-dns-lookup)
+* [Ubuntu forums: DNS related slow connection](http://ubuntuforums.org/showthread.php?t=1778622)
 
 ### Apple bluetooth keyboard
 
