@@ -16,12 +16,12 @@
     sudo: false
 
   - name: create postgresql role for normal user
-    shell: sudo -u postgres createuser --superuser --echo $normal_user && 
+    shell: sudo -u postgres createuser --superuser --echo $normal_user &&
            touch $normal_user_home/.postgresql_role_created
            creates=$normal_user_home/.postgresql_role_created
 
   - name: create postgresql db for normal user
-    shell: sudo -u postgres createdb --encoding=UTF8 --echo $normal_user && 
+    shell: sudo -u postgres createdb --encoding=UTF8 --echo $normal_user &&
            touch $normal_user_home/.postgresql_db_created
            creates=$normal_user_home/.postgresql_db_created
 
