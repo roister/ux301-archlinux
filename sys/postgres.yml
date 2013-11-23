@@ -7,7 +7,7 @@
   - apt: pkg=$item state=present
     with_items:
     - postgresql
-    - libpq-dev        # for ansible
+    - libpq-dev        # for ansible, and building pg clients generally
     - python-psycopg2  # for ansible
 
   - set_fact: normal_user={{ lookup('env','USER') }}
