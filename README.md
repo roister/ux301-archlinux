@@ -80,6 +80,8 @@ using `xrandr` and `arandr`.
 
 ## Remaining issues
 
+Some of these are hardware/Linux related, others are probably just shell/editor setup.
+
 ### Tearing reappears after display changes
 
 There is a useful test pattern [on YouTube](www.youtube.com/watch?v=ceX18O9pvLs).
@@ -94,23 +96,6 @@ It is fixed by logging out and back in.
 It is fixed by going to "Switch User" (even switching immediately back to the same user).
 
 It would be good to be able to trigger this reset from the command line.
-
-### Bash in tmux sometimes splits commands
-
-For example:
-
-* `ls` expands to `ls --color=auto`, but then runs as separate commands
-  `ls` and `--color=auto`.
-* `git status` runs as `git` and `status`.
-
-It only happens in tmux.
-Double sourcing the startup files in plain bash doesn't produce the issue.
-
-[Discussion on the tmux mailing list](http://sourceforge.net/mailarchive/forum.php?thread_name=3rl7x75rnx2d7gu396ju2lyd.1384763818147%40email.android.com&forum_name=tmux-users)
-
-### ctrlp.vim freezes
-
-When trying to open a file in a split with `<C-s>` (instead of `<C-x>`).
 
 ### Internet doesn't work well
 
@@ -147,6 +132,34 @@ VLC recognises nothing.
 ### Terminal font resize from keyboard
 
 This doesn't seem to be possible with `xfce4-terminal`.
+
+### Bash in tmux sometimes splits commands
+
+For example:
+
+* `ls` expands to `ls --color=auto`, but then runs as separate commands
+  `ls` and `--color=auto`.
+* `git status` runs as `git` and `status`.
+
+It only happens in tmux.
+Double sourcing the startup files in plain bash doesn't produce the issue.
+
+[Discussion on the tmux mailing list](http://sourceforge.net/mailarchive/forum.php?thread_name=3rl7x75rnx2d7gu396ju2lyd.1384763818147%40email.android.com&forum_name=tmux-users)
+
+### Problems after stopping a long listing with `<C-c>`
+
+Sometimes, one of the folllowing occurs:
+
+* Terminal stops echoing typing.
+  The terminal must be closed.
+
+* The tmux prefix stops working.
+  Can be worked around by reattaching in a new teriminal.
+
+### ctrlp.vim freezes
+
+When trying to open a file in a split with `<C-s>` (instead of `<C-x>`).
+Killing vim doesn't seem to work, I need to kill the pane using tmux.
 
 
 ## Questions
