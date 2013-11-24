@@ -97,6 +97,12 @@ It is fixed by going to "Switch User" (even switching immediately back to the sa
 
 It would be good to be able to trigger this reset from the command line.
 
+### Display scrambling issue
+
+Sometimes when changing displays, waking from sleep or doing switch user, the
+graphics gets all scrambled. Sometimes this can be recovered from by sleeping
+and waking again, other time it couldn't be recovered.
+
 ### Internet doesn't work well
 
 This issue has persisted after changing wireless drivers as described above. It
