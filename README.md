@@ -161,6 +161,7 @@ Sometimes, one of the folllowing occurs:
 
 * The tmux prefix stops working.
   Can be worked around by reattaching in a new teriminal.
+  This one also happened when doing mouse select in tmux, then `<tmux,y>`.
 
 ### ctrlp.vim freezes
 
