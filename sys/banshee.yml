@@ -9,5 +9,9 @@
   - apt_repository: repo="ppa:banshee-team/ppa"
                     state=present update_cache=yes
 
-  - apt: pkg=banshee state=present
+  - apt: pkg={{ item }} state=present
+    with_items:
+    - banshee
+    - banshee-extension-foldersync
+    - banshee-extension-lirc       # doesn't seem to work
 
