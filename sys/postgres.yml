@@ -4,7 +4,7 @@
   sudo: true
   tasks:
 
-  - apt: pkg=$item state=present
+  - apt: pkg={{ item }} state=present
     with_items:
     - postgresql
     - libpq-dev        # for ansible, and building pg clients generally
@@ -16,14 +16,14 @@
     sudo: false
 
   - name: create postgresql role for normal user
-    shell: sudo -u postgres createuser --superuser --echo $normal_user &&
-           touch $normal_user_home/.postgresql_role_created
-           creates=$normal_user_home/.postgresql_role_created
+    shell: sudo -u postgres createuser --superuser --echo {{ normal_user }} &&
+           touch {{ normal_user_home }}/.postgresql_role_created
+           creates={{ normal_user_home }}/.postgresql_role_created
 
   - name: create postgresql db for normal user
-    shell: sudo -u postgres createdb --encoding=UTF8 --echo $normal_user &&
-           touch $normal_user_home/.postgresql_db_created
-           creates=$normal_user_home/.postgresql_db_created
+    shell: sudo -u postgres createdb --encoding=UTF8 --echo {{ normal_user }} &&
+           touch {{ normal_user_home }}/.postgresql_db_created
+           creates={{ normal_user_home }}/.postgresql_db_created
 
   - name: allow all local users to connect to the DB via IPv4 as any role
     lineinfile: dest=/etc/postgresql/9.1/main/pg_hba.conf

@@ -5,7 +5,7 @@
   tasks:
 
   - name: used by user
-    apt: pkg=$item state=present
+    apt: pkg={{ item }} state=present
     with_items:
     - git
     - stow
@@ -17,7 +17,7 @@
     - xclip
 
   - name: needed to build rubies
-    apt: pkg=$item state=present
+    apt: pkg={{ item }} state=present
     with_items:
     - bison
     - openssl
@@ -33,7 +33,7 @@
     - autoconf
 
   - name: needed to build node
-    apt: pkg=$item state=present
+    apt: pkg={{ item }} state=present
     with_items:
     - build-essential
     - libssl-dev

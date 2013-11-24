@@ -12,7 +12,7 @@
   - apt_repository: repo="deb     http://qgis.org/debian saucy main" state=present update_cache=yes
   - apt_repository: repo="deb-src http://qgis.org/debian saucy main" state=present update_cache=yes
 
-  - apt: pkg=$item state=present
+  - apt: pkg={{ item }} state=present
     with_items:
     - grass
     - qgis
