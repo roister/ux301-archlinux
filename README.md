@@ -124,7 +124,8 @@ Sometimes won't connect. Here are some relevant resources:
 * http://askubuntu.com/questions/12502/how-do-i-get-the-apple-wireless-keyboard-working-in-10-10
 * http://askubuntu.com/questions/148981/how-do-i-use-a-bluetooth-mac-keyboard-on-ubuntu
 
-Sometimes sticks on keys. Last successful resolution:
+Sometimes sticks on keys. Restarting the bluetooth service doesn't help. The
+last successful resolution was:
 
 * Shut down laptop
 * Take out and put back in keyboard batteries
