@@ -170,6 +170,11 @@ Sometimes, one of the folllowing occurs:
   Can be worked around by reattaching in a new teriminal.
   This one also happened when doing mouse select in tmux, then `<tmux,y>`.
 
+### In tmux, left and right clicks paste unwanted characters
+
+For example: `N O#` or `"C#` or `B B#` or `B"B#`.
+This happens when the mouse it outside of the area where it works (ie. on the right side of a huge screen).
+
 ### ctrlp.vim freezes
 
 When trying to open a file in a split with `<C-s>` (instead of `<C-x>`).
@@ -186,6 +191,8 @@ Killing vim doesn't seem to work, I need to kill the pane using tmux.
 
 ## TODO
 
+* https://apps.ubuntu.com/cat/applications/gpodder/
+* http://www.omgubuntu.co.uk/2012/05/beatbox-music-player-sees-new-release-on-ubuntu
 * Heroku toolbelt: https://toolbelt.herokuapp.com/debian
 * Alternative to pow rack dev server: https://github.com/ysbaddaden/prax
 * http://askubuntu.com/questions/68809/how-to-format-a-usb-or-external-drive
