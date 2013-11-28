@@ -47,6 +47,7 @@
 - include: sys/gdal.yml
 - include: sys/qgis.yml
 - include: sys/postgis.yml
+- include: sys/geoserver.yml
 
 # apps
 

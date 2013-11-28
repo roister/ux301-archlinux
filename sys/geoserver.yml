@@ -1,0 +1,45 @@
+---
+- name: geoserver
+  hosts: all
+  sudo: true
+
+  handlers:
+
+  - name: restart tomcat7
+    service: name=tomcat7 state=restarted
+
+  tasks:
+
+  # http://docs.geoserver.org/stable/en/user/installation/linux/debian.html
+  # http://geoserver.org/display/GEOS/Stable
+
+  - name: install tomcat7
+    apt: pkg=tomcat7 state=present
+
+  - set_fact: webapps_dir=/var/lib/tomcat7/webapps
+  - set_fact: geoserver_version=2.4.2
+  - set_fact: geoserver_zip=geoserver-{{ geoserver_version }}-war.zip
+
+  - name: fetch geoserver war
+    get_url: url=http://sourceforge.net/projects/geoserver/files/GeoServer/{{ geoserver_version }}/{{ geoserver_zip }}
+             dest={{ webapps_dir }}/{{ geoserver_zip }}
+             sha256sum=36891856efa7c4a53cd39c2ab9379176c9d3fae8503d8b361686887eb8c3bc1d
+    register: geoserver_war_fetch
+
+  - name: stop tomcat if deploying new war
+    service: name=tomcat7 state=stopped
+    when: geoserver_war_fetch.changed
+
+  - name: delete existing app if deploying new war
+    file: path={{ webapps_dir }}/{{ item }} state=absent
+    with_items:
+    - geoserver.war
+    - geoserver
+    when: geoserver_war_fetch.changed
+
+  - name: extract geoserver war from downloaded zip
+    command: unzip {{ geoserver_zip }} geoserver.war
+             chdir={{ webapps_dir }}
+             creates={{ webapps_dir }}/geoserver.war
+    notify: restart tomcat7
+
