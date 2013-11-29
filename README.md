@@ -191,6 +191,10 @@ Killing vim doesn't seem to work, I need to kill the pane using tmux.
 
 ## TODO
 
+* feed reader:
+    desktop: http://lzone.de/liferea/
+    online for sync: http://tt-rss.org/redmine/projects/tt-rss/wiki
+    mobile: http://tt-rss.org/redmine/projects/tt-rss-android/wiki
 * https://apps.ubuntu.com/cat/applications/gpodder/
 * http://www.omgubuntu.co.uk/2012/05/beatbox-music-player-sees-new-release-on-ubuntu
 * Heroku toolbelt: https://toolbelt.herokuapp.com/debian
