@@ -62,6 +62,7 @@
 - include: sys/chrome.yml
 - include: sys/chromium.yml
 - include: sys/opera.yml
+- include: sys/liferea.yml
 
 - include: sys/sublime.yml
 
