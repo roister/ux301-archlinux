@@ -117,6 +117,11 @@ Some releated resources:
 * [ask ubuntu: 12.10 - Extrememly slow DNS lookup](http://askubuntu.com/questions/272358/extrememly-slow-dns-lookup)
 * [Ubuntu forums: DNS related slow connection](http://ubuntuforums.org/showthread.php?t=1778622)
 
+Maybe it is just after sleep, and could be resolved with this technique
+(described for a different driver):
+
+* [SOLVED - No wireless connections after sleep/suspend](http://ubuntuforums.org/showthread.php?t=2004690)
+
 ### Apple bluetooth keyboard
 
 Sometimes won't connect. Here are some relevant resources:
