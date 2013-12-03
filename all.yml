@@ -22,7 +22,6 @@
 - include: sys/java.yml
 
 - include: sys/arandr.yml
-- include: sys/xsensors.yml
 - include: sys/synaptic.yml
 
 - include: sys/wine.yml
