@@ -103,6 +103,10 @@ Sometimes when changing displays, waking from sleep or doing switch user, the
 graphics gets all scrambled. Sometimes this can be recovered from by sleeping
 and waking again, other time it couldn't be recovered.
 
+### Fans constantly running
+
+https://help.ubuntu.com/community/MacBookPro8-2/Quantal#Sensors
+
 ### Internet doesn't work well
 
 This issue has persisted after changing wireless drivers as described above. It
