@@ -200,6 +200,9 @@ Killing vim doesn't seem to work, I need to kill the pane using tmux.
 
 ## TODO
 
+* passwords:
+    http://keepass.info
+    http://blog.sanctum.geek.nz/linux-crypto-passwords/
 * feed reader:
     desktop: http://lzone.de/liferea/
     online for sync: http://tt-rss.org/redmine/projects/tt-rss/wiki
