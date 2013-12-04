@@ -33,6 +33,7 @@
 
 - include: sys/ack-grep.yml
 - include: sys/sox.yml
+- include: sys/s3cmd.yml
 
 # programming
 
