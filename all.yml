@@ -42,6 +42,7 @@
 - include: sys/postgres.yml
 - include: sys/git-extras.yml
 - include: sys/zeal.yml
+- include: sys/wxhexeditor.yml
 
 # gis
 

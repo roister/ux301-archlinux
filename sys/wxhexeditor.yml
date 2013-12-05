@@ -1,0 +1,8 @@
+---
+- name: wxhexeditor - GUI hex editor
+  hosts: all
+  sudo: true
+  tasks:
+
+  - apt: pkg=wxhexeditor state=present
+
