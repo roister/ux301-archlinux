@@ -1,0 +1,26 @@
+---
+- name: briss - PDF cropping
+  hosts: all
+  sudo: true
+  tasks:
+
+  # http://briss.sourceforge.net/
+
+  - set_fact: briss_version=0.9
+  - set_fact: briss_sha256sum=45dd668a9ceb9cd59529a9fefe422a002ee1554a61be07e6fc8b3baf33d733d9
+
+  - name: fetch software
+    get_url: url=http://aarnet.dl.sourceforge.net/project/briss/release%20{{ briss_version }}/briss-{{ briss_version }}.tar.gz
+             dest=/opt/briss-{{ briss_version }}.tar.gz
+             sha256sum={{ briss_sha256sum }}
+    register: briss_fetch
+
+  - name: extract
+    command: tar -xzf briss-{{ briss_version }}.tar.gz
+             chdir=/opt
+             creates=/opt/briss-{{ briss_version }}
+
+  - name: add GUI shortcut for main user
+    template: src=briss/briss.desktop.j2 dest=~/.local/share/applications/briss.desktop
+    sudo: false
+
