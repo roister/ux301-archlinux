@@ -54,6 +54,7 @@
 # apps
 
 - include: sys/cheese.yml
+- include: sys/gpodder.yml
 - include: sys/shutter.yml
 - include: sys/vlc.yml
 - include: sys/banshee.yml

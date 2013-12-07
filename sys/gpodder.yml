@@ -1,0 +1,8 @@
+---
+- name: gpodder - podcasts
+  hosts: all
+  sudo: true
+  tasks:
+
+  - apt: pkg=gpodder state=present
+
