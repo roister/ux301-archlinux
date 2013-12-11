@@ -16,7 +16,6 @@
     - python-pip
     - xclip
     - traceroute
-    - namebench
 
   - name: needed to build rubies
     apt: pkg={{ item }} state=present
@@ -34,11 +33,9 @@
     - subversion
     - autoconf
 
-  - name: needed to build node or npm modules
+  - name: needed to build node
     apt: pkg={{ item }} state=present
     with_items:
     - build-essential
     - libssl-dev
-    - libc6-dev-i386
-    - g++-multilib
 
