@@ -116,6 +116,9 @@ It often seems to fail on hostname lookup, so may be a DNS issue.
 
 Some releated resources:
 
+* http://askubuntu.com/questions/152593/command-line-to-list-dns-servers
+* https://developers.google.com/speed/public-dns/
+* http://www.opendns.com/technology/opendns-vs-google-public-dns/
 * [Ubuntu forums: Extremely slow internet with Ubuntu, esp. DNS lookup times](http://ubuntuforums.org/showthread.php?t=1487409)
 * [ask ubuntu: 10.10 - Slow DNS Resolution](http://askubuntu.com/questions/8704/slow-dns-resolution)
 * [ask ubuntu: 12.10 - Extrememly slow DNS lookup](http://askubuntu.com/questions/272358/extrememly-slow-dns-lookup)
@@ -204,6 +207,7 @@ Killing vim doesn't seem to work, I need to kill the pane using tmux.
     http://keepass.info
     http://blog.sanctum.geek.nz/linux-crypto-passwords/
 * feed reader:
+    http://lifehacker.com/5992404/how-to-build-your-own-syncing-rss-reader-with-tiny-tiny-rss-and-kick-google-reader-to-the-curb
     desktop: http://lzone.de/liferea/
     online for sync: http://tt-rss.org/redmine/projects/tt-rss/wiki
     mobile: http://tt-rss.org/redmine/projects/tt-rss-android/wiki
