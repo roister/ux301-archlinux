@@ -13,3 +13,12 @@
   - name: install skype
     apt: pkg=skype state=installed
 
+  - name: make sure .config and autostart dirs are present
+    file: path=~/.config/autostart state=directory
+    sudo: false
+
+  - name: start on login for normal user
+    shell: cp /usr/share/applications/skype.desktop ~/.config/autostart/skype.desktop
+           creates=~/.config/autostart/skype.desktop
+    sudo: false
+
