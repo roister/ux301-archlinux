@@ -1,0 +1,15 @@
+---
+- name: skype
+  hosts: all
+  sudo: true
+  tasks:
+
+  # https://help.ubuntu.com/community/Skype
+
+  - name: add Canonical Partner Repository
+    apt_repository: repo="deb http://archive.canonical.com/ saucy partner"
+                    state=present update_cache=yes
+
+  - name: install skype
+    apt: pkg=skype state=installed
+
