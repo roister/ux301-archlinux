@@ -24,7 +24,6 @@
 - include: sys/arandr.yml
 - include: sys/synaptic.yml
 
-- include: sys/wine.yml
 - include: sys/vagrant.yml
 
 - include: sys/dropbox.yml
