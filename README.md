@@ -203,6 +203,7 @@ Killing vim doesn't seem to work, I need to kill the pane using tmux.
 
 ## TODO
 
+* draft notes
 * passwords:
     http://keepass.info
     http://blog.sanctum.geek.nz/linux-crypto-passwords/
@@ -211,7 +212,6 @@ Killing vim doesn't seem to work, I need to kill the pane using tmux.
     desktop: http://lzone.de/liferea/
     online for sync: http://tt-rss.org/redmine/projects/tt-rss/wiki
     mobile: http://tt-rss.org/redmine/projects/tt-rss-android/wiki
-* https://apps.ubuntu.com/cat/applications/gpodder/
 * http://www.omgubuntu.co.uk/2012/05/beatbox-music-player-sees-new-release-on-ubuntu
 * Heroku toolbelt: https://toolbelt.herokuapp.com/debian
 * Alternative to pow rack dev server: https://github.com/ysbaddaden/prax
