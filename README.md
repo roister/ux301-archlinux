@@ -47,7 +47,7 @@ These notes relate to running Xubuntu 13.10 Saucy on `MacBookPro8,2`.
 
 ### Discrete graphics activation via EFI stub boot method (manual)
 
-### Remove grub so update doesn't overwrite refind
+### Pin/remove grub so update doesn't overwrite refind (manual)
 
 ### Activate HDMI audio output (manual)
 

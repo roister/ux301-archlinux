@@ -1,9 +1,5 @@
 ---
 
-# sys fixes
-
-- include: sys/nogrub.yml
-
 # fix graphics
 
 - include: sys/compton.yml
