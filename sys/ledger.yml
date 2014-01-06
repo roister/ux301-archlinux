@@ -1,0 +1,11 @@
+---
+- name: ledger - accounting on the cli
+  hosts: all
+  sudo: true
+  tasks:
+
+  - apt_repository: repo="deb http://ppa.launchpad.net/mbudde/ledger/ubuntu raring main"
+                    state=present update_cache=yes
+
+  - apt: pkg=ledger state=present
+
