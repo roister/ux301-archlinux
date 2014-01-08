@@ -59,6 +59,7 @@
 - include: sys/vlc.yml
 - include: sys/banshee.yml
 - include: sys/calibre.yml
+- include: sys/chmsee.yml
 - include: sys/nixnote.yml
 - include: sys/briss.yml
 
