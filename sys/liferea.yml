@@ -1,8 +1,0 @@
----
-- name: liferea - feed reader
-  hosts: all
-  sudo: true
-  tasks:
-
-  - apt: pkg=liferea state=present
-

@@ -1,8 +1,0 @@
----
-- name: synaptic - GUI package manager
-  hosts: all
-  sudo: true
-  tasks:
-
-  - apt: pkg=synaptic state=present
-

@@ -1,8 +1,0 @@
----
-- name: GDAL
-  hosts: all
-  sudo: true
-  tasks:
-
-  - apt: pkg=gdal-bin state=present
-

@@ -1,8 +1,0 @@
----
-- name: s3cmd
-  hosts: all
-  sudo: true
-  tasks:
-
-  - apt: pkg=s3cmd state=present
-

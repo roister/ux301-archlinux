@@ -1,8 +1,0 @@
----
-- name: chmsee - CHM viewer
-  hosts: all
-  sudo: true
-  tasks:
-
-  - apt: pkg=chmsee state=present
-

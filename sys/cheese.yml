@@ -1,8 +1,0 @@
----
-- name: cheese - webcam capture
-  hosts: all
-  sudo: true
-  tasks:
-
-  - apt: pkg=cheese state=present
-

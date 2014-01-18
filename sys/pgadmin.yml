@@ -1,8 +1,0 @@
----
-- name: pgadmin
-  hosts: all
-  sudo: true
-  tasks:
-
-  - apt: pkg=pgadmin3 state=present
-

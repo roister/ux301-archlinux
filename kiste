@@ -1,8 +1,0 @@
-#!/bin/bash
-
-playbook=${1:-all.yml}
-
-set -x
-
-cd ~/kiste && time ansible-playbook -i hosts -vv $playbook
-
