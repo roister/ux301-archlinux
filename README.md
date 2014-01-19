@@ -52,7 +52,7 @@ Confirm you're booted into UEFI mode by checking that EFI variables are availabl
 
     efivar -l
 
-Prepare the disk (with GPT partitions), using:
+Prepare the disk (with GPT partitions). Using:
 
     lsblk
     cgdisk /dev/sda   # or gdisk, which shows a partition table scan on start
@@ -148,15 +148,19 @@ Unmount partitions and reboot:
 
 ### Post install
 
-Set up networking to automatically connect to known WiFi
+Set up networking to automatically connect to known WiFi.
+
 
 ## Also
 
-See about KMS, VT
+
+See the [Lenovo X1 Carbon](https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon)
+wiki page.
 
 
 ## Questions
 
+* Why doesn't my Knoppix USB boot?
 * My install of Gummiboot gets the screen blanking issue, but the install ISO seems to
   use it without problems. Why does the ISO one work?
 
