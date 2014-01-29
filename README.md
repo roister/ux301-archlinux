@@ -94,7 +94,7 @@ Install the base system:
 Generate an `fstab` file:
 
     genfstab -U -p /mnt >> /mnt/etc/fstab
-    vi /mnt/etc/fstab   # just to check
+    vi /mnt/etc/fstab   # Set last param of EFI partion to 0 (don't check)
 
 Chroot to base system:
 
@@ -107,11 +107,6 @@ Set the locale (`en_AU.UTF-8 UTF-8`):
     echo LANG=en_AU.UTF-8 > /etc/locale.conf
     export LANG=en_AU.UTF-8
     locale   # to check available vars
-
-Set font with support for more languages:
-
-    vi /etc/vconsole.conf   # and add line `FONT=Lat2-Terminus16`
-    setfont Lat2-Terminus16
 
 Set localtime link to appropriate zone file:
 
@@ -149,6 +144,57 @@ Unmount partitions and reboot:
 ### Post install
 
 Set up networking to automatically connect to known WiFi.
+
+    wifi-menu wlp3s0
+    pacman -S wpa_actiond
+    systemctl enable netctl-auto@wlp3s0.service
+
+Sudo:
+
+    pacman -S sudo
+
+Create group and user, allow to sudo:
+
+    groupadd chris
+    useradd -m -g chris -G chris,wheel -s /bin/bash chris
+    chfn chris
+    passwd chris
+    vi /etc/sudoers   # allow users in wheel group to sudo
+
+Sound:
+
+    pacman -S alsa-utils
+
+X Windows, 3D and video driver, touchpad:
+
+    pacman -S xorg-server xorg-server-utils xorg-xinit
+    pacman -S mesa
+    pacman -S xf86-video-intel
+    pacman -S xf86-input-synaptics
+
+Activate SNA acceleration by creating `/etc/X11/xorg.conf.d/20-intel.conf` as:
+
+    Section "Device"
+            Identifier "Intel Graphics"
+            Driver "intel"
+            Option "AccelMethod" "sna"
+    EndSection
+
+Get KMS working, by adding the following line to `/etc/mkinitcpio.conf`:
+
+    MODULES="i915"
+
+and running:
+
+    mkinitcpio -p linux
+    reboot
+
+### Install the desktop environment
+
+Install GNOME:
+
+    pacman -S gnome
+    systemctl enable gdm.service
 
 
 ## Also
