@@ -6,8 +6,8 @@ Notes and scripts for dev box management.
 ## Linux distro and hardware
 
 These notes refer to running [Arch Linux](https://www.archlinux.org/) on the
-[Lenovo X1 Carbon](http://en.wikipedia.org/wiki/ThinkPad_X1_Carbon).
-Other branches of this repo track previously used setups, for reference.
+ASUS UX301LA. Other branches of this repo track previously used setups,
+for reference.
 
 
 ## Install and setup
@@ -22,7 +22,7 @@ generally.
 ### Windows recovery USB
 
 Boot into Windows and create a 16GB recovery USB that can be used to restore
-to factory state. The following articles are useful:
+to factory state. The following articles are useful (and apply to ASUS as well):
 
 * [Understanding hard drive partitions on Lenovo systems with Microsoft Windows 7 and Windows 8](http://support.lenovo.com/en_US/detail.page?DocID=HT077144)
 * [Methodology to create Recovery Media and reload a Lenovo Think system with Microsoft Windows 8 preload](http://support.lenovo.com/en_US/downloads/detail.page?DocID=HT076024)
@@ -35,13 +35,14 @@ and write it onto a USB stick with:
 
     dd bs=4M if=/path/to/archlinux.iso of=/dev/sdX && sync
 
-Enter the boot settings menu by holding `Enter` at boot, and:
+Enter the boot settings menu by holding `F2` at boot, and:
 
-* Set boot mode to UEFI only
-* Disable secure boot
-* Activate VT (recommended by [wiki](https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon#KMS))
+* Leave the SATA Mode Selection as RAID
+* Disable Intel(R) Anti-Theft Technology
+* Disable Secure Boot Control
+* Create a new boot option (for the inserted Arch installer USB, booting the file `EFI/boot/loader.efiEFI/boot/loader.efi`)
 
-Boot the Arch install USB by holding `F12` on boot.
+Boot the Arch install USB by holding `Esc` on boot and choosing the Arch installer.
 
 ### Arch base intall
 
@@ -52,35 +53,41 @@ Confirm you're booted into UEFI mode by checking that EFI variables are availabl
 
     efivar -l
 
-Prepare the disk (with GPT partitions). Using:
+Inspect the current disks, partitions and RAID setup (more RAID info [here](https://wiki.archlinux.org/index.php/ASUS_Zenbook_UX51Vz#Installation)):
 
     lsblk
-    cgdisk /dev/sda   # or gdisk, which shows a partition table scan on start
+    mdadm -D /dev/md126
+    mdadm -E /dev/md126
+
+Prepare the disk (with GPT partitions). Using:
+
+    cgdisk /dev/md126   # or gdisk, which shows a partition table scan on start
 
 ...delete all partitions and create two new partitions:
 
 * [EFI system partition](https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface#GPT_partitioned_disks)
-  of 512MiB (code `EF00` or `ef00`), as `/dev/sda1`
-* Linux partition for Arch using the rest, as `/dev/sda2`
+  of 512M (code `EF00` or `ef00`)
+* Linux partition for Arch using the rest
 
 Format the new partitions:
 
-    mkfs.ext4 /dev/sda2
-    mkfs.fat -F32 /dev/sda1
+    mkfs.ext4 /dev/md126p2
+    mkfs.fat -F32 /dev/md126p1
 
 Mount:
 
-    lsblk /dev/sda
-    mount /dev/sda2 /mnt
+    lsblk /dev/md126
+    ls -al /dev/md
+    mount /dev/md126p2 /mnt
     mkdir -p /mnt/boot
-    mount /dev/sda1 /mnt/boot
+    mount /dev/md126p1 /mnt/boot
 
 Establish a WiFi Internet connection:
 
     iw dev
-    ip link set wlp3s0 up
-    ip link show wlp3s0
-    wifi-menu wlp3s0
+    ip link set wlp2s0 up
+    ip link show wlp2s0
+    wifi-menu wlp2s0
     ping google.com
 
 Move a preferable mirror to the top of the list:
@@ -131,9 +138,49 @@ Set the root password:
 
 Install GRUB (blank screen issue arises with Gummiboot):
 
+    # https://wiki.archlinux.org/index.php/ASUS_Zenbook_UX51Vz#Installation
+    # https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A
+    # https://wiki.archlinux.org/index.php/ASUS_Zenbook_UX31E
+    # https://help.ubuntu.com/community/AsusZenbook
+
+    # https://wiki.archlinux.org/index.php/Installing_with_Fake_RAID
+    # http://unix.stackexchange.com/questions/71203/ubuntu-how-do-the-md-devices-get-assembled-at-bootup
+
+    # http://wiki.gentoo.org/wiki/GRUB2#Booting_from_RAID_Array
+
     pacman -S grub efibootmgr
+
+    mdadm --examine --scan >> /etc/mdadm.conf
+
+    # TODO: CHANGE THIS TO GET EXTRA MODULES INTO MENUENTRY
+    # TODO: MAKE SURE THAT THE MODULES WILL BE FOUND IN x86_64-efi/... ?
+    mkdir -p /etc/grub.d
+    touch /etc/grub.d/01_extra_modules
+    chmod +x /etc/grub.d/01_extra_modules
+    echo 'echo "insmod raid0"' >> /etc/grub.d/01_extra_modules
+    echo 'echo "insmod md_mod"' >> /etc/grub.d/01_extra_modules
+
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub --recheck
     grub-mkconfig -o /boot/grub/grub.cfg
+
+    # https://wiki.archlinux.org/index.php/mkinitcpio#Using_RAID
+    vi /etc/mkinitcpio.conf   # add `mdadm` to `HOOKS` and `raid0 md_mod` to `MODULES`
+    mkinitcpio -p linux   # TODO: SPECIFY CORRECT KERNEL VESION WHEN BUILDING THIS !!!!!!!!!!!
+
+
+    # NOTES:
+
+    > Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+    > CPU: 0PID... Not tainted 3.12.9-1-ARCH #1
+
+    > grub> ls
+    > (hd0) (hd0,msdos2) (hd1) (hd1,gpt2) (hd1,gpt1)
+    > grub> ls (hd1)
+    > Device hd1: No known fielsystems detected - Sector size 512B - Total size 500113408KiB
+    > grub> ls (hd1,1)
+    >         Partition hd1,1: Filesystem type fat, UUID 068E-58AE - Partition start at 1024KiB - Total size 524288KiB
+    > grub> ls (hd1,2)
+    >         Partition hd1,2: Filesystem type ext* - Last modification time 2014-01-29 20:00:59 Wednesday, UUID 5b586628-1c53-40fb-8ed9-399ff1d4c2b2 - Partition start at 525312KiB - Total size 499588079.5KiB
 
 Unmount partitions and reboot:
 
@@ -145,9 +192,9 @@ Unmount partitions and reboot:
 
 Set up networking to automatically connect to known WiFi.
 
-    wifi-menu wlp3s0
+    wifi-menu wlp2s0
     pacman -S wpa_actiond
-    systemctl enable netctl-auto@wlp3s0.service
+    systemctl enable netctl-auto@wlp2s0.service
 
 Sudo:
 
