@@ -5,9 +5,8 @@ Notes and scripts for dev box management.
 
 ## Linux distro and hardware
 
-These notes refer to running [Arch Linux](https://www.archlinux.org/) on the
-ASUS UX301LA. Other branches of this repo track previously used setups,
-for reference.
+These notes refer to running [Arch Linux](https://www.archlinux.org/) on the ASUS UX301LA.
+Other branches of this repo track previously used setups, for reference.
 
 
 ## Install and setup
@@ -19,10 +18,14 @@ These notes serve as a reminder of the specific things done for my setup.
 It includes links to resources that cover the process more completely and
 generally.
 
+### Resources
+
+* [Arch wiki page for the ASUS UX301LA](https://wiki.archlinux.org/index.php/ASUS_UX301LA).
+
 ### Windows recovery USB
 
 Boot into Windows and create a 16GB recovery USB that can be used to restore
-to factory state. The following articles are useful (and apply to ASUS as well):
+to factory state. The following articles are useful (and do apply ASUS systems):
 
 * [Understanding hard drive partitions on Lenovo systems with Microsoft Windows 7 and Windows 8](http://support.lenovo.com/en_US/detail.page?DocID=HT077144)
 * [Methodology to create Recovery Media and reload a Lenovo Think system with Microsoft Windows 8 preload](http://support.lenovo.com/en_US/downloads/detail.page?DocID=HT076024)
@@ -40,7 +43,9 @@ Enter the boot settings menu by holding `F2` at boot, and:
 * Leave the SATA Mode Selection as RAID
 * Disable Intel(R) Anti-Theft Technology
 * Disable Secure Boot Control
-* Create a new boot option (for the inserted Arch installer USB, booting the file `EFI/boot/loader.efiEFI/boot/loader.efi`)
+* Create a new boot option
+    (for the inserted Arch installer USB, booting the file `EFI/boot/loader.efi`)
+    (this option may appear without manual creation)
 
 Boot the Arch install USB by holding `Esc` on boot and choosing the Arch installer.
 
@@ -71,8 +76,8 @@ Prepare the disk (with GPT partitions). Using:
 
 Format the new partitions:
 
-    mkfs.ext4 /dev/md126p2
     mkfs.fat -F32 /dev/md126p1
+    mkfs.ext4 /dev/md126p2
 
 Mount:
 
@@ -125,62 +130,27 @@ Set the hardware clock to UTC:
 
 Set the hostname:
 
-    echo arch > /etc/hostname
+    echo zenbook > /etc/hostname
 
 Install packages for wireless networking:
 
-    pacman -S iw wpa_supplicant
-    pacman -S dialog
+    pacman -S iw wpa_supplicant dialog
 
 Set the root password:
 
     passwd
 
-Install GRUB (blank screen issue arises with Gummiboot):
-
-    # https://wiki.archlinux.org/index.php/ASUS_Zenbook_UX51Vz#Installation
-    # https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A
-    # https://wiki.archlinux.org/index.php/ASUS_Zenbook_UX31E
-    # https://help.ubuntu.com/community/AsusZenbook
-
-    # https://wiki.archlinux.org/index.php/Installing_with_Fake_RAID
-    # http://unix.stackexchange.com/questions/71203/ubuntu-how-do-the-md-devices-get-assembled-at-bootup
-
-    # http://wiki.gentoo.org/wiki/GRUB2#Booting_from_RAID_Array
+Install GRUB:
 
     pacman -S grub efibootmgr
 
-    mdadm --examine --scan >> /etc/mdadm.conf
+    mdadm --examine --scan >> /etc/mdadm.conf   # may not be necessary
 
-    # TODO: CHANGE THIS TO GET EXTRA MODULES INTO MENUENTRY
-    # TODO: MAKE SURE THAT THE MODULES WILL BE FOUND IN x86_64-efi/... ?
-    mkdir -p /etc/grub.d
-    touch /etc/grub.d/01_extra_modules
-    chmod +x /etc/grub.d/01_extra_modules
-    echo 'echo "insmod raid0"' >> /etc/grub.d/01_extra_modules
-    echo 'echo "insmod md_mod"' >> /etc/grub.d/01_extra_modules
+    vi /etc/mkinitcpio.conf   # add `mdadm_udev` to `HOOKS`, as mentioned in https://wiki.archlinux.org/index.php/ASUS_UX301LA
+    mkinitcpio -p linux
 
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub --recheck
     grub-mkconfig -o /boot/grub/grub.cfg
-
-    # https://wiki.archlinux.org/index.php/mkinitcpio#Using_RAID
-    vi /etc/mkinitcpio.conf   # add `mdadm` to `HOOKS` and `raid0 md_mod` to `MODULES`
-    mkinitcpio -p linux   # TODO: SPECIFY CORRECT KERNEL VESION WHEN BUILDING THIS !!!!!!!!!!!
-
-
-    # NOTES:
-
-    > Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
-    > CPU: 0PID... Not tainted 3.12.9-1-ARCH #1
-
-    > grub> ls
-    > (hd0) (hd0,msdos2) (hd1) (hd1,gpt2) (hd1,gpt1)
-    > grub> ls (hd1)
-    > Device hd1: No known fielsystems detected - Sector size 512B - Total size 500113408KiB
-    > grub> ls (hd1,1)
-    >         Partition hd1,1: Filesystem type fat, UUID 068E-58AE - Partition start at 1024KiB - Total size 524288KiB
-    > grub> ls (hd1,2)
-    >         Partition hd1,2: Filesystem type ext* - Last modification time 2014-01-29 20:00:59 Wednesday, UUID 5b586628-1c53-40fb-8ed9-399ff1d4c2b2 - Partition start at 525312KiB - Total size 499588079.5KiB
 
 Unmount partitions and reboot:
 
@@ -190,11 +160,9 @@ Unmount partitions and reboot:
 
 ### Post install
 
-Set up networking to automatically connect to known WiFi.
+Reconnect to the Internet:
 
     wifi-menu wlp2s0
-    pacman -S wpa_actiond
-    systemctl enable netctl-auto@wlp2s0.service
 
 Sudo:
 
@@ -219,23 +187,6 @@ X Windows, 3D and video driver, touchpad:
     pacman -S xf86-video-intel
     pacman -S xf86-input-synaptics
 
-Activate SNA acceleration by creating `/etc/X11/xorg.conf.d/20-intel.conf` as:
-
-    Section "Device"
-            Identifier "Intel Graphics"
-            Driver "intel"
-            Option "AccelMethod" "sna"
-    EndSection
-
-Get KMS working, by adding the following line to `/etc/mkinitcpio.conf`:
-
-    MODULES="i915"
-
-and running:
-
-    mkinitcpio -p linux
-    reboot
-
 ### Install the desktop environment
 
 Install GNOME:
@@ -243,19 +194,28 @@ Install GNOME:
     pacman -S gnome
     systemctl enable gdm.service
 
+Enable network manager:
 
-## Also
+    systemctl enable NetworkManager.service
+
+Do [tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with_Intel_HD_Graphics):
+
+    echo 'CLUTTER_PAINT=disable-clipped-redraws:disable-culling' >> /etc/environment
+    restart
+
+### More stuff
 
 
-See the [Lenovo X1 Carbon](https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon)
-wiki page.
+
+### Next
+
+Revisit the wiki page.
 
 
 ## Questions
 
 * Why doesn't my Knoppix USB boot?
-* My install of Gummiboot gets the screen blanking issue, but the install ISO seems to
-  use it without problems. Why does the ISO one work?
+
 
 ## TODO
 
