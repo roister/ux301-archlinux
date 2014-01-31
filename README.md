@@ -205,6 +205,11 @@ Do [tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with
 
 ### More stuff
 
+    sudo pacman -S vim
+    sudo pacman -S git
+    sudo pacman -S tmux
+    sudo pacman -S firefox
+    sudo pacman -S chromium
 
 
 ### Next
