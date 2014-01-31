@@ -205,12 +205,18 @@ Do [tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with
 
 ### More stuff
 
+Install extra packages:
+
     sudo pacman -S vim
     sudo pacman -S git
     sudo pacman -S tmux
     sudo pacman -S firefox
     sudo pacman -S chromium
+    sudo pacman -S stow
+    sudo pacman -S wget
+    sudo pacman -S curl
 
+Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 
 ### Next
 
