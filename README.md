@@ -207,16 +207,55 @@ Do [tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with
 
 Install extra packages:
 
-    sudo pacman -S vim
+    sudo pacman -S base-devel
+    sudo pacman -S openssh
+    sudo pacman -S openssl
     sudo pacman -S git
+    sudo pacman -S tk
+    sudo pacman -S tcl
+    sudo pacman -S ruby
+    sudo pacman -S gvim
     sudo pacman -S tmux
-    sudo pacman -S firefox
-    sudo pacman -S chromium
+    sudo pacman -S xclip
+    sudo pacman -S traceroute
+    sudo pacman -S subversion
     sudo pacman -S stow
     sudo pacman -S wget
     sudo pacman -S curl
+    sudo pacman -S firefox
+    sudo pacman -S chromium
+    sudo pacman -S calibre
 
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
+
+[Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
+
+* [`package-query`](https://aur.archlinux.org/packages/package-query/)
+* [`yaourt`](https://aur.archlinux.org/packages/yaourt/)
+* [`pacaur`](https://aur.archlinux.org/packages/pacaur/)
+
+Install extra AUR packages:
+
+    sudo yaourt -Sa google-chrome
+    sudo yaourt -Sa ttf-google-fonts-git
+    sudo yaourt -Sa hipchat
+
+Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
+
+    sudo pacman -S postgresql
+    sudo su - postgres -c "initdb --locale en_AU.UTF-8 -E UTF8 -D '/var/lib/postgres/data'"
+    sudo systemctl start postgresql
+    sudo systemctl enable postgresql
+
+    sudo su - postgres
+    createuser --interactive   # role: chris, superuser: y
+    createdb chris
+    exit
+
+[Install](https://extensions.gnome.org/) GNOME extensions and [configure](https://extensions.gnome.org/local/) them:
+
+* [Put Windows](https://extensions.gnome.org/extension/39/put-windows/)
+
 
 ### Next
 
