@@ -247,6 +247,12 @@ Install extra packages:
     sudo pacman -S arandr
     sudo pacman -S s3cmd
     sudo pacman -S sox
+    sudo pacman -S rhythmbox
+    sudo pacman -S gst-plugins-ugly
+    sudo pacman -S gst-plugins-bad
+    sudo pacman -S gst-libav
+    sudo pacman -S libdmapsharing
+    sudo pacman -S brasero
     sudo pacman -S ack
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
