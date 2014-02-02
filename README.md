@@ -315,7 +315,11 @@ Revisit the wiki page.
 * Some function keys aren't linked to appropriate actions (e.g. screen brightness).
 
 * Graphics sometimes glichy (some UI areas partially black). Noticed when using external display.
-  E.g. Details button in first window of VirtualBox.
+  E.g. Details button in first window of VirtualBox. Other GNOME dialogs.
+  May be related to Intel graphics driver update:
+    * `xf86-video-intel-2.99.907-2-x86_64.pkg.tar.xz`: okay
+    * `xf86-video-intel-2.99.908-1-x86_64.pkg.tar.xz`: problem observed
+    * `xf86-video-intel-2.99.909-1-x86_64.pkg.tar.xz`: problem still observed
 
 * Can't hibernate when external monitor is connected (screens go black, but it doesn't sleep properly or wake up). See:
   * https://bbs.archlinux.org/viewtopic.php?pid=1114980
