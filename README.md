@@ -271,6 +271,7 @@ Install extra AUR packages:
     yaourt -Sa ledger
     yaourt -Sa dropbox
     yaourt -Sa nautilus-dropbox
+    yaourt -Sa ansible
 
 Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
 
@@ -287,6 +288,7 @@ Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
     echo vboxpci | sudo tee -a /etc/modules-load.d/virtualbox.conf
     sudo gpasswd -a $USER vboxusers
     virtualbox &
+    yaourt -Sa vagrant
 
 Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
 
@@ -311,7 +313,21 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ### Next
 
-Revisit the wiki page.
+* power
+
+* shutter
+* zeal
+* gdal
+* qgis
+* postgis & template DBs
+* tomcat & geoserver
+
+* windows
+
+* sort Old data
+* crashplan
+
+* re-skim the wiki pages
 
 
 ## Issues
