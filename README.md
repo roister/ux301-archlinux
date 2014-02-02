@@ -205,6 +205,9 @@ Do [tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with
 
 ### More stuff
 
+Enable `multlib` by uncommenting the `[multlib]` section in `/etc/pacman.conf`
+and updating the package list with `pacman -Syyu` (will also do a system upgrade).
+
 Install extra packages:
 
     sudo pacman -S base-devel
@@ -223,10 +226,28 @@ Install extra packages:
     sudo pacman -S wget
     sudo pacman -S curl
     sudo pacman -S firefox
+    sudo pacman -S flashplugin
     sudo pacman -S chromium
+    sudo pacman -S opera
     sudo pacman -S calibre
-
-Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
+    sudo pacman -S transmission-gtk
+    sudo pacman -S vlc
+    sudo pacman -S ffmpegthumbnailer gstreamer0.10-ffmpeg
+    sudo pacman -S gstreamer0.10-base-plugins gstreamer0.10-good
+    sudo pacman -S extundelete
+    sudo pacman -S ext4magic
+    sudo pacman -S gnumeric
+    sudo pacman -S skype lib32-libpulse lib32-alsa-plugins
+    sudo pacman -S liferea
+    sudo pacman -S chmsee
+    sudo pacman -S python-pip
+    sudo pacman -S python2-pip
+    sudo pacman -S jdk7-openjdk
+    sudo pacman -S apache-ant
+    sudo pacman -S arandr
+    sudo pacman -S s3cmd
+    sudo pacman -S sox
+    sudo pacman -S ack
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -236,13 +257,35 @@ Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-s
 
 Install extra AUR packages:
 
-    sudo yaourt -Sa google-chrome
-    sudo yaourt -Sa ttf-google-fonts-git
-    sudo yaourt -Sa hipchat
+    yaourt -Sa google-chrome
+    yaourt -Sa ttf-google-fonts-git
+    yaourt -Sa hipchat
+    yaourt -Sa briss
+    yaourt -Sa sublime-text
+    yaourt -Sa ledger
+    yaourt -Sa dropbox
+    yaourt -Sa nautilus-dropbox
+
+Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
+
+    sudo pacman -S virtualbox
+    sudo pacman -S virtualbox-host-modules
+    sudo pacman -S qt4
+    sudo pacman -S net-tools
+    sudo pacman -S virtualbox-guest-iso
+    sudo depmod -a   # update the kernel dependency modules database
+    sudo modprobe vboxdrv
+    echo vboxdrv | sudo tee -a /etc/modules-load.d/virtualbox.conf
+    echo vboxnetadp | sudo tee -a /etc/modules-load.d/virtualbox.conf
+    echo vboxnetflt | sudo tee -a /etc/modules-load.d/virtualbox.conf
+    echo vboxpci | sudo tee -a /etc/modules-load.d/virtualbox.conf
+    sudo gpasswd -a $USER vboxusers
+    virtualbox &
 
 Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
 
     sudo pacman -S postgresql
+    sudo pacman -S pgadmin3
     sudo su - postgres -c "initdb --locale en_AU.UTF-8 -E UTF8 -D '/var/lib/postgres/data'"
     sudo systemctl start postgresql
     sudo systemctl enable postgresql
@@ -252,19 +295,44 @@ Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
     createdb chris
     exit
 
+Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
+
 [Install](https://extensions.gnome.org/) GNOME extensions and [configure](https://extensions.gnome.org/local/) them:
 
 * [Put Windows](https://extensions.gnome.org/extension/39/put-windows/)
 
+Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and entering `gnome-session-properties`.
 
 ### Next
 
 Revisit the wiki page.
 
 
+## Issues
+
+* Keyboard gets reset when switching between users, and keyboard remaps set to run on proper login aren't rerun then.
+
+* Some function keys aren't linked to appropriate actions (e.g. screen brightness).
+
+* Graphics sometimes glichy (some UI areas partially black). Noticed when using external display.
+  E.g. Details button in first window of VirtualBox.
+
+* Can't hibernate when external monitor is connected (screens go black, but it doesn't sleep properly or wake up). See:
+  * https://bbs.archlinux.org/viewtopic.php?pid=1114980
+  * https://wiki.archlinux.org/index.php/Acpid#Tips_and_tricks
+
+* High DPI and mixed DPI setups not handled well. See:
+  * http://blogs.gnome.org/alexl/2013/06/28/hidpi-support-in-gnome/
+
+* Touch events spread out and take effect across the external display when one is connected.
+
+* Put Windows extension doesn't work well.
+
+* Normal external monitor orientation was forgotten after having the TV connected.
+
+
 ## Questions
 
-* Why doesn't my Knoppix USB boot?
 
 
 ## TODO
@@ -278,6 +346,7 @@ Revisit the wiki page.
   * desktop: [http://lzone.de/liferea/]()
   * online for sync: [http://tt-rss.org/redmine/projects/tt-rss/wiki]()
   * mobile: [http://tt-rss.org/redmine/projects/tt-rss-android/wiki]()
+* wxHexEditor (was broken on AUR at v22-1)
 * [http://www.omgubuntu.co.uk/2012/05/beatbox-music-player-sees-new-release-on-ubuntu]()
 * Heroku toolbelt: [https://toolbelt.herokuapp.com/debian]()
 * Alternative to pow rack dev server: [https://github.com/ysbaddaden/prax]()
