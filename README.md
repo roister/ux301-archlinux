@@ -20,7 +20,8 @@ generally.
 
 ### Resources
 
-* [Arch wiki page for the ASUS UX301LA](https://wiki.archlinux.org/index.php/ASUS_UX301LA).
+* [Arch wiki page for the ASUS Zenbook UX301LA](https://wiki.archlinux.org/index.php/ASUS_UX301LA).
+* [Arch wiki page for the ASUS Zenbook Prime UX31A](https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A)
 
 ### Windows recovery USB
 
@@ -187,6 +188,17 @@ X Windows, 3D and video driver, touchpad:
     pacman -S xf86-video-intel
     pacman -S xf86-input-synaptics
 
+Enable [TLP](https://wiki.archlinux.org/index.php/TLP) for power managment:
+
+    pacman -S tlp
+    systemctl enable tlp
+    systemctl enable tlp-sleep
+
+Fix brightness [function keys](https://wiki.archlinux.org/index.php/ASUS_UX301LA#Function_Keys):
+
+    vi /etc/default/grub   # set `GRUB_CMDLINE_LINUX_DEFAULT="quiet acpi_osi="`
+    grub-mkconfig -o /boot/grub/grub.cfg
+
 ### Install the desktop environment
 
 Install GNOME:
@@ -313,8 +325,6 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ### Next
 
-* power
-
 * shutter
 * zeal
 * gdal
@@ -327,14 +337,12 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 * sort Old data
 * crashplan
 
-* re-skim the wiki pages
+* Read [Arch wiki page for the ASUS Zenbook Prime UX31A](https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A)
 
 
 ## Issues
 
 * Keyboard gets reset when switching between users, and keyboard remaps set to run on proper login aren't rerun then.
-
-* Some function keys aren't linked to appropriate actions (e.g. screen brightness).
 
 * Graphics sometimes glichy (some UI areas partially black). Noticed when using external display.
   E.g. Details button in first window of VirtualBox. Other GNOME dialogs.
