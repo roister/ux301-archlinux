@@ -226,8 +226,8 @@ Install extra packages:
     sudo pacman -S openssh
     sudo pacman -S openssl
     sudo pacman -S git
-    sudo pacman -S tk
-    sudo pacman -S tcl
+      sudo pacman -S tk
+      sudo pacman -S tcl
     sudo pacman -S ruby
     sudo pacman -S gvim
     sudo pacman -S tmux
@@ -244,28 +244,47 @@ Install extra packages:
     sudo pacman -S calibre
     sudo pacman -S transmission-gtk
     sudo pacman -S vlc
-    sudo pacman -S ffmpegthumbnailer gstreamer0.10-ffmpeg
-    sudo pacman -S gstreamer0.10-base-plugins gstreamer0.10-good
+      sudo pacman -S ffmpegthumbnailer gstreamer0.10-ffmpeg
+      sudo pacman -S gstreamer0.10-base-plugins gstreamer0.10-good
     sudo pacman -S extundelete
     sudo pacman -S ext4magic
     sudo pacman -S gnumeric
-    sudo pacman -S skype lib32-libpulse lib32-alsa-plugins
+    sudo pacman -S skype
+      sudo pacman -S lib32-libpulse
+      sudo pacman -S lib32-alsa-plugins
     sudo pacman -S liferea
     sudo pacman -S chmsee
     sudo pacman -S python-pip
     sudo pacman -S python2-pip
     sudo pacman -S jdk7-openjdk
-    sudo pacman -S apache-ant
+      sudo pacman -S apache-ant
     sudo pacman -S arandr
     sudo pacman -S s3cmd
     sudo pacman -S sox
     sudo pacman -S rhythmbox
-    sudo pacman -S gst-plugins-ugly
-    sudo pacman -S gst-plugins-bad
-    sudo pacman -S gst-libav
-    sudo pacman -S libdmapsharing
-    sudo pacman -S brasero
+      sudo pacman -S gst-plugins-ugly
+      sudo pacman -S gst-plugins-bad
+      sudo pacman -S gst-libav
+      sudo pacman -S libdmapsharing
+      sudo pacman -S brasero
     sudo pacman -S ack
+    sudo pacman -S gdal
+    sudo pacman -S fatrat
+    sudo pacman -S gparted
+      sudo pacman -S dosfstools
+      sudo pacman -S jfsutils
+      sudo pacman -S f2fs-tools
+      sudo pacman -S btrfs-progs
+      sudo pacman -S exfat-utils
+      sudo pacman -S ntfs-3g
+      sudo pacman -S reiserfsprogs
+      sudo pacman -S xfsprogs
+      sudo pacman -S nilfs-utils
+      sudo pacman -S polkit
+      sudo pacman -S gpart
+      sudo pacman -S mtools
+    sudo pacman -S kdeutils-filelight
+    sudo pacman -S unrar
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -276,15 +295,17 @@ Install extra packages:
 Install extra AUR packages:
 
     yaourt -Sa google-chrome
-    yaourt -Sa ttf-google-fonts-git
+      yaourt -Sa ttf-google-fonts-git
     yaourt -Sa hipchat
     yaourt -Sa briss
     yaourt -Sa sublime-text
     yaourt -Sa ledger
     yaourt -Sa dropbox
-    yaourt -Sa nautilus-dropbox
+      yaourt -Sa nautilus-dropbox
     yaourt -Sa ansible
     yaourt -Sa zeal-git
+    yaourt -Sa shutter
+    yaourt -Sa qgis-git   # this version without grass
 
 Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
 
@@ -316,6 +337,21 @@ Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
     createdb chris
     exit
 
+Get Windows product key from the BIOS data:
+
+    sudo pacman -S iasl
+    mkdir acpi && cd acpi
+    sudo acpidump > acpi.dat
+    acpixtract -a acpi.dat
+    hexdump -C msdm.dat   # key is the last XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+
+Install [Tomcat](https://wiki.archlinux.org/index.php/tomcat) and GeoServer:
+
+    sudo pacman -S tomcat7
+    sudo vim /etc/tomcat7/tomcat-users.xml   # to set passwords
+    systemctl start tomcat7
+
+
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 
 [Install](https://extensions.gnome.org/) GNOME extensions and [configure](https://extensions.gnome.org/local/) them:
@@ -326,18 +362,18 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ### Next
 
-* shutter
-* gdal
-* qgis
+* geoserver
 * postgis & template DBs
-* tomcat & geoserver
 
 * windows
 
 * sort Old data
 * crashplan
 
-* Read [Arch wiki page for the ASUS Zenbook Prime UX31A](https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A)
+* read [Arch wiki page for the ASUS Zenbook Prime UX31A](https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A)
+
+* blog migration
+* IRC
 
 
 ## Issues
@@ -359,6 +395,8 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 * Put Windows extension doesn't work well.
 
 * Normal external monitor orientation was forgotten after having the TV connected.
+
+* Copying multiple lines in tmux generates random text in adjacent panes.
 
 
 ## Questions
