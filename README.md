@@ -284,6 +284,7 @@ Install extra AUR packages:
     yaourt -Sa dropbox
     yaourt -Sa nautilus-dropbox
     yaourt -Sa ansible
+    yaourt -Sa zeal-git
 
 Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
 
@@ -326,7 +327,6 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 ### Next
 
 * shutter
-* zeal
 * gdal
 * qgis
 * postgis & template DBs
