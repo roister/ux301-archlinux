@@ -351,12 +351,6 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
     * `xf86-video-intel-2.99.908-1-x86_64.pkg.tar.xz`: problem observed
     * `xf86-video-intel-2.99.909-1-x86_64.pkg.tar.xz`: problem still observed
 
-* Can't hibernate when external monitor is connected (screens go black, but it doesn't sleep properly or wake up). See:
-  * https://bbs.archlinux.org/viewtopic.php?pid=1114980
-  * https://wiki.archlinux.org/index.php/Acpid#Tips_and_tricks
-  UPDATE -> After TLP installation, can hibernate via power key with display connected
-            (or continue working on external display with laptop lid closed)
-
 * High DPI and mixed DPI setups not handled well. See:
   * http://blogs.gnome.org/alexl/2013/06/28/hidpi-support-in-gnome/
 
