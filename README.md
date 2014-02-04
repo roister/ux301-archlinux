@@ -39,6 +39,11 @@ as follows:
 
 These notes relate to running Xubuntu 13.10 Saucy on `MacBookPro8,2`.
 
+Useful resources:
+
+* http://superuser.com/questions/582370/imac-replace-grub2-with-refit/582433#582433
+* http://www.phoronix.com/scan.php?page=news_item&px=MTQwNDY
+
 ### Create distribution install media and boot it (manual)
 
 * http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx
