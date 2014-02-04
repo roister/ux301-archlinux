@@ -369,10 +369,10 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ### Next
 
+* windows
+
 * geoserver
 * postgis & template DBs
-
-* windows
 
 * sort Old data
 * crashplan
@@ -413,12 +413,13 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ## TODO
 
+* ntp or that other one?
 * tiling window manager:
   * xmonad:
     * http://www.reddit.com/r/haskell/comments/1wjjdh/how_many_of_you_use_xmonad_how_many_do_that/
     * http://stackoverflow.com/questions/19343048/best-resources-to-learn-haskell-with-mastering-xmonad-configuration-in-mind
   * [d4x](https://apps.ubuntu.com/cat/applications/d4x/)
-* ntp or that other one?
+* emacs
 * passwords:
   * [http://keepass.info]()
   * [http://blog.sanctum.geek.nz/linux-crypto-passwords/]()
