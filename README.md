@@ -39,7 +39,7 @@ and write it onto a USB stick with:
 
     dd bs=4M if=/path/to/archlinux.iso of=/dev/sdX && sync
 
-Enter the boot settings menu by holding `F2` at boot, and:
+Enter the boot settings menu by holding `<F2>` at boot, and:
 
 * Leave the SATA Mode Selection as RAID
 * Disable Intel(R) Anti-Theft Technology
@@ -285,6 +285,7 @@ Install extra packages:
       sudo pacman -S mtools
     sudo pacman -S kdeutils-filelight
     sudo pacman -S unrar
+    sudo pacman -S phantomjs
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -351,12 +352,18 @@ Install [Tomcat](https://wiki.archlinux.org/index.php/tomcat) and GeoServer:
     sudo vim /etc/tomcat7/tomcat-users.xml   # to set passwords
     systemctl start tomcat7
 
-
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 
 [Install](https://extensions.gnome.org/) GNOME extensions and [configure](https://extensions.gnome.org/local/) them:
 
 * [Put Windows](https://extensions.gnome.org/extension/39/put-windows/)
+
+Install user files and tools, into home directory, including:
+
+* Ruby (via `rbenv`)
+* NodeJS (via `nvm`)
+* `autoenv`
+* Powerline
 
 Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and entering `gnome-session-properties`.
 
@@ -389,6 +396,7 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * High DPI and mixed DPI setups not handled well. See:
   * http://blogs.gnome.org/alexl/2013/06/28/hidpi-support-in-gnome/
+  * http://vincent.jousse.org/tech/archlinux-retina-hidpi-macbookpro-xmonad/
 
 * Touch events spread out and take effect across the external display when one is connected.
 
@@ -405,21 +413,20 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ## TODO
 
-* ntp?
+* tiling window manager:
+  * xmonad:
+    * http://www.reddit.com/r/haskell/comments/1wjjdh/how_many_of_you_use_xmonad_how_many_do_that/
+    * http://stackoverflow.com/questions/19343048/best-resources-to-learn-haskell-with-mastering-xmonad-configuration-in-mind
+  * [d4x](https://apps.ubuntu.com/cat/applications/d4x/)
+* ntp or that other one?
 * passwords:
   * [http://keepass.info]()
   * [http://blog.sanctum.geek.nz/linux-crypto-passwords/]()
-* feed reader:
-  * [http://lifehacker.com/5992404/how-to-build-your-own-syncing-rss-reader-with-tiny-tiny-rss-and-kick-google-reader-to-the-curb]()
-  * desktop: [http://lzone.de/liferea/]()
-  * online for sync: [http://tt-rss.org/redmine/projects/tt-rss/wiki]()
-  * mobile: [http://tt-rss.org/redmine/projects/tt-rss-android/wiki]()
-* wxHexEditor (was broken on AUR at v22-1)
-* [http://www.omgubuntu.co.uk/2012/05/beatbox-music-player-sees-new-release-on-ubuntu]()
+* GUI hex editor:
+  * wxHexEditor (was broken on AUR at v22-1)
 * Heroku toolbelt: [https://toolbelt.herokuapp.com/debian]()
 * Alternative to pow rack dev server: [https://github.com/ysbaddaden/prax]()
-* [http://askubuntu.com/questions/68809/how-to-format-a-usb-or-external-drive]()
 * Clipboard manager: [http://parcellite.sourceforge.net/?page_id=2]()
-* [https://apps.ubuntu.com/cat/applications/d4x/]()
+
 * Check out [http://wiki.xfce.org/recommendedapps]()
 
