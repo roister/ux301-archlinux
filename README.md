@@ -292,6 +292,7 @@ Install extra packages:
       sudo pacman -S haddock
       sudo pacman -S happy
       sudo pacman -S alex
+    sudo pacman -S wireshark-gtk
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -313,6 +314,11 @@ Install extra AUR packages:
     yaourt -Sa zeal-git
     yaourt -Sa shutter
     yaourt -Sa qgis-git   # this version without grass
+
+Set up default applications for Gnome (e.g. so filelight doesn't steal responsiblity for `inode/directory`):
+
+    pacaur -S gnome-defaults-list
+    cp /etc/gnome/defaults.list ~/.local/share/applications/defaults.list
 
 Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
 
@@ -380,6 +386,8 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ### Next
 
+* MTU permanent setting, notes, post to MLUG
+
 * windows
 
 * geoserver
@@ -398,11 +406,13 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ## Issues
 
+* Rhythmbox doesn't seem to like the Nexus 5.
+
 * Keyboard gets reset when switching between users, and keyboard remaps set to run on proper login aren't rerun then.
 
 * Graphics sometimes glichy (some UI areas partially black). Noticed when using external display.
-  E.g. Details button in first window of VirtualBox. Other GNOME dialogs.
-  May be qt related.
+  E.g. Details button in first window of VirtualBox, Calibre, FileLight.
+  May be Qt related.
   May be related to Intel graphics driver update:
     * `xf86-video-intel-2.99.907-2-x86_64.pkg.tar.xz`: okay
     * `xf86-video-intel-2.99.908-1-x86_64.pkg.tar.xz`: problem observed
