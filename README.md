@@ -411,6 +411,8 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * Keyboard gets reset when switching between users, and keyboard remaps set to run on proper login aren't rerun then.
 
+* Display config gets messed up after having TV connected via mini dispaly port (not sure about HDMI).
+
 * Graphics sometimes glichy (some UI areas partially black). Noticed when using external display.
   E.g. Details button in first window of VirtualBox, Calibre, FileLight.
   May be Qt related.
@@ -427,9 +429,9 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * Put Windows extension doesn't work well.
 
-* Normal external monitor orientation was forgotten after having the TV connected.
-
 * Copying multiple lines in tmux generates random text in adjacent panes.
+
+* `cat blah | view -` doesn't work.
 
 
 ## Questions
