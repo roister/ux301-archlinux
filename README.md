@@ -292,6 +292,8 @@ Install extra packages:
       sudo pacman -S haddock
       sudo pacman -S happy
       sudo pacman -S alex
+    sudo pacman -S libreoffice
+    sudo pacman -S libreoffice-gnome
     sudo pacman -S wireshark-gtk
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
@@ -314,6 +316,10 @@ Install extra AUR packages:
     yaourt -Sa zeal-git
     yaourt -Sa shutter
     yaourt -Sa qgis-git   # this version without grass
+
+Let `wheel` users run wireshark in its group:
+
+    echo '%wheel ALL=(:wireshark) /usr/bin/wireshark, /usr/bin/tshark' | sudo tee /etc/sudoers.d/wireshark
 
 Set up default applications for Gnome (e.g. so filelight doesn't steal responsiblity for `inode/directory`):
 
@@ -349,11 +355,6 @@ Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
     createuser --interactive   # role: chris, superuser: y
     createdb chris
     exit
-
-Install LibreOffice:
-
-    sudo pacman -S libreoffice
-    sudo pacman -S libreoffice-gnome
 
 Get Windows product key from the BIOS data:
 
