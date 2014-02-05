@@ -286,6 +286,12 @@ Install extra packages:
     sudo pacman -S kdeutils-filelight
     sudo pacman -S unrar
     sudo pacman -S phantomjs
+    sudo pacman -S elinks
+    sudo pacman -S ghc
+      sudo pacman -S cabal-install
+      sudo pacman -S haddock
+      sudo pacman -S happy
+      sudo pacman -S alex
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -338,6 +344,11 @@ Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
     createdb chris
     exit
 
+Install LibreOffice:
+
+    sudo pacman -S libreoffice
+    sudo pacman -S libreoffice-gnome
+
 Get Windows product key from the BIOS data:
 
     sudo pacman -S iasl
@@ -374,6 +385,8 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 * geoserver
 * postgis & template DBs
 
+* home dir encryption
+
 * sort Old data
 * crashplan
 
@@ -389,6 +402,7 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * Graphics sometimes glichy (some UI areas partially black). Noticed when using external display.
   E.g. Details button in first window of VirtualBox. Other GNOME dialogs.
+  May be qt related.
   May be related to Intel graphics driver update:
     * `xf86-video-intel-2.99.907-2-x86_64.pkg.tar.xz`: okay
     * `xf86-video-intel-2.99.908-1-x86_64.pkg.tar.xz`: problem observed
@@ -413,12 +427,14 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ## TODO
 
+* MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
 * ntp or that other one?
 * tiling window manager:
   * xmonad:
     * http://www.reddit.com/r/haskell/comments/1wjjdh/how_many_of_you_use_xmonad_how_many_do_that/
     * http://stackoverflow.com/questions/19343048/best-resources-to-learn-haskell-with-mastering-xmonad-configuration-in-mind
   * [d4x](https://apps.ubuntu.com/cat/applications/d4x/)
+* haskel: http://stackoverflow.com/questions/1012573/getting-started-with-haskell
 * emacs
 * passwords:
   * [http://keepass.info]()
