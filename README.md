@@ -415,11 +415,14 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * Graphics sometimes glichy (some UI areas partially black). Noticed when using external display.
   E.g. Details button in first window of VirtualBox, Calibre, FileLight.
-  May be Qt related.
+  Seems to be Qt apps.
+  May be related to acceleration method:
+    * https://bbs.archlinux.org/viewtopic.php?id=165927
   May be related to Intel graphics driver update:
     * `xf86-video-intel-2.99.907-2-x86_64.pkg.tar.xz`: okay
     * `xf86-video-intel-2.99.908-1-x86_64.pkg.tar.xz`: problem observed
     * `xf86-video-intel-2.99.909-1-x86_64.pkg.tar.xz`: problem still observed
+  This issue got resolved with the update that included `xf86-video-intel 2.99.909-2`.
 
 * High DPI and mixed DPI setups not handled well. See:
   * http://blogs.gnome.org/alexl/2013/06/28/hidpi-support-in-gnome/
