@@ -253,7 +253,7 @@ Install extra packages:
       sudo pacman -S lib32-libpulse
       sudo pacman -S lib32-alsa-plugins
     sudo pacman -S liferea
-    sudo pacman -S chmsee
+    sudo pacman -S xchm
     sudo pacman -S python-pip
     sudo pacman -S python2-pip
     sudo pacman -S jdk7-openjdk
@@ -295,6 +295,19 @@ Install extra packages:
     sudo pacman -S libreoffice
     sudo pacman -S libreoffice-gnome
     sudo pacman -S wireshark-gtk
+    sudo pacman -S sqlitebrowser
+    sudo pacman -S i3-wm dmenu i3lock i3status
+    sudo pacman -S go
+    sudo pacman -S libmtp
+      sudo pacman -S fuse && sudo groupadd fuse && sudo gpasswd -a chris fuse
+      pacaur -S jmtpfs
+    sudo pacman -S iotop
+    sudo pacman -S keepass
+    sudo pacman -S docker && sudo systemctl enable docker
+    sudo pacman -S qalculate-gtk
+    sudo pacman -S gimp
+    sudo pacman -S kdesdk-okteta
+    sudo pacman -S gnu-netcat
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -307,6 +320,7 @@ Install extra AUR packages:
     yaourt -Sa google-chrome
       yaourt -Sa ttf-google-fonts-git
     yaourt -Sa hipchat
+    yaourt -Sa aerofs
     yaourt -Sa briss
     yaourt -Sa sublime-text
     yaourt -Sa ledger
@@ -316,8 +330,11 @@ Install extra AUR packages:
     yaourt -Sa zeal-git
     yaourt -Sa shutter
     yaourt -Sa qgis-git   # this version without grass
+    yaourt -Sa jq
+    yaourt -Sa v8
+    pacaur -S randomsound
 
-Let `wheel` users run wireshark in its group:
+Let `wheel` users run wireshark in its group (`sudo -g wireshark wireshark`):
 
     echo '%wheel ALL=(:wireshark) /usr/bin/wireshark, /usr/bin/tshark' | sudo tee /etc/sudoers.d/wireshark
 
@@ -356,6 +373,11 @@ Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
     createdb chris
     exit
 
+Install and setup MongoDB:
+
+    sudo pacman -S mongodb
+    sudo systemctl start mongodb
+
 Get Windows product key from the BIOS data:
 
     sudo pacman -S iasl
@@ -369,6 +391,41 @@ Install [Tomcat](https://wiki.archlinux.org/index.php/tomcat) and GeoServer:
     sudo pacman -S tomcat7
     sudo vim /etc/tomcat7/tomcat-users.xml   # to set passwords
     systemctl start tomcat7
+
+Install `bitcoind` (see [the wiki](https://wiki.archlinux.org/index.php/Bitcoin#Installation)):
+
+    sudo pacman -S bitcoin-daemon
+    sudo useradd -m bitcoin
+    sudo cp /usr/share/doc/bitcoin-daemon/examples/bitcoind.conf /home/bitcoin/.bitcoin/bitcoin.conf
+    sudo chown bitcoin:bitcoin /home/bitcoin/.bitcoin/bitcoin.conf
+    sudo chmod 600 /home/bitcoin/.bitcoin/bitcoin.conf
+    vim /etc/systemd/system/bitcoind.service   # see below
+    sudo systemctl start bitcoind
+    sudo systemctl status bitcoind   # take recommended password and put it in config
+    sudo vim /home/bitcoin/.bitcoin/bitcoin.conf
+    sudo systemctl restart bitcoind
+
+`bitcoind` service definition:
+
+    [Unit]
+    Description=Bitcoin daemon service
+    After=network.target
+
+    [Service]
+    Type=simple
+    User=bitcoin
+    ExecStart=/usr/bin/bitcoind
+
+    [Install]
+    WantedBy=multi-user.target
+
+Other Bitcoin and crypto stuff:
+
+    pacaur -S multibit
+    pacaur -S electrum python2-zbar
+    pacaur -S sx-git
+    pacman -S tor vidalia
+    pacaur -S pybitmessage
 
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 
@@ -400,6 +457,9 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 * crashplan
 
 * read [Arch wiki page for the ASUS Zenbook Prime UX31A](https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A)
+* https://wiki.archlinux.org/index.php/General_Recommendations
+* https://wiki.archlinux.org/index.php/Laptop
+* https://wiki.archlinux.org/index.php/lm_sensors, https://wiki.archlinux.org/index.php/Fan_Speed_Control
 
 * blog migration
 * IRC
@@ -421,33 +481,34 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * Put Windows extension doesn't work well.
 
+* vim-tslime isn't working
 * Copying multiple lines in tmux generates random text in adjacent panes.
+* copying into system clipboard (e.g. in vim) doesn't copy to tmux clipboard
+* tmux close window doesn't immediately update status bar (issue known, patch exists: http://sourceforge.net/p/tmux/tickets/92/?page=1)
 
 * `cat blah | view -` doesn't work.
 
 
 ## Questions
 
+* Windows reinstall issue: "This product key cannot be used to install a retail version of Windows 8"
 
 
 ## TODO
 
+* IRC:
+    * Quassel
+    * Smuxi
 * MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
 * ntp or that other one?
-* tiling window manager:
-  * xmonad:
-    * http://www.reddit.com/r/haskell/comments/1wjjdh/how_many_of_you_use_xmonad_how_many_do_that/
-    * http://stackoverflow.com/questions/19343048/best-resources-to-learn-haskell-with-mastering-xmonad-configuration-in-mind
-  * [d4x](https://apps.ubuntu.com/cat/applications/d4x/)
+* cron alternative for intermittent processing/network
 * haskel: http://stackoverflow.com/questions/1012573/getting-started-with-haskell
 * emacs
 * passwords:
   * [http://keepass.info]()
   * [http://blog.sanctum.geek.nz/linux-crypto-passwords/]()
-* GUI hex editor:
-  * wxHexEditor (was broken on AUR at v22-1)
 * Heroku toolbelt: [https://toolbelt.herokuapp.com/debian]()
-* Alternative to pow rack dev server: [https://github.com/ysbaddaden/prax]()
+* AUR build of [https://github.com/ysbaddaden/prax](prax) (needs systemd service)
 * Clipboard manager: [http://parcellite.sourceforge.net/?page_id=2]()
 
 * Check out [http://wiki.xfce.org/recommendedapps]()
