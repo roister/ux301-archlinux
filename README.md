@@ -293,14 +293,13 @@ Install extra packages:
       sudo pacman -S happy
       sudo pacman -S alex
     sudo pacman -S libreoffice
-    sudo pacman -S libreoffice-gnome
+      sudo pacman -S libreoffice-gnome
+      sudo pacman -S hunspell
+      sudo pacman -S hunspell-en
     sudo pacman -S wireshark-gtk
     sudo pacman -S sqlitebrowser
     sudo pacman -S i3-wm dmenu i3lock i3status
     sudo pacman -S go
-    sudo pacman -S libmtp
-      sudo pacman -S fuse && sudo groupadd fuse && sudo gpasswd -a chris fuse
-      pacaur -S jmtpfs
     sudo pacman -S iotop
     sudo pacman -S keepass
     sudo pacman -S docker && sudo systemctl enable docker
@@ -308,6 +307,8 @@ Install extra packages:
     sudo pacman -S gimp
     sudo pacman -S kdesdk-okteta
     sudo pacman -S gnu-netcat
+    pacaur -S brackets-bin
+    pacaur -S mobac
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -358,7 +359,7 @@ Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
     echo vboxpci | sudo tee -a /etc/modules-load.d/virtualbox.conf
     sudo gpasswd -a $USER vboxusers
     virtualbox &
-    yaourt -Sa vagrant
+    sudo pacman -S vagrant
 
 Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
 
@@ -426,6 +427,20 @@ Other Bitcoin and crypto stuff:
     pacaur -S sx-git
     pacman -S tor vidalia
     pacaur -S pybitmessage
+
+Android file access:
+
+    sudo pacman -S gvfs gvfs-mtp
+
+Android dev env:
+
+    pacaur -S android-sdk
+    pacaur -S android-sdk-platform-tools
+    pacaur -S android-sdk-build-tools
+    sudo android
+    sudo chmod -R 755 /opt/android-sdk
+
+    pacaur -S android-studio
 
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 
