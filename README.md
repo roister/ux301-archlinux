@@ -309,6 +309,10 @@ Install extra packages:
     sudo pacman -S gnu-netcat
     pacaur -S brackets-bin
     pacaur -S mobac
+    sudo pacman -S expect  # for unbuffer
+    sudo pacman -S gptfdisk
+    sudo pacman -S rsync
+    sudo pacman -S redis
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -442,7 +446,23 @@ Android dev env:
 
     pacaur -S android-studio
 
+Printer/scanner setup:
+
+    sudo pacman -S cups ghostscript gsfonts avahi cups-browsed
+    pacaur -S epson-inkjet-printer-stylus-office-tx610fw-series
+    sudo systemctl start avahi-daemon.service
+    sudo systemctl enable avahi-daemon.service
+    sudo systemctl start cups.service
+    sudo systemctl enable cups.service
+    sudo pacman -S system-config-printer
+    # then run GUI app "Print Settings"
+
+    pacaur -S iscan iscan-plugin-network
+    sudo vim /etc/sane.d/epkowa.conf  # add line 'net {IP_OF_SCANNER}'
+    # then run GUI app "Image Scan! for Linux"
+
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
+Or, use `xrandr`'s `--scale` or `--transform` options.
 
 [Install](https://extensions.gnome.org/) GNOME extensions and [configure](https://extensions.gnome.org/local/) them:
 
@@ -496,7 +516,6 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * Put Windows extension doesn't work well.
 
-* vim-tslime isn't working
 * Copying multiple lines in tmux generates random text in adjacent panes.
 * copying into system clipboard (e.g. in vim) doesn't copy to tmux clipboard
 * tmux close window doesn't immediately update status bar (issue known, patch exists: http://sourceforge.net/p/tmux/tickets/92/?page=1)
