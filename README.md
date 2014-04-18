@@ -313,6 +313,7 @@ Install extra packages:
     sudo pacman -S gptfdisk
     sudo pacman -S rsync
     sudo pacman -S redis
+    sudo pacman -S youtube-dl
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
