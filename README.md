@@ -242,16 +242,13 @@ Install extra packages:
     sudo pacman -S chromium
     sudo pacman -S opera
     sudo pacman -S calibre
-    sudo pacman -S transmission-gtk
+    pacaur -S qbittorrent
     sudo pacman -S vlc
       sudo pacman -S ffmpegthumbnailer gstreamer0.10-ffmpeg
       sudo pacman -S gstreamer0.10-base-plugins gstreamer0.10-good
     sudo pacman -S extundelete
     sudo pacman -S ext4magic
     sudo pacman -S gnumeric
-    sudo pacman -S skype
-      sudo pacman -S lib32-libpulse
-      sudo pacman -S lib32-alsa-plugins
     sudo pacman -S liferea
     sudo pacman -S xchm
     sudo pacman -S python-pip
@@ -314,6 +311,8 @@ Install extra packages:
     sudo pacman -S rsync
     sudo pacman -S redis
     sudo pacman -S youtube-dl
+    pacaur -S coursera-dl-git
+    pacaur -S bmon
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -503,7 +502,13 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 ## Issues
 
-* Rhythmbox doesn't seem to like the Nexus 5.
+* Nexus 5 audio access remains a problem. I tried:
+  * [adding a udev rule](https://wiki.archlinux.org/index.php/MTP#Using_media_players) -
+    This didn't help, and is probably unnecessary because it is covered by the default rules in `/usr/lib/udev/rules.d/69-libmtp.rules`.
+  * [creating a `.is_audio_player` file](http://almost-a-technocrat.blogspot.com.au/2010/11/isaudioplayer.html) -
+    This made Rhythmbox show existing music, but writing music to the device failed with
+    `Unable to send file to MTP device: PTP Layer error 02ff: get_storage_freespace(): could not get storage info.`
+  The workaround is to do manual music management via the filesystem.
 
 * Keyboard gets reset when switching between users, and keyboard remaps set to run on proper login aren't rerun then.
 
@@ -519,10 +524,6 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * Copying multiple lines in tmux generates random text in adjacent panes.
 * copying into system clipboard (e.g. in vim) doesn't copy to tmux clipboard
-* tmux close window doesn't immediately update status bar (issue known, patch exists: http://sourceforge.net/p/tmux/tickets/92/?page=1)
-
-* `cat blah | view -` doesn't work.
-
 
 ## Questions
 
@@ -533,7 +534,6 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 
 * IRC:
     * Quassel
-    * Smuxi
 * MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
 * ntp or that other one?
 * cron alternative for intermittent processing/network
