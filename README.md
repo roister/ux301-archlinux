@@ -75,6 +75,29 @@ Prepare the disk (with GPT partitions). Using:
   of 512M (code `EF00` or `ef00`)
 * Linux partition for Arch using the rest
 
+#### crypto stuff (should be mixed with the steps above and below)
+
+    # backup: rsync -avxHSAX /source/ target
+
+    cat /dev/zero > /dev/md126p2
+    cryptsetup luksFormat /dev/md126p2
+    cryptsetup luksDump /dev/md126p2
+    # consider backup: cryptsetup luksHeaderBackup --header-backup-file <file> <device>
+    cryptsetup luksOpen /dev/md126p2 cryptroot   # appears under /dev/mapper/cryptroot
+    mkfs.ext4 /dev/mapper/cryptroot
+    cryptsetup luksClose /dev/md126p2
+
+    # follow for mkinitcpio and boot loader config:
+    #   https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Simple_partition_layout_with_LUKS
+    # useful extra info (including suspend2disk/resume):
+    #   https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration
+
+    # suspend to RAM should work but not flush key
+    # alternative: https://github.com/vianney/arch-luks-suspend
+    # alternative: hibernate (to disk) might work better
+
+#### normal stuff...
+
 Format the new partitions:
 
     mkfs.fat -F32 /dev/md126p1
