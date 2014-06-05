@@ -75,39 +75,36 @@ Prepare the disk (with GPT partitions). Using:
   of 512M (code `EF00` or `ef00`)
 * Linux partition for Arch using the rest
 
-#### crypto stuff (should be mixed with the steps above and below)
+Set up crypto for root disk:
 
     # backup: rsync -avxHSAX /source/ target
 
     cat /dev/zero > /dev/md126p2
+
     cryptsetup luksFormat /dev/md126p2
     cryptsetup luksDump /dev/md126p2
-    # consider backup: cryptsetup luksHeaderBackup --header-backup-file <file> <device>
+
+    # consider backup with: cryptsetup luksHeaderBackup --header-backup-file <file> <device>
+    # close with: cryptsetup luksClose /dev/md126p2
+
     cryptsetup luksOpen /dev/md126p2 cryptroot   # appears under /dev/mapper/cryptroot
-    mkfs.ext4 /dev/mapper/cryptroot
-    cryptsetup luksClose /dev/md126p2
 
-    # follow for mkinitcpio and boot loader config:
-    #   https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Simple_partition_layout_with_LUKS
-    # useful extra info (including suspend2disk/resume):
-    #   https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration
-
-    # suspend to RAM should work but not flush key
-    # alternative: https://github.com/vianney/arch-luks-suspend
-    # alternative: hibernate (to disk) might work better
-
-#### normal stuff...
+    # NOTES:
+    # * useful extra info (including suspend2disk/resume): https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration
+    # * suspend to RAM should work but not flush key
+    #     alternative: https://github.com/vianney/arch-luks-suspend
+    #     alternative: hibernate (to disk) might work better
 
 Format the new partitions:
 
     mkfs.fat -F32 /dev/md126p1
-    mkfs.ext4 /dev/md126p2
+    mkfs.ext4 /dev/mapper/cryptroot
 
 Mount:
 
     lsblk /dev/md126
     ls -al /dev/md
-    mount /dev/md126p2 /mnt
+    mount /dev/mapper/cryptroot /mnt
     mkdir -p /mnt/boot
     mount /dev/md126p1 /mnt/boot
 
@@ -171,15 +168,18 @@ Install GRUB:
     mdadm --examine --scan >> /etc/mdadm.conf   # may not be necessary
 
     vi /etc/mkinitcpio.conf   # add `mdadm_udev` to `HOOKS`, as mentioned in https://wiki.archlinux.org/index.php/ASUS_UX301LA
+                              # add `encrypt` before `filesystems`, as mentioned in https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio
     mkinitcpio -p linux
 
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub --recheck
+    vi /etc/default/grub      # add `cryptdevice=/dev/sdaX:cryptroot`, as mentioned in https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Configuring_the_boot_loader
     grub-mkconfig -o /boot/grub/grub.cfg
 
 Unmount partitions and reboot:
 
     exit   # (from chroot)
     umount -R /mnt
+    cryptsetup luksClose /dev/mapper/cryptroot
     reboot   # make sure install media is removed
 
 ### Post install
