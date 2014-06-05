@@ -50,7 +50,7 @@ Enter the boot settings menu by holding `<F2>` at boot, and:
 
 Boot the Arch install USB by holding `Esc` on boot and choosing the Arch installer.
 
-### Arch base intall
+### Arch base install
 
 Following the [Arch Beginner's Guide](https://wiki.archlinux.org/index.php/Beginners'_Guide),
 perform the following steps for the base install:
@@ -254,6 +254,7 @@ Install extra packages:
     sudo pacman -S ruby
     sudo pacman -S gvim
     sudo pacman -S tmux
+    sudo pacman -S strace
     sudo pacman -S xclip
     sudo pacman -S traceroute
     sudo pacman -S subversion
@@ -336,6 +337,8 @@ Install extra packages:
     sudo pacman -S youtube-dl
     pacaur -S coursera-dl-git
     pacaur -S bmon
+    pacaur -S sysdig
+    sudo pacman -S moreutils
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -414,12 +417,6 @@ Get Windows product key from the BIOS data:
     acpixtract -a acpi.dat
     hexdump -C msdm.dat   # key is the last XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 
-Install [Tomcat](https://wiki.archlinux.org/index.php/tomcat) and GeoServer:
-
-    sudo pacman -S tomcat7
-    sudo vim /etc/tomcat7/tomcat-users.xml   # to set passwords
-    systemctl start tomcat7
-
 Install `bitcoind` (see [the wiki](https://wiki.archlinux.org/index.php/Bitcoin#Installation)):
 
     sudo pacman -S bitcoin-daemon
@@ -484,12 +481,14 @@ Printer/scanner setup:
     sudo vim /etc/sane.d/epkowa.conf  # add line 'net {IP_OF_SCANNER}'
     # then run GUI app "Image Scan! for Linux"
 
+OCR (see [guide on the wiki](https://wiki.archlinux.org/index.php/List_of_applications/Documents#OCR_software)):
+
+    sudo pacman -S tesseract tesseract-data-eng
+    pacaur -S gscan2pdf
+    pacaur -S pdftk
+
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 Or, use `xrandr`'s `--scale` or `--transform` options.
-
-[Install](https://extensions.gnome.org/) GNOME extensions and [configure](https://extensions.gnome.org/local/) them:
-
-* [Put Windows](https://extensions.gnome.org/extension/39/put-windows/)
 
 Install user files and tools, into home directory, including:
 
@@ -500,13 +499,18 @@ Install user files and tools, into home directory, including:
 
 Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and entering `gnome-session-properties`.
 
+Remap CAPS as CTRL: in `/etc/X11/xorg.conf.d/10-evdev.conf`, in the keyboard section, add:
+
+    Option "XkbOptions" "ctrl:nocaps"
+
+The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg) may also be useful.
+
 ### Next
 
-* MTU permanent setting, notes, post to MLUG
+* MTU permanent setting
 
 * windows
 
-* geoserver
 * postgis & template DBs
 
 * home dir encryption
@@ -519,11 +523,18 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 * https://wiki.archlinux.org/index.php/Laptop
 * https://wiki.archlinux.org/index.php/lm_sensors, https://wiki.archlinux.org/index.php/Fan_Speed_Control
 
-* blog migration
-* IRC
-
 
 ## Issues
+
+* Keyboard settings in `/etc/X11/xorg.conf.d/10-evdev.conf` aren't working.
+
+* Login script to turn off keyboard backlight doesn't seem to run on login (or gets reversed after running).
+
+* Switching users and returning kills original login session (since ~2014-04-18).
+
+* Copying into system clipboard (e.g. in vim) doesn't copy to tmux clipboard
+
+* Copying multiple lines in tmux generates random text in adjacent panes.
 
 * Nexus 5 audio access remains a problem. I tried:
   * [adding a udev rule](https://wiki.archlinux.org/index.php/MTP#Using_media_players) -
@@ -533,20 +544,9 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
     `Unable to send file to MTP device: PTP Layer error 02ff: get_storage_freespace(): could not get storage info.`
   The workaround is to do manual music management via the filesystem.
 
-* Keyboard gets reset when switching between users, and keyboard remaps set to run on proper login aren't rerun then.
-
-* Display config gets messed up after having TV connected via mini dispaly port (not sure about HDMI).
-
 * High DPI and mixed DPI setups not handled well. See:
   * http://blogs.gnome.org/alexl/2013/06/28/hidpi-support-in-gnome/
   * http://vincent.jousse.org/tech/archlinux-retina-hidpi-macbookpro-xmonad/
-
-* Touch events spread out and take effect across the external display when one is connected.
-
-* Put Windows extension doesn't work well.
-
-* Copying multiple lines in tmux generates random text in adjacent panes.
-* copying into system clipboard (e.g. in vim) doesn't copy to tmux clipboard
 
 ## Questions
 
@@ -560,14 +560,11 @@ Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and enteri
 * MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
 * ntp or that other one?
 * cron alternative for intermittent processing/network
-* haskel: http://stackoverflow.com/questions/1012573/getting-started-with-haskell
 * emacs
-* passwords:
-  * [http://keepass.info]()
-  * [http://blog.sanctum.geek.nz/linux-crypto-passwords/]()
 * Heroku toolbelt: [https://toolbelt.herokuapp.com/debian]()
-* AUR build of [https://github.com/ysbaddaden/prax](prax) (needs systemd service)
+* Make PKGBUILDs of:
+  - [prax](https://github.com/ysbaddaden/prax) (needs systemd service)
+  - [pdfocr](https://github.com/gkovacs/pdfocr/)
 * Clipboard manager: [http://parcellite.sourceforge.net/?page_id=2]()
-
-* Check out [http://wiki.xfce.org/recommendedapps]()
+* Check out [XFCE recommended apps](http://wiki.xfce.org/recommendedapps)
 
