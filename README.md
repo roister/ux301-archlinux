@@ -339,6 +339,7 @@ Install extra packages:
     pacaur -S bmon
     pacaur -S sysdig
     sudo pacman -S moreutils
+    sudo pacman -S nfs-utils
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -390,6 +391,15 @@ Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
     sudo gpasswd -a $USER vboxusers
     virtualbox &
     sudo pacman -S vagrant
+
+Install and setup MariaDB (mysqld):
+
+    sudo pacman -S mariadb
+    sudo systemctl enable mysqld.service
+    sudo systemctl start mysqld.service
+    mysql_secure_installation
+    sudo systemctl restart mysqld.service
+    pacaur -S mysql-workbench
 
 Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
 
@@ -487,6 +497,11 @@ OCR (see [guide on the wiki](https://wiki.archlinux.org/index.php/List_of_applic
     pacaur -S gscan2pdf
     pacaur -S pdftk
 
+Google Earth
+
+    pacaur -S google-earth
+    sudo pacman -S lib32-intel-dri
+
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 Or, use `xrandr`'s `--scale` or `--transform` options.
 
@@ -526,6 +541,8 @@ The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.
 
 ## Issues
 
+* google chrome doesn't do chinese text
+
 * Keyboard settings in `/etc/X11/xorg.conf.d/10-evdev.conf` aren't working.
 
 * Login script to turn off keyboard backlight doesn't seem to run on login (or gets reversed after running).
@@ -555,6 +572,8 @@ The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.
 
 ## TODO
 
+* add skype with some lockdown
+* remove hipchat
 * IRC:
     * Quassel
 * MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
