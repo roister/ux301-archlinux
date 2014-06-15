@@ -204,12 +204,13 @@ Sound:
 
     pacman -S alsa-utils
 
-X Windows, 3D and video driver, touchpad:
+X Windows, 3D and video driver, touchpad, hardware accelerated video decoding:
 
     pacman -S xorg-server xorg-server-utils xorg-xinit
     pacman -S mesa
     pacman -S xf86-video-intel
     pacman -S xf86-input-synaptics
+    pacman -S libva-intel-driver
 
 Enable [TLP](https://wiki.archlinux.org/index.php/TLP) for power managment:
 
@@ -242,6 +243,10 @@ Do [tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with
 
 Enable `multlib` by uncommenting the `[multlib]` section in `/etc/pacman.conf`
 and updating the package list with `pacman -Syyu` (will also do a system upgrade).
+
+Then, for 32-bit 3D video acceleration:
+
+    sudo pacman -S lib32-intel-dri
 
 Install extra packages:
 
