@@ -356,8 +356,6 @@ Install extra AUR packages:
 
     yaourt -Sa google-chrome
       yaourt -Sa ttf-google-fonts-git
-    yaourt -Sa hipchat
-    yaourt -Sa aerofs
     yaourt -Sa briss
     yaourt -Sa sublime-text
     yaourt -Sa ledger
@@ -577,14 +575,15 @@ The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.
 
 ## TODO
 
+* change password
+* Music: https://wiki.archlinux.org/index.php/Music_Player_Daemon (better than xmms2 cos more active dev, better website/docs, official arch package, archwiki page)
+* IRC: Quassel
+* emacs, org mode
+* darktable for photos
 * add skype with some lockdown
-* remove hipchat
-* IRC:
-    * Quassel
 * MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
 * ntp or that other one?
 * cron alternative for intermittent processing/network
-* emacs
 * Heroku toolbelt: [https://toolbelt.herokuapp.com/debian]()
 * Make PKGBUILDs of:
   - [prax](https://github.com/ysbaddaden/prax) (needs systemd service)
