@@ -238,10 +238,18 @@ Enable network manager:
 
     systemctl enable NetworkManager.service
 
-Do [tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with_Intel_HD_Graphics):
+Do the [xorg Intel tearing fix](https://wiki.archlinux.org/index.php/Intel_Graphics#Tear-free_video):
 
-    echo 'CLUTTER_PAINT=disable-clipped-redraws:disable-culling' >> /etc/environment
-    restart
+    # /etc/X11/xorg.conf.d/20-intel.conf
+
+    Section "Device"
+       Identifier  "Intel Graphics"
+       Driver      "intel"
+       Option      "TearFree"    "true"
+    EndSection
+
+There is a [GNOME tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with_Intel_HD_Graphics),
+but the xorg one seems to work better (and works outside of GNOME).
 
 ### More stuff
 
