@@ -200,6 +200,10 @@ Create group and user, allow to sudo:
     passwd chris
     vi /etc/sudoers   # allow users in wheel group to sudo
 
+CPU microcode updates:
+
+    pacman -S intel-ucode
+
 Sound:
 
     pacman -S alsa-utils
@@ -270,7 +274,6 @@ Install extra packages:
     sudo pacman -S flashplugin
     sudo pacman -S chromium
     sudo pacman -S opera
-    sudo pacman -S calibre
     pacaur -S qbittorrent
     sudo pacman -S vlc
       sudo pacman -S ffmpegthumbnailer gstreamer0.10-ffmpeg
@@ -355,7 +358,15 @@ Install extra packages:
 Install extra AUR packages:
 
     yaourt -Sa google-chrome
-      yaourt -Sa ttf-google-fonts-git
+
+    yaourt -Sa ttf-google-fonts-git
+    pacman -S opendesktop-fonts
+    pacman -S wqy-microhei
+    pacman -S wqy-zenhei
+    pacman -S ttf-arphic-ukai
+    pacman -S ttf-arphic-uming
+    pacaur -S ttf-tw
+
     yaourt -Sa briss
     yaourt -Sa sublime-text
     yaourt -Sa ledger
@@ -377,6 +388,25 @@ Set up default applications for Gnome (e.g. so filelight doesn't steal responsib
 
     pacaur -S gnome-defaults-list
     cp /etc/gnome/defaults.list ~/.local/share/applications/defaults.list
+
+E-books
+
+    sudo pacman -S calibre
+
+# Do the following downloads:
+# 
+# * latest tools from http://apprenticealf.wordpress.com/
+# * Kindle for PC from http://www.amazon.co.uk/gp/kindle/pc/
+# * ActivePython 2.7.X for Windows (x86) from http://www.activestate.com/activepython/downloads
+# * PyCrypto 2.1 for 32bit Windows and Python 2.7 from http://www.voidspace.org.uk/python/modules.shtml#pycrypto
+# 
+#     sudo pacman -S wine wine_gecko wine-mono winetricks
+#     WINEARCH=win32 winecfg # to set up a default wineprefix (leave it as Windows XP)
+#     winetricks # select default wineprefix, install component vcrun2008
+#     wine KindleForPC-installer.exe # register with Amazon account
+#     msiexec /i ActivePython-2.7.6.9-win32-x86.msi
+#     wine pycrypto-2.1.0.win32-py2.7.exe
+
 
 Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
 
@@ -505,6 +535,10 @@ Google Earth
     pacaur -S google-earth
     sudo pacman -S lib32-intel-dri
 
+Emacs
+
+    sudo pacman -S emacs
+
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 Or, use `xrandr`'s `--scale` or `--transform` options.
 
@@ -544,8 +578,6 @@ The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.
 
 ## Issues
 
-* google chrome doesn't do chinese text
-
 * Keyboard settings in `/etc/X11/xorg.conf.d/10-evdev.conf` aren't working.
 
 * Login script to turn off keyboard backlight doesn't seem to run on login (or gets reversed after running).
@@ -576,10 +608,13 @@ The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.
 ## TODO
 
 * change password
-* Music: https://wiki.archlinux.org/index.php/Music_Player_Daemon (better than xmms2 cos more active dev, better website/docs, official arch package, archwiki page)
+* music player: https://wiki.archlinux.org/index.php/Music_Player_Daemon (better than xmms2 cos more active dev, better website/docs, official arch package, archwiki page)
+* music metadata: https://wiki.gnome.org/Apps/EasyTAG/
 * IRC: Quassel
-* emacs, org mode
 * darktable for photos
+* Wine & Kindle
+* Windows
+
 * add skype with some lockdown
 * MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
 * ntp or that other one?
