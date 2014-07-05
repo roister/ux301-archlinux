@@ -238,6 +238,22 @@ Enable network manager:
 
     systemctl enable NetworkManager.service
 
+Lower WiFi MTU (to avoid [path MTU black holes](http://www.fir3net.com/Terms-and-Concepts/path-mtu-path-mtu-black-holes.html) experienced with some websites):
+
+    vim /etc/NetworkManager/dispatcher.d/20-mtu
+    chown root:root /etc/NetworkManager/dispatcher.d/20-mtu
+    chmod 755 /etc/NetworkManager/dispatcher.d/20-mtu
+
+
+    #!/bin/bash
+
+    INTERFACE=$1
+    STATE=$2
+
+    if [ "$STATE" = "up" ] && [ "$INTERFACE" = "wlp2s0" ]; then
+        ifconfig "$INTERFACE" mtu 1492
+    fi
+
 Do the [xorg Intel tearing fix](https://wiki.archlinux.org/index.php/Intel_Graphics#Tear-free_video):
 
     # /etc/X11/xorg.conf.d/20-intel.conf
@@ -566,8 +582,6 @@ Remap CAPS as CTRL: in `/etc/X11/xorg.conf.d/10-evdev.conf`, in the keyboard sec
 The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg) may also be useful.
 
 ### Next
-
-* MTU permanent setting
 
 * windows
 
