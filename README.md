@@ -314,12 +314,6 @@ Install extra packages:
     sudo pacman -S arandr
     sudo pacman -S s3cmd
     sudo pacman -S sox
-    sudo pacman -S rhythmbox
-      sudo pacman -S gst-plugins-ugly
-      sudo pacman -S gst-plugins-bad
-      sudo pacman -S gst-libav
-      sudo pacman -S libdmapsharing
-      sudo pacman -S brasero
     sudo pacman -S ack
     sudo pacman -S gdal
     sudo pacman -S fatrat
@@ -412,6 +406,18 @@ Set up default applications for Gnome (e.g. so filelight doesn't steal responsib
 
     pacaur -S gnome-defaults-list
     cp /etc/gnome/defaults.list ~/.local/share/applications/defaults.list
+
+Music
+
+
+    sudo pacman -S rhythmbox
+      sudo pacman -S gst-plugins-ugly
+      sudo pacman -S gst-plugins-bad
+      sudo pacman -S gst-libav
+      sudo pacman -S libdmapsharing
+      sudo pacman -S brasero
+
+    sudo pacman -S puddletag
 
 E-books
 
@@ -636,6 +642,7 @@ The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.
 * darktable for photos
 * Wine & Kindle
 * Windows
+* consider switching to a https mirror list via https://www.archlinux.org/mirrorlist/
 
 * add skype with some lockdown
 * MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
