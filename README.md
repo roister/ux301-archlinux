@@ -384,6 +384,7 @@ Install extra AUR packages:
     pacman -S ttf-arphic-ukai
     pacman -S ttf-arphic-uming
     pacaur -S ttf-tw
+    pacaur -S ttf-mplus
 
     yaourt -Sa briss
     yaourt -Sa sublime-text
