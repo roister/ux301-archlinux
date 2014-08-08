@@ -149,6 +149,10 @@ Set the hardware clock to UTC:
 
     hwclock --systohc --utc
 
+NTP time synchronization with [Chrony](https://wiki.archlinux.org/index.php/Chrony):
+
+    sudo pacman -S chrony
+
 Set the hostname:
 
     echo zenbook > /etc/hostname
@@ -314,6 +318,7 @@ Install extra packages:
     sudo pacman -S arandr
     sudo pacman -S s3cmd
     sudo pacman -S sox
+    sudo pacman -S espeak
     sudo pacman -S ack
     sudo pacman -S gdal
     sudo pacman -S fatrat
@@ -366,6 +371,7 @@ Install extra packages:
     pacaur -S sysdig
     sudo pacman -S moreutils
     sudo pacman -S nfs-utils
+    sudo pacman -S inkscape uniconverter
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -580,38 +586,38 @@ Install user files and tools, into home directory, including:
 * `autoenv`
 * Powerline
 
-Add extra startup applications (e.g. Skype), by pressing `<Alt>-<F2>` and entering `gnome-session-properties`.
+Add extra startup applications as `*.desktop` files in `.config/autostart/`.
 
-Remap CAPS as CTRL: in `/etc/X11/xorg.conf.d/10-evdev.conf`, in the keyboard section, add:
+Set up keyboard mapping and caps lock remap:
 
-    Option "XkbOptions" "ctrl:nocaps"
+In `/etc/X11/xorg.conf.d/10-evdev.conf`, replace the keyboard section with:
 
-The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg) may also be useful.
+    Section "InputClass"
+            Identifier "evdev keyboard catchall"
+            MatchIsKeyboard "on"
+            MatchDevicePath "/dev/input/event*"
+            Driver "evdev"
+            Option "Xkb_Layout" "us"
+            Option "Xkb_Variant" "altgr-intl"
+            Option "XkbOptions" "ctrl:nocaps"
+    EndSection
 
-### Next
+The `altgr-intl` variant of US keyboard layout allows various European letters
+and symbols to be typed. Refer to [this diagram](http://dry.sailingissues.com/keyboard-US-International2.png).
 
-* windows
-
-* postgis & template DBs
-
-* home dir encryption
-
-* sort Old data
-* crashplan
-
-* read [Arch wiki page for the ASUS Zenbook Prime UX31A](https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A)
-* https://wiki.archlinux.org/index.php/General_Recommendations
-* https://wiki.archlinux.org/index.php/Laptop
-* https://wiki.archlinux.org/index.php/lm_sensors, https://wiki.archlinux.org/index.php/Fan_Speed_Control
+As stated on the wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg),
+GNOME will override some Xkb settings, so `ctrl:nocaps` should also be set with `dconf-editor` as
+described on the wiki under [GNOME > Modify Keyboard with XkbOptions](https://wiki.archlinux.org/index.php/GNOME#Modify_Keyboard_with_XkbOptions).
 
 
 ## Issues
 
-* Keyboard settings in `/etc/X11/xorg.conf.d/10-evdev.conf` aren't working.
+* Since update on 2014-07-30, switching users and logging out (to return to the
+  initial user) usually kills X. After rebooting, often only one quarter of the
+  screen is properly drawn (this can be fixed by switching the resolution down
+  and back up).
 
-* Login script to turn off keyboard backlight doesn't seem to run on login (or gets reversed after running).
-
-* Switching users and returning kills original login session (since ~2014-04-18).
+* Login script to turn off keyboard backlight seems to get overridden after running.
 
 * Copying into system clipboard (e.g. in vim) doesn't copy to tmux clipboard
 
@@ -628,31 +634,26 @@ The wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.
 * High DPI and mixed DPI setups not handled well. See:
   * http://blogs.gnome.org/alexl/2013/06/28/hidpi-support-in-gnome/
   * http://vincent.jousse.org/tech/archlinux-retina-hidpi-macbookpro-xmonad/
-
-## Questions
-
-* Windows reinstall issue: "This product key cannot be used to install a retail version of Windows 8"
+  * https://wiki.archlinux.org/index.php/HiDPI
 
 
 ## TODO
 
-* change password
-* music player: https://wiki.archlinux.org/index.php/Music_Player_Daemon (better than xmms2 cos more active dev, better website/docs, official arch package, archwiki page)
-* music metadata: https://wiki.gnome.org/Apps/EasyTAG/
-* IRC: Quassel
-* darktable for photos
-* Wine & Kindle
-* Windows
+* check out dm-crypt
+* sort old data
 * consider switching to a https mirror list via https://www.archlinux.org/mirrorlist/
-
-* add skype with some lockdown
-* MS fonts? https://wiki.archlinux.org/index.php/MS_Fonts
-* ntp or that other one?
+* finish chrony for time sync
 * cron alternative for intermittent processing/network
-* Heroku toolbelt: [https://toolbelt.herokuapp.com/debian]()
-* Make PKGBUILDs of:
+* add back skype with some lockdown
+* Write PKGBUILDs for:
   - [prax](https://github.com/ysbaddaden/prax) (needs systemd service)
   - [pdfocr](https://github.com/gkovacs/pdfocr/)
 * Clipboard manager: [http://parcellite.sourceforge.net/?page_id=2]()
+* Check out Filebot (TV and movie renamer)
 * Check out [XFCE recommended apps](http://wiki.xfce.org/recommendedapps)
+
+* read [Arch wiki page for the ASUS Zenbook Prime UX31A](https://wiki.archlinux.org/index.php/ASUS_Zenbook_Prime_UX31A)
+* https://wiki.archlinux.org/index.php/General_Recommendations
+* https://wiki.archlinux.org/index.php/Laptop
+* https://wiki.archlinux.org/index.php/lm_sensors, https://wiki.archlinux.org/index.php/Fan_Speed_Control
 
