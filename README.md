@@ -387,7 +387,8 @@ Install extra packages:
 
 Install extra AUR packages:
 
-    yaourt -Sa google-chrome
+    pacaur -S google-chrome
+      pacaur -S google-talkplugin
 
     pacaur -S ttf-google-fonts-git
     pacman -S opendesktop-fonts
