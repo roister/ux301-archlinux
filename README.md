@@ -220,6 +220,11 @@ X Windows, 3D and video driver, touchpad, hardware accelerated video decoding:
     pacman -S xf86-input-synaptics
     pacman -S libva-intel-driver
 
+    # establish custom config dir (some of this will later be modified)
+    cd /etc/X11/xorg.conf.d/
+    ls -l 10-evdev.conf || cp /usr/share/X11/xorg.conf.d/10-evdev.conf .
+    ls -l 50-synaptics.conf || cp /usr/share/X11/xorg.conf.d/50-synaptics.conf .
+
 Enable [TLP](https://wiki.archlinux.org/index.php/TLP) for power managment:
 
     pacman -S tlp
