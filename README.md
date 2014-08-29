@@ -595,6 +595,13 @@ Emacs
 
     sudo pacman -S emacs
 
+Crate.io
+
+    pacaur -S crate
+    sudo systemctl start crate
+    sudo systemctl status crate
+    open http://localhost:4200/admin
+
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 Or, use `xrandr`'s `--scale` or `--transform` options.
 
