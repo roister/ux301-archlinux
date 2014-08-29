@@ -433,23 +433,35 @@ Music
 
     sudo pacman -S puddletag
 
-E-books
+E-books:
 
     sudo pacman -S calibre
 
-# Do the following downloads:
-# 
-# * latest tools from http://apprenticealf.wordpress.com/
-# * Kindle for PC from http://www.amazon.co.uk/gp/kindle/pc/
-# * ActivePython 2.7.X for Windows (x86) from http://www.activestate.com/activepython/downloads
-# * PyCrypto 2.1 for 32bit Windows and Python 2.7 from http://www.voidspace.org.uk/python/modules.shtml#pycrypto
-# 
-#     sudo pacman -S wine wine_gecko wine-mono winetricks
-#     WINEARCH=win32 winecfg # to set up a default wineprefix (leave it as Windows XP)
-#     winetricks # select default wineprefix, install component vcrun2008
-#     wine KindleForPC-installer.exe # register with Amazon account
-#     msiexec /i ActivePython-2.7.6.9-win32-x86.msi
-#     wine pycrypto-2.1.0.win32-py2.7.exe
+Kindle:
+
+Installing Kindle under Wine provides a source from which the DeDRM plugin
+can extract liberated e-books.
+
+These installers are required:
+
+* [Kindle for PC](http://www.amazon.co.uk/gp/kindle/pc/)
+* [ActivePython 2.7.X for Windows (x86)](http://www.activestate.com/activepython/downloads)
+* [PyCrypto 2.1 for 32bit Windows and Python 2.7](http://www.voidspace.org.uk/python/modules.shtml#pycrypto)
+* [DeDRM tools](http://apprenticealf.wordpress.com/)
+
+And should be installed as follows:
+
+    sudo pacman -S wine wine_gecko wine-mono winetricks
+    WINEARCH=win32 winecfg # to set up a default wineprefix (leave it as Windows XP)
+    winetricks # select default wineprefix, install component vcrun2008
+    wine KindleForPC-installer.exe # register with Amazon account
+    msiexec /i ActivePython-2.7.6.9-win32-x86.msi
+    wine pycrypto-2.1.0.win32-py2.7.exe
+
+E-book files will appear under `~/My Kindle Content/`.
+
+The DeDRM Calibre plugin is `tools_v*.zip/DeDRM_calibre_plugin/DeDRM_plugin.zip`
+(additional installation info in `tools_v*.zip/DeDRM_calibre_plugin/ReadMe_First.txt`).
 
 
 Install and setup [VirtualBox](https://wiki.archlinux.org/index.php/VirtualBox):
