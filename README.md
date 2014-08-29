@@ -383,14 +383,13 @@ Install extra packages:
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
 * [`package-query`](https://aur.archlinux.org/packages/package-query/)
-* [`yaourt`](https://aur.archlinux.org/packages/yaourt/)
 * [`pacaur`](https://aur.archlinux.org/packages/pacaur/)
 
 Install extra AUR packages:
 
     yaourt -Sa google-chrome
 
-    yaourt -Sa ttf-google-fonts-git
+    pacaur -S ttf-google-fonts-git
     pacman -S opendesktop-fonts
     pacman -S wqy-microhei
     pacman -S wqy-zenhei
@@ -399,17 +398,17 @@ Install extra AUR packages:
     pacaur -S ttf-tw
     pacaur -S ttf-mplus
 
-    yaourt -Sa briss
-    yaourt -Sa sublime-text
-    yaourt -Sa ledger
-    yaourt -Sa dropbox
-      yaourt -Sa nautilus-dropbox
-    yaourt -Sa ansible
-    yaourt -Sa zeal-git
-    yaourt -Sa shutter
-    yaourt -Sa qgis-git   # this version without grass
-    yaourt -Sa jq
-    yaourt -Sa v8
+    pacaur -S briss
+    pacaur -S sublime-text
+    pacaur -S ledger
+    pacaur -S dropbox
+      pacaur -S nautilus-dropbox
+    pacaur -S ansible
+    pacaur -S zeal-git
+    pacaur -S shutter
+    pacaur -S qgis-git   # this version without grass
+    pacaur -S jq
+    pacaur -S v8
     pacaur -S randomsound
 
 Let `wheel` users run wireshark in its group (`sudo -g wireshark wireshark`):
