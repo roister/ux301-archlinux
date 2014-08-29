@@ -349,10 +349,12 @@ Install extra packages:
       sudo pacman -S haddock
       sudo pacman -S happy
       sudo pacman -S alex
-    sudo pacman -S libreoffice
-      sudo pacman -S libreoffice-gnome
+    sudo pacman -S libreoffice-still
+      sudo pacman -S libreoffice-still-gnome
+      sudo pacman -S libreoffice-still-langpack
       sudo pacman -S hunspell
       sudo pacman -S hunspell-en
+      sudo pacman -S hunspell-de
     sudo pacman -S wireshark-gtk
     sudo pacman -S sqlitebrowser
     sudo pacman -S i3-wm dmenu i3lock i3status
