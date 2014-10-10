@@ -379,6 +379,9 @@ Install extra packages:
     sudo pacman -S moreutils
     sudo pacman -S nfs-utils
     sudo pacman -S inkscape uniconverter
+    sudo pacman -S imagemagick
+    sudo pacman -S zsh
+    sudo pacman -S dnsutils
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
@@ -411,6 +414,8 @@ Install extra AUR packages:
     pacaur -S jq
     pacaur -S v8
     pacaur -S randomsound
+    pacaur -S hipchat
+    pacaur -S lastpass
 
 Let `wheel` users run wireshark in its group (`sudo -g wireshark wireshark`):
 
@@ -502,6 +507,8 @@ Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
     createuser --interactive   # role: chris, superuser: y
     createdb chris
     exit
+
+    pacaur -S postgresql-uuid-ossp
 
 Install and setup MongoDB:
 
@@ -602,6 +609,12 @@ Crate.io
     sudo systemctl status crate
     open http://localhost:4200/admin
 
+VNC and remote desktop:
+
+    sudo pacman -S freerdp remmina
+
+Extra fonts: copy `*.otf` files into `~/.fonts`.
+
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
 Or, use `xrandr`'s `--scale` or `--transform` options.
 
@@ -631,10 +644,13 @@ In `/etc/X11/xorg.conf.d/10-evdev.conf`, replace the keyboard section with:
 The `altgr-intl` variant of US keyboard layout allows various European letters
 and symbols to be typed. Refer to [this diagram](http://dry.sailingissues.com/keyboard-US-International2.png).
 
+For multiple keyboards: [Two keyboards on one computer](http://superuser.com/questions/75817/two-keyboards-on-one-computer-when-i-write-with-a-i-want-a-us-keyboard-layout/294034#294034).
+
 As stated on the wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg),
 GNOME will override some Xkb settings, so `ctrl:nocaps` should also be set with `dconf-editor` as
 described on the wiki under [GNOME > Modify Keyboard with XkbOptions](https://wiki.archlinux.org/index.php/GNOME#Modify_Keyboard_with_XkbOptions).
 
+[Disable GNOME keyboard management](http://superuser.com/a/249150).
 
 ## Issues
 
