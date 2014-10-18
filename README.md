@@ -79,7 +79,7 @@ Set up crypto for root disk:
 
     # backup: rsync -avxHSAX /source/ target
 
-    cat /dev/zero > /dev/md126p2
+    # cat /dev/zero > /dev/md126p2
 
     cryptsetup luksFormat /dev/md126p2
     cryptsetup luksDump /dev/md126p2
@@ -111,8 +111,6 @@ Mount:
 Establish a WiFi Internet connection:
 
     iw dev
-    ip link set wlp2s0 up
-    ip link show wlp2s0
     wifi-menu wlp2s0
     ping google.com
 
@@ -151,7 +149,7 @@ Set the hardware clock to UTC:
 
 NTP time synchronization with [Chrony](https://wiki.archlinux.org/index.php/Chrony):
 
-    sudo pacman -S chrony
+    pacman -S chrony
 
 Set the hostname:
 
@@ -176,7 +174,7 @@ Install GRUB:
     mkinitcpio -p linux
 
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub --recheck
-    vi /etc/default/grub      # add `cryptdevice=/dev/sdaX:cryptroot`, as mentioned in https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Configuring_the_boot_loader
+    vi /etc/default/grub      # add `cryptdevice=/dev/md126p2:cryptroot`, as mentioned in https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Configuring_the_boot_loader
     grub-mkconfig -o /boot/grub/grub.cfg
 
 Unmount partitions and reboot:
@@ -613,6 +611,11 @@ VNC and remote desktop:
 
     sudo pacman -S freerdp remmina
 
+Gnuplot:
+
+    sudo pacman -S gnuplot
+    # copy emacs config from /usr/share/emacs/site-lisp/dotemacs if appropriate
+
 Extra fonts: copy `*.otf` files into `~/.fonts`.
 
 Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
@@ -644,13 +647,14 @@ In `/etc/X11/xorg.conf.d/10-evdev.conf`, replace the keyboard section with:
 The `altgr-intl` variant of US keyboard layout allows various European letters
 and symbols to be typed. Refer to [this diagram](http://dry.sailingissues.com/keyboard-US-International2.png).
 
-For multiple keyboards: [Two keyboards on one computer](http://superuser.com/questions/75817/two-keyboards-on-one-computer-when-i-write-with-a-i-want-a-us-keyboard-layout/294034#294034).
-
 As stated on the wiki page [Keyboard configuration in Xorg](https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg),
-GNOME will override some Xkb settings, so `ctrl:nocaps` should also be set with `dconf-editor` as
-described on the wiki under [GNOME > Modify Keyboard with XkbOptions](https://wiki.archlinux.org/index.php/GNOME#Modify_Keyboard_with_XkbOptions).
+GNOME will override some Xkb settings, so:
 
-[Disable GNOME keyboard management](http://superuser.com/a/249150).
+1. Set `ctrl:nocaps` with `dconf-editor` as described on the wiki under [GNOME > Modify Keyboard with XkbOptions](https://wiki.archlinux.org/index.php/GNOME#Modify_Keyboard_with_XkbOptions)
+2. Add a keyboard layout ("English (international AltGr dead keys)") via `Settings > Keyboard > Input Sources > Input Sources > +`
+
+For multiple keyboards, see: [Two keyboards on one computer](http://superuser.com/questions/75817/two-keyboards-on-one-computer-when-i-write-with-a-i-want-a-us-keyboard-layout/294034#294034).
+
 
 ## Issues
 
