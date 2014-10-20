@@ -383,6 +383,8 @@ Install extra packages:
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
+TODO: AUR helpers are needed earlier on
+
 * [`package-query`](https://aur.archlinux.org/packages/package-query/)
 * [`pacaur`](https://aur.archlinux.org/packages/pacaur/)
 
@@ -506,7 +508,9 @@ Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
     createdb chris
     exit
 
+    pacaur -S uuid
     pacaur -S postgresql-uuid-ossp
+    sudo systemctl restart postgresql
 
 Install and setup MongoDB:
 
@@ -609,7 +613,8 @@ Crate.io
 
 VNC and remote desktop:
 
-    sudo pacman -S freerdp remmina
+    sudo pacman -S libvncserver freerdp remmina
+    # install order is important and a reboot may be needed for remmina to show all protocols
 
 Gnuplot:
 
@@ -618,7 +623,7 @@ Gnuplot:
 
 Extra fonts: copy `*.otf` files into `~/.fonts`.
 
-Adjust DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling`.
+Consider adjusting DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling-factor`.
 Or, use `xrandr`'s `--scale` or `--transform` options.
 
 Install user files and tools, into home directory, including:
