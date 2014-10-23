@@ -202,7 +202,7 @@ Create group and user, allow to sudo:
     passwd chris
     vi /etc/sudoers   # allow users in wheel group to sudo
 
-CPU microcode updates:
+CPU microcode updates (need to tell Grub to load the initrd as described [on the wiki](https://wiki.archlinux.org/index.php/Microcode#Enabling_Intel_Microcode_Updates)):
 
     pacman -S intel-ucode
 
