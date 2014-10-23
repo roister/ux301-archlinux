@@ -576,13 +576,13 @@ Android dev env:
 
 Printer/scanner setup:
 
-    sudo pacman -S cups ghostscript gsfonts avahi cups-browsed
+    sudo pacman -S cups ghostscript gsfonts avahi
     pacaur -S epson-inkjet-printer-stylus-office-tx610fw-series
     sudo systemctl start avahi-daemon.service
     sudo systemctl enable avahi-daemon.service
     sudo systemctl start cups.service
     sudo systemctl enable cups.service
-    sudo pacman -S system-config-printer
+    sudo pacman -S system-config-printer python-pysmbc
     # then run GUI app "Print Settings"
 
     pacaur -S iscan iscan-plugin-network
