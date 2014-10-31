@@ -359,7 +359,7 @@ Install extra packages:
     sudo pacman -S go
     sudo pacman -S iotop
     sudo pacman -S keepass
-    sudo pacman -S docker && sudo systemctl enable docker
+    sudo pacman -S docker lxc lua-filesystem lua-alt-getopt && sudo systemctl enable docker && gpasswd -a $USER docker
     sudo pacman -S qalculate-gtk
     sudo pacman -S gimp
     sudo pacman -S kdesdk-okteta
