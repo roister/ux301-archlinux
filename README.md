@@ -421,10 +421,15 @@ Let `wheel` users run wireshark in its group (`sudo -g wireshark wireshark`):
 
     echo '%wheel ALL=(:wireshark) /usr/bin/wireshark, /usr/bin/tshark' | sudo tee /etc/sudoers.d/wireshark
 
-Set up default applications for Gnome (e.g. so filelight doesn't steal responsiblity for `inode/directory`):
+Set up default applications for Gnome:
 
     pacaur -S gnome-defaults-list
     cp /etc/gnome/defaults.list ~/.local/share/applications/defaults.list
+
+Take responsiblity for `inode/directory` away from filelight:
+
+    sudo vim /usr/share/applications/kde4/filelight.desktop  # comment out MimeType line
+    sudo update-desktop-database
 
 Music
 
@@ -620,6 +625,10 @@ Gnuplot:
 
     sudo pacman -S gnuplot
     # copy emacs config from /usr/share/emacs/site-lisp/dotemacs if appropriate
+
+Another PDF reader (as alternative to crashy GNOME Evince):
+
+    sudo pacman -S kdegraphics-okular
 
 Extra fonts: copy `*.otf` files into `~/.fonts`.
 
