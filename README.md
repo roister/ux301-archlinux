@@ -401,6 +401,7 @@ Install extra AUR packages:
     pacman -S ttf-arphic-uming
     pacaur -S ttf-tw
     pacaur -S ttf-mplus
+    pacaur -S ttf-mac-fonts # non-free
 
     pacaur -S briss
     pacaur -S sublime-text
@@ -630,7 +631,11 @@ Another PDF reader (as alternative to crashy GNOME Evince):
 
     sudo pacman -S kdegraphics-okular
 
-Extra fonts: copy `*.otf` files into `~/.fonts`.
+Extra fonts: copy `*.otf` files into `~/.fonts` and run `fc-cache`.
+
+Font viewer:
+
+    pacaur -S gnome-specimen
 
 Consider adjusting DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling-factor`.
 Or, use `xrandr`'s `--scale` or `--transform` options.
@@ -699,6 +704,7 @@ For multiple keyboards, see: [Two keyboards on one computer](http://superuser.co
 
 ## TODO
 
+* ms fonts
 * check out dm-crypt
 * sort old data
 * consider switching to a https mirror list via https://www.archlinux.org/mirrorlist/
