@@ -393,7 +393,10 @@ Install extra AUR packages:
     pacaur -S google-chrome
       pacaur -S google-talkplugin
 
+    # good free fonts
     pacaur -S ttf-google-fonts-git
+    pacman -S ttf-linux-libertine
+    # CJKV
     pacman -S opendesktop-fonts
     pacman -S wqy-microhei
     pacman -S wqy-zenhei
@@ -401,7 +404,8 @@ Install extra AUR packages:
     pacman -S ttf-arphic-uming
     pacaur -S ttf-tw
     pacaur -S ttf-mplus
-    pacaur -S ttf-mac-fonts # non-free
+    # Apple, non-free
+    pacaur -S ttf-mac-fonts
 
     pacaur -S briss
     pacaur -S sublime-text
@@ -704,7 +708,6 @@ For multiple keyboards, see: [Two keyboards on one computer](http://superuser.co
 
 ## TODO
 
-* ms fonts
 * check out dm-crypt
 * sort old data
 * consider switching to a https mirror list via https://www.archlinux.org/mirrorlist/
