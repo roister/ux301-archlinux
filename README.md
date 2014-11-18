@@ -590,8 +590,8 @@ Printer/scanner setup:
     pacaur -S epson-inkjet-printer-stylus-office-tx610fw-series
     sudo systemctl start avahi-daemon.service
     sudo systemctl enable avahi-daemon.service
-    sudo systemctl start cups.service
-    sudo systemctl enable cups.service
+    sudo systemctl start org.cups.cupsd.service
+    sudo systemctl enable org.cups.cupsd.service
     sudo pacman -S system-config-printer python-pysmbc
     # then run GUI app "Print Settings"
 
