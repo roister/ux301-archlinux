@@ -592,6 +592,8 @@ Printer/scanner setup:
     sudo systemctl enable avahi-daemon.service
     sudo systemctl start org.cups.cupsd.service
     sudo systemctl enable org.cups.cupsd.service
+    sudo systemctl start cups-browsed.service
+    sudo systemctl enable cups-browsed.service
     sudo pacman -S system-config-printer python-pysmbc
     # then run GUI app "Print Settings"
 
