@@ -362,7 +362,7 @@ Install extra packages:
     sudo pacman -S docker lxc lua-filesystem lua-alt-getopt && sudo systemctl enable docker && gpasswd -a $USER docker
     sudo pacman -S qalculate-gtk
     sudo pacman -S gimp
-    sudo pacman -S kdesdk-okteta
+    sudo pacman -S kdesdk-okteta # hex editor
     sudo pacman -S gnu-netcat
     pacaur -S brackets-bin
     pacaur -S mobac
