@@ -380,6 +380,7 @@ Install extra packages:
     sudo pacman -S imagemagick
     sudo pacman -S zsh
     sudo pacman -S dnsutils
+    sudo pacman -S file-roller # GUI archive manager for GNOME
 
 [Install from the AUR](https://wiki.archlinux.org/index.php/AUR#Installing_packages) the AUR tools:
 
