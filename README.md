@@ -448,7 +448,7 @@ Music
       sudo pacman -S libdmapsharing
       sudo pacman -S brasero
 
-    sudo pacman -S puddletag
+    sudo pacman -S puddletag  # OR http://beets.radbox.org/
 
 E-books:
 
