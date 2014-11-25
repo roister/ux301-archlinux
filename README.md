@@ -370,6 +370,7 @@ Install extra packages:
     sudo pacman -S gptfdisk
     sudo pacman -S rsync
     sudo pacman -S redis
+      pacaur -S redis-desktop-manager
     sudo pacman -S youtube-dl
     pacaur -S coursera-dl-git
     pacaur -S bmon
