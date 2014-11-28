@@ -288,6 +288,7 @@ Install extra packages:
     sudo pacman -S base-devel
     sudo pacman -S openssh
     sudo pacman -S openssl
+    sudo pacman -S bash-completion
     sudo pacman -S git
       sudo pacman -S tk
       sudo pacman -S tcl
