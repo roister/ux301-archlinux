@@ -365,6 +365,7 @@ Install extra packages:
     sudo pacman -S gimp
     sudo pacman -S kdesdk-okteta # hex editor
     sudo pacman -S gnu-netcat
+    sudo pacman -S pv
     pacaur -S brackets-bin
     pacaur -S mobac
     sudo pacman -S expect  # for unbuffer
