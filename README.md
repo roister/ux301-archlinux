@@ -449,7 +449,8 @@ Music
       sudo pacman -S libdmapsharing
       sudo pacman -S brasero
 
-    sudo pacman -S puddletag  # OR http://beets.radbox.org/
+    sudo pacman -S puddletag
+    sudo pacman -S beets
 
 E-books:
 
@@ -639,6 +640,10 @@ Gnuplot:
 Another PDF reader (as alternative to crashy GNOME Evince):
 
     sudo pacman -S kdegraphics-okular
+
+OpenVPN client:
+
+    sudo pacman -S networkmanager-openvpn
 
 Extra fonts: copy `*.otf` files into `~/.fonts` and run `fc-cache`.
 
