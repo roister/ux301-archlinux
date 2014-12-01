@@ -306,7 +306,6 @@ Install extra packages:
     sudo pacman -S flashplugin
     sudo pacman -S chromium
     sudo pacman -S opera
-    pacaur -S qbittorrent
     sudo pacman -S vlc
       sudo pacman -S ffmpegthumbnailer gstreamer0.10-ffmpeg
       sudo pacman -S gstreamer0.10-base-plugins gstreamer0.10-good
@@ -358,7 +357,7 @@ Install extra packages:
     sudo pacman -S sqlitebrowser
     sudo pacman -S i3-wm dmenu i3lock i3status
     sudo pacman -S go
-    sudo pacman -S iotop
+    sudo pacman -S iotop iftop
     sudo pacman -S keepass
     sudo pacman -S docker lxc lua-filesystem lua-alt-getopt && sudo systemctl enable docker && gpasswd -a $USER docker
     sudo pacman -S qalculate-gtk
@@ -645,6 +644,22 @@ Another PDF reader (as alternative to crashy GNOME Evince):
 OpenVPN client:
 
     sudo pacman -S networkmanager-openvpn
+
+BitTorrent client:
+
+    pacaur -S qbittorrent
+
+qBittorrent can be configured to use a specific interface, such as eth0,
+however, if that is unavailable on start, it will fall back to the default
+interface.
+
+    sudo vim /usr/share/applications/qBittorrent.desktop # set Exec as follows...
+
+    Exec=bash -c "ls /sys/class/net/eth0 && qbittorrent %U || notify-send 'The eth0 interface is not up'"
+
+An alternative bittorrent client:
+
+    sudo pacman -S deluge pygtk librsvg
 
 Extra fonts: copy `*.otf` files into `~/.fonts` and run `fc-cache`.
 
