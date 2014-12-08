@@ -150,6 +150,8 @@ Set the hardware clock to UTC:
 NTP time synchronization with [Chrony](https://wiki.archlinux.org/index.php/Chrony):
 
     pacman -S chrony
+    sudo systemctl start chrony.service
+    sudo systemctl enable chrony.service
 
 Set the hostname:
 
