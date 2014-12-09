@@ -443,16 +443,40 @@ Take responsiblity for `inode/directory` away from filelight:
 
 Music
 
+    sudo pacman -S gstreamer
+      sudo pacman -S gst-libav
+      sudo pacman -S gst-plugins-base
+      sudo pacman -S gst-plugins-good
+      sudo pacman -S gst-plugins-bad
+      sudo pacman -S gst-plugins-ugly
+      sudo pacman -S gst-vaapi
 
     sudo pacman -S rhythmbox
-      sudo pacman -S gst-plugins-ugly
-      sudo pacman -S gst-plugins-bad
-      sudo pacman -S gst-libav
       sudo pacman -S libdmapsharing
       sudo pacman -S brasero
 
     sudo pacman -S puddletag
+
     sudo pacman -S beets
+      sudo pip2 install requests # for fetchart plugin
+      sudo pip2 install python-itunes # for fetchart plugin source
+      sudo pip2 install flask # for web plugin
+
+      sudo pacman -S gstreamer0.10-python # for (crashy) bpd plugin
+        sudo pacman -S gstreamer0.10-bad-plugins
+        sudo pacman -S gstreamer0.10-base-plugins
+        sudo pacman -S gstreamer0.10-ffmpeg
+        sudo pacman -S gstreamer0.10-good-plugins
+        sudo pacman -S gstreamer0.10-ugly-plugins
+        sudo pacman -S gstreamer0.10-vaapi
+
+    # mopidy / mpd
+
+    sudo pacman -S mpc
+    sudo pacman -S ncmpcpp
+
+    sudo pacman -S ario
+
 
 E-books:
 
