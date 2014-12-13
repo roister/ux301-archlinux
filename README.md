@@ -401,6 +401,7 @@ Install extra AUR packages:
     # good free fonts
     pacaur -S ttf-google-fonts-git
     pacman -S ttf-linux-libertine
+    pacman -S ttf-freefont
     # CJKV
     pacman -S opendesktop-fonts
     pacman -S wqy-microhei
