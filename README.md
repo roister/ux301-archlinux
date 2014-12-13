@@ -400,16 +400,17 @@ Install extra AUR packages:
 
     # good free fonts
     pacaur -S ttf-google-fonts-git
-    pacman -S ttf-linux-libertine
-    pacman -S ttf-freefont
+    sudo pacman -S ttf-linux-libertine
+    sudo pacman -S ttf-freefont
     # CJKV
-    pacman -S opendesktop-fonts
-    pacman -S wqy-microhei
-    pacman -S wqy-zenhei
-    pacman -S ttf-arphic-ukai
-    pacman -S ttf-arphic-uming
+    sudo pacman -S opendesktop-fonts
+    sudo pacman -S wqy-microhei
+    sudo pacman -S wqy-zenhei
+    sudo pacman -S ttf-arphic-ukai
+    sudo pacman -S ttf-arphic-uming
     pacaur -S ttf-tw
     pacaur -S ttf-mplus
+    sudo pacman -S ttf-baekmuk
     # Apple, non-free
     pacaur -S ttf-mac-fonts
 
