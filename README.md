@@ -236,6 +236,12 @@ Fix brightness [function keys](https://wiki.archlinux.org/index.php/ASUS_UX301LA
     vi /etc/default/grub   # set `GRUB_CMDLINE_LINUX_DEFAULT="quiet acpi_osi="`
     grub-mkconfig -o /boot/grub/grub.cfg
 
+Extra entropy from CPU timings:
+
+    pacman -S haveged
+    systemctl start haveged
+    systemctl enable haveged
+
 ### Install the desktop environment
 
 Install GNOME:
