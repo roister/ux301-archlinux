@@ -249,6 +249,10 @@ Install GNOME:
     pacman -S gnome
     systemctl enable gdm.service
 
+For PulseAudio preference editing:
+
+    pacman -S paprefs
+
 Enable network manager:
 
     systemctl enable NetworkManager.service
