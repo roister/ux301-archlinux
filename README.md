@@ -342,7 +342,7 @@ Install extra packages:
       sudo pacman -S jfsutils
       sudo pacman -S f2fs-tools
       sudo pacman -S btrfs-progs
-      sudo pacman -S exfat-utils
+      sudo pacman -S exfat-utils && pacaur -S exfat-git
       sudo pacman -S ntfs-3g
       sudo pacman -S reiserfsprogs
       sudo pacman -S xfsprogs
