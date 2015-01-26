@@ -247,6 +247,7 @@ Extra entropy from CPU timings:
 Install GNOME:
 
     pacman -S gnome
+    pacman -S gnome-tweak-tool
     systemctl enable gdm.service
 
 For PulseAudio preference editing:
@@ -352,6 +353,7 @@ Install extra packages:
       sudo pacman -S mtools
     sudo pacman -S kdeutils-filelight
     sudo pacman -S unrar
+    pacaur -S rar
     sudo pacman -S phantomjs
     sudo pacman -S elinks
     sudo pacman -S ghc
@@ -407,6 +409,7 @@ Install extra AUR packages:
 
     pacaur -S google-chrome
       pacaur -S google-talkplugin
+      sudo pacman -S ttf-liberation
 
     # good free fonts
     pacaur -S ttf-google-fonts-git
@@ -436,7 +439,6 @@ Install extra AUR packages:
     pacaur -S jq
     pacaur -S v8
     pacaur -S randomsound
-    pacaur -S hipchat
     pacaur -S lastpass
 
 Let `wheel` users run wireshark in its group (`sudo -g wireshark wireshark`):
@@ -489,10 +491,18 @@ Music
 
     sudo pacman -S ario
 
+There's a native HipChat client (but it's better to just use the web one):
+
+    pacaur -S hipchat
+
+Zeal (Dash-like docset viewer):
+
+    pacaur -S zeal-git
 
 E-books:
 
     sudo pacman -S calibre
+    sudo pacman -S mcomix
 
 Kindle:
 
@@ -772,6 +782,7 @@ For multiple keyboards, see: [Two keyboards on one computer](http://superuser.co
 
 ## TODO
 
+* for making boot USBs: http://unetbootin.sourceforge.net/
 * check out dm-crypt
 * sort old data
 * consider switching to a https mirror list via https://www.archlinux.org/mirrorlist/
