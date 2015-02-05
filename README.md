@@ -302,9 +302,7 @@ Install extra packages:
     sudo pacman -S openssh
     sudo pacman -S openssl
     sudo pacman -S bash-completion
-    sudo pacman -S git
-      sudo pacman -S tk
-      sudo pacman -S tcl
+    sudo pacman -S git tk tcl gsfonts
     sudo pacman -S ruby
     sudo pacman -S gvim
     sudo pacman -S tmux
