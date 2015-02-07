@@ -653,6 +653,10 @@ Printer/scanner setup:
     sudo vim /etc/sane.d/epkowa.conf  # add line 'net {IP_OF_SCANNER}'
     # then run GUI app "Image Scan! for Linux"
 
+Video editing:
+
+    sudo pacman -S avidemux-cli avidemux-gtk
+
 OCR (see [guide on the wiki](https://wiki.archlinux.org/index.php/List_of_applications/Documents#OCR_software)):
 
     sudo pacman -S tesseract tesseract-data-eng
