@@ -361,9 +361,12 @@ Install extra packages:
       sudo pacman -S haddock
       sudo pacman -S happy
       sudo pacman -S alex
-    sudo pacman -S libreoffice-still
-      sudo pacman -S libreoffice-still-gnome
-      sudo pacman -S libreoffice-still-langpack
+    sudo pacman -S libreoffice-fresh
+      sudo pacman -S libreoffice-fresh-en-GB
+      sudo pacman -S libreoffice-fresh-de
+      sudo pacman -S libreoffice-fresh-fr
+      sudo pacman -S libreoffice-fresh-ru
+      sudo pacman -S libreoffice-fresh-zh-CN
       sudo pacman -S hunspell
       sudo pacman -S hunspell-en
       sudo pacman -S hunspell-de
@@ -783,6 +786,7 @@ For multiple keyboards, see: [Two keyboards on one computer](http://superuser.co
   * http://vincent.jousse.org/tech/archlinux-retina-hidpi-macbookpro-xmonad/
   * https://wiki.archlinux.org/index.php/HiDPI
 
+* 2015-01-11 20:00 - mouse takes a second to wake up when moved
 
 ## TODO
 
