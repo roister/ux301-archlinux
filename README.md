@@ -633,13 +633,28 @@ Android file access:
 
 Android dev env:
 
+    # install sdk and platform
     pacaur -S android-sdk
     pacaur -S android-sdk-platform-tools
     pacaur -S android-sdk-build-tools
-    sudo android
-    sudo chmod -R 755 /opt/android-sdk
+    pacaur android-platform
 
+    # make sdk usable as a normal user
+    sudo groupadd sdkusers
+    sudo gpasswd -a chris sdkusers
+    sudo chown -R :sdkusers /opt/android-sdk
+    sudo chmod -R g+w /opt/android-sdk/
+
+    # IDE
     pacaur -S android-studio
+
+    # Android Debug Bridge
+    sudo pacman -S android-tools
+    sudo pacman -S android-udev
+    sudo gpasswd -a chris adbusers
+
+    # extra Java build stuff
+    sudo pacman -S maven
 
 Printer/scanner setup:
 
