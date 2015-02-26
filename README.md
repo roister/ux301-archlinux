@@ -505,6 +505,10 @@ E-books:
     sudo pacman -S calibre
     sudo pacman -S mcomix
 
+Terminal sharing:
+
+    pacaur -S tmate
+
 Kindle:
 
 Installing Kindle under Wine provides a source from which the DeDRM plugin
