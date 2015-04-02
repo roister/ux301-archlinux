@@ -675,6 +675,9 @@ Printer/scanner setup:
     sudo vim /etc/sane.d/epkowa.conf  # add line 'net {IP_OF_SCANNER}'
     # then run GUI app "Image Scan! for Linux"
 
+    # EPSON STYLUS PHOTO RX560
+    sudo pacman -S gutenprint
+
 Video editing:
 
     sudo pacman -S avidemux-cli avidemux-gtk
