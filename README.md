@@ -714,6 +714,10 @@ VNC and remote desktop:
     sudo pacman -S libvncserver freerdp remmina
     # install order is important and a reboot may be needed for remmina to show all protocols
 
+Photos:
+
+    sudo pacman -S digikam kipi-plugins kdemultimedia-mplayerthumbs
+
 Gnuplot:
 
     sudo pacman -S gnuplot
