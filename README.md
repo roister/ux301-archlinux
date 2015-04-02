@@ -411,9 +411,9 @@ Install extra AUR packages:
 
     pacaur -S google-chrome
       pacaur -S google-talkplugin
-      sudo pacman -S ttf-liberation
 
     # good free fonts
+    sudo pacman -S ttf-liberation
     pacaur -S ttf-google-fonts-git
     sudo pacman -S ttf-linux-libertine
     sudo pacman -S ttf-freefont
@@ -808,6 +808,8 @@ For multiple keyboards, see: [Two keyboards on one computer](http://superuser.co
 
 ## TODO
 
+* subpixel rendering and autohinting with https://wiki.archlinux.org/index.php/Infinality
+  read: http://www.binarytides.com/gorgeous-looking-fonts-ubuntu-linux/
 * for making boot USBs: http://unetbootin.sourceforge.net/
 * check out dm-crypt
 * sort old data
