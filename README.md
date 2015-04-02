@@ -747,6 +747,11 @@ An alternative bittorrent client:
 
     sudo pacman -S deluge pygtk librsvg
 
+Rust programming language:
+
+    pacaur -S rust-nightly-bin
+    pacaur -S libtinfo  # for building rust from source
+
 Extra fonts: copy `*.otf` files into `~/.fonts` and run `fc-cache`.
 
 Font viewer:
