@@ -26,7 +26,8 @@ generally.
 ### Windows recovery USB
 
 Boot into Windows and create a 16GB recovery USB that can be used to restore
-to factory state. The following articles are useful (and do apply ASUS systems):
+to factory state. The following articles are useful (and do apply to ASUS
+systems):
 
 * [Understanding hard drive partitions on Lenovo systems with Microsoft Windows 7 and Windows 8](http://support.lenovo.com/en_US/detail.page?DocID=HT077144)
 * [Methodology to create Recovery Media and reload a Lenovo Think system with Microsoft Windows 8 preload](http://support.lenovo.com/en_US/downloads/detail.page?DocID=HT076024)
