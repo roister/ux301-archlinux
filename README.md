@@ -688,6 +688,11 @@ OCR (see [guide on the wiki](https://wiki.archlinux.org/index.php/List_of_applic
     pacaur -S gscan2pdf
     pacaur -S pdftk
 
+
+PDF editing
+
+    pacaur -S masterpdfeditor   # closed source, free for non-commercial use
+
 Google Earth
 
     pacaur -S google-earth
