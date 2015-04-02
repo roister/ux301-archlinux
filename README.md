@@ -431,6 +431,7 @@ Install extra AUR packages:
 
     pacaur -S briss
     pacaur -S sublime-text
+    pacaur -S atom-editor
     pacaur -S ledger
     pacaur -S dropbox
       pacaur -S nautilus-dropbox
