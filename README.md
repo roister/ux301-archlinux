@@ -380,7 +380,10 @@ Install extra packages:
     sudo pacman -S gimp
     sudo pacman -S kdesdk-okteta # hex editor
     sudo pacman -S gnu-netcat
+    sudo pacman -S time
     sudo pacman -S pv
+    sudo pacman -S parallel
+    pacaur -S entr
     pacaur -S brackets-bin
     pacaur -S mobac
     sudo pacman -S expect  # for unbuffer
