@@ -719,7 +719,7 @@ VNC and remote desktop:
 
 Photos:
 
-    sudo pacman -S digikam kipi-plugins kdemultimedia-mplayerthumbs
+    sudo pacman -S digikam kipi-plugins kdemultimedia-mplayerthumbs phonon-qt{4,5}-vlc
 
 Gnuplot:
 
