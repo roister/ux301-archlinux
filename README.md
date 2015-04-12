@@ -842,6 +842,7 @@ For multiple keyboards, see: [Two keyboards on one computer](http://superuser.co
   - [prax](https://github.com/ysbaddaden/prax) (needs systemd service)
   - [pdfocr](https://github.com/gkovacs/pdfocr/)
 * Clipboard manager: [http://parcellite.sourceforge.net/?page_id=2]()
+* encrypting the boot partition: http://www.pavelkogan.com/2014/05/23/luks-full-disk-encryption/
 * Check out Filebot (TV and movie renamer)
 * Check out [XFCE recommended apps](http://wiki.xfce.org/recommendedapps)
 
