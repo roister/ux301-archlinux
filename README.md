@@ -288,6 +288,11 @@ Do the [xorg Intel tearing fix](https://wiki.archlinux.org/index.php/Intel_Graph
 There is a [GNOME tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with_Intel_HD_Graphics),
 but the xorg one seems to work better (and works outside of GNOME).
 
+Fix the [Mouse cursor missing](https://wiki.archlinux.org/index.php/GNOME#Mouse_cursor_missing)
+issue which appeared on 2015-04-11 after upgrading GNOME from 3.14 to 3.16:
+
+    gsettings set org.gnome.settings-daemon.plugins.mouse active false
+
 ### More stuff
 
 Enable `multlib` by uncommenting the `[multlib]` section in `/etc/pacman.conf`
@@ -304,6 +309,7 @@ Install extra packages:
     sudo pacman -S openssl
     sudo pacman -S bash-completion
     sudo pacman -S git tk tcl gsfonts
+    sudo pacman -S bzr
     sudo pacman -S ruby
     sudo pacman -S gvim
     sudo pacman -S tmux
@@ -350,7 +356,7 @@ Install extra packages:
       sudo pacman -S polkit
       sudo pacman -S gpart
       sudo pacman -S mtools
-    sudo pacman -S kdeutils-filelight
+    sudo pacman -S filelight
     sudo pacman -S unrar
     pacaur -S rar
     sudo pacman -S phantomjs
@@ -374,6 +380,7 @@ Install extra packages:
     sudo pacman -S i3-wm dmenu i3lock i3status
     sudo pacman -S go
     sudo pacman -S iotop iftop
+    sudo pacman -S sysstat
     sudo pacman -S keepass
     sudo pacman -S docker lxc lua-filesystem lua-alt-getopt && sudo systemctl enable docker && gpasswd -a $USER docker
     sudo pacman -S qalculate-gtk
@@ -458,7 +465,8 @@ Set up default applications for Gnome:
 
 Take responsiblity for `inode/directory` away from filelight:
 
-    sudo vim /usr/share/applications/kde4/filelight.desktop  # comment out MimeType line
+    sudo vim /usr/share/applications/org.kde.filelight.desktop  # comment out MimeType line
+    sudo vim /usr/share/kservices5/filelightpart.desktop        # comment out MimeType line
     sudo update-desktop-database
 
 Music
@@ -481,6 +489,8 @@ Music
       sudo pip2 install requests # for fetchart plugin
       sudo pip2 install python-itunes # for fetchart plugin source
       sudo pip2 install flask # for web plugin
+      sudo pip2 install pyacoustid # for chromaprint/acoustid plugin
+        sudo pacman -S chromaprint # for chromaprint/acoustid plugin
 
       sudo pacman -S gstreamer0.10-python # for (crashy) bpd plugin
         sudo pacman -S gstreamer0.10-bad-plugins
@@ -490,14 +500,29 @@ Music
         sudo pacman -S gstreamer0.10-ugly-plugins
         sudo pacman -S gstreamer0.10-vaapi
 
-    # mopidy / mpd
+    sudo pacman -S mpd
+
+    mkdir -p ~/.config/mpd/playlists
+    touch ~/.config/mpd/{database,log,pid,state,sticker.sql}
+
+    ls ~/.config/mpd/mpd.conf ||
+      cp /usr/share/doc/mpd/mpdconf.example ~/.config/mpd/mpd.conf &&
+      vim ~/.config/mpd/mpd.conf
+
+    systemctl --user enable mpd.service
+    systemctl --user start mpd.service
 
     sudo pacman -S mpc
     sudo pacman -S ncmpcpp
 
+    sudo pacman -S gmpc  # also works well with mopidy
     sudo pacman -S ario
+    sudo pacman -S sonata
+    pacaur -S gbemol
 
-There's a native HipChat client (but it's better to just use the web one):
+    # mpd client for android - MPDroid https://github.com/abarisain/dmix
+
+This is a native HipChat client (but it's better to just use the web one):
 
     pacaur -S hipchat
 
@@ -738,13 +763,13 @@ BitTorrent client:
 
     pacaur -S qbittorrent
 
-qBittorrent can be configured to use a specific interface, such as eth0,
+qBittorrent can be configured to use a specific interface, such as tun0,
 however, if that is unavailable on start, it will fall back to the default
 interface.
 
     sudo vim /usr/share/applications/qBittorrent.desktop # set Exec as follows...
 
-    Exec=bash -c "ls /sys/class/net/eth0 && qbittorrent %U || notify-send 'The eth0 interface is not up'"
+    Exec=bash -c "ls /sys/class/net/tun0 && qbittorrent %U || notify-send 'The tun0 interface is not up'"
 
 An alternative bittorrent client:
 
@@ -754,6 +779,11 @@ Rust programming language:
 
     pacaur -S rust-nightly-bin
     pacaur -S libtinfo  # for building rust from source
+
+Scala programming language:
+
+    sudo pacman -S scala
+    # a JRE is needed to
 
 Extra fonts: copy `*.otf` files into `~/.fonts` and run `fc-cache`.
 
@@ -799,14 +829,15 @@ GNOME will override some Xkb settings, so:
 For multiple keyboards, see: [Two keyboards on one computer](http://superuser.com/questions/75817/two-keyboards-on-one-computer-when-i-write-with-a-i-want-a-us-keyboard-layout/294034#294034).
 
 
+Backup:
+
+    sudo pacman -S duplicity python2-boto
+
+
 ## Issues
 
-* Since update on 2014-07-30, switching users and logging out (to return to the
-  initial user) usually kills X. After rebooting, often only one quarter of the
-  screen is properly drawn (this can be fixed by switching the resolution down
-  and back up).
-
-* Login script to turn off keyboard backlight seems to get overridden after running.
+* Since update around 2015-04-12, gnome going idle makes the mouse pointer
+  disappear. https://bbs.archlinux.org/viewtopic.php?id=110023
 
 * Copying into system clipboard (e.g. in vim) doesn't copy to tmux clipboard
 
@@ -825,10 +856,9 @@ For multiple keyboards, see: [Two keyboards on one computer](http://superuser.co
   * http://vincent.jousse.org/tech/archlinux-retina-hidpi-macbookpro-xmonad/
   * https://wiki.archlinux.org/index.php/HiDPI
 
-* 2015-01-11 20:00 - mouse takes a second to wake up when moved
-
 ## TODO
 
+* try mopidy
 * subpixel rendering and autohinting with https://wiki.archlinux.org/index.php/Infinality
   read: http://www.binarytides.com/gorgeous-looking-fonts-ubuntu-linux/
 * for making boot USBs: http://unetbootin.sourceforge.net/
