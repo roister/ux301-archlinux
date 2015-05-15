@@ -251,9 +251,14 @@ Install GNOME:
     pacman -S gnome-tweak-tool
     systemctl enable gdm.service
 
+For Bluetooth:
+
+    pacman -S bluez-libs bluez-utils bluez-firmware
+
 For PulseAudio preference editing:
 
     pacman -S paprefs
+    pacman -S pavucontrol
 
 Enable network manager:
 
@@ -288,10 +293,6 @@ Do the [xorg Intel tearing fix](https://wiki.archlinux.org/index.php/Intel_Graph
 There is a [GNOME tearing fix](https://wiki.archlinux.org/index.php/GNOME#Tear-free_video_with_Intel_HD_Graphics),
 but the xorg one seems to work better (and works outside of GNOME).
 
-Fix the [Mouse cursor missing](https://wiki.archlinux.org/index.php/GNOME#Mouse_cursor_missing)
-issue which appeared on 2015-04-11 after upgrading GNOME from 3.14 to 3.16:
-
-    gsettings set org.gnome.settings-daemon.plugins.mouse active false
 
 ### More stuff
 
@@ -312,6 +313,7 @@ Install extra packages:
     sudo pacman -S bzr
     sudo pacman -S ruby
     sudo pacman -S gvim
+    sudo pacman -S screen
     sudo pacman -S tmux
     sudo pacman -S strace
     sudo pacman -S xclip
@@ -442,7 +444,6 @@ Install extra AUR packages:
     pacaur -S briss
     pacaur -S sublime-text
     pacaur -S atom-editor
-    pacaur -S ledger
     pacaur -S dropbox
       pacaur -S nautilus-dropbox
     pacaur -S ansible
@@ -667,7 +668,7 @@ Android dev env:
     pacaur -S android-sdk
     pacaur -S android-sdk-platform-tools
     pacaur -S android-sdk-build-tools
-    pacaur android-platform
+    pacaur -S android-platform
 
     # make sdk usable as a normal user
     sudo groupadd sdkusers
@@ -783,7 +784,7 @@ Rust programming language:
 Scala programming language:
 
     sudo pacman -S scala
-    # a JRE is needed to
+    # a JRE is needed too
 
 Extra fonts: copy `*.otf` files into `~/.fonts` and run `fc-cache`.
 
@@ -833,11 +834,27 @@ Backup:
 
     sudo pacman -S duplicity python2-boto
 
+Accounting:
+
+    pacaur -Sy ledger
+    pacaur -Sy gnucash-xbt
 
 ## Issues
 
+* 2015-04-11, after upgrading GNOME from 3.14 to 3.16
+  [Mouse cursor missing](https://wiki.archlinux.org/index.php/GNOME#Mouse_cursor_missing)
+  It happens when the screen has been off. This thread seems related:
+    [](https://bugs.launchpad.net/ubuntu/+source/gnome-settings-daemon/+bug/1238410)
+  Pressing Ctrl-Alt-Backspace seems to bring the cursor back (or switching user
+  back to the current user).
+
+* Noticed on 2015-05-09 that the trackpad doesn't do two-finger horizontal
+  scroll. Also it's really sensitive and turning it off in GNOME doesn't work.
+
 * Since update around 2015-04-12, gnome going idle makes the mouse pointer
   disappear. https://bbs.archlinux.org/viewtopic.php?id=110023
+
+* Tearing reappeared at some point. Try alternative fix.
 
 * Copying into system clipboard (e.g. in vim) doesn't copy to tmux clipboard
 
