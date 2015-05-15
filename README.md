@@ -350,7 +350,7 @@ Install extra packages:
       sudo pacman -S jfsutils
       sudo pacman -S f2fs-tools
       sudo pacman -S btrfs-progs
-      sudo pacman -S exfat-utils && pacaur -S exfat-git && sudo modprobe exfat
+      sudo pacman -S exfat-utils && pacaur -Sy exfat-git && sudo modprobe exfat
       sudo pacman -S ntfs-3g
       sudo pacman -S reiserfsprogs
       sudo pacman -S xfsprogs
@@ -360,7 +360,7 @@ Install extra packages:
       sudo pacman -S mtools
     sudo pacman -S filelight
     sudo pacman -S unrar
-    pacaur -S rar
+    pacaur -Sy rar
     sudo pacman -S phantomjs
     sudo pacman -S elinks
     sudo pacman -S ghc
@@ -392,18 +392,18 @@ Install extra packages:
     sudo pacman -S time
     sudo pacman -S pv
     sudo pacman -S parallel
-    pacaur -S entr
-    pacaur -S brackets-bin
-    pacaur -S mobac
+    pacaur -Sy entr
+    pacaur -Sy brackets-bin
+    pacaur -Sy mobac
     sudo pacman -S expect  # for unbuffer
     sudo pacman -S gptfdisk
     sudo pacman -S rsync
     sudo pacman -S redis
-      pacaur -S redis-desktop-manager
+      pacaur -Sy redis-desktop-manager
     sudo pacman -S youtube-dl
-    pacaur -S coursera-dl-git
-    pacaur -S bmon
-    pacaur -S sysdig
+    pacaur -Sy coursera-dl-git
+    pacaur -Sy bmon
+    pacaur -Sy sysdig
     sudo pacman -S moreutils
     sudo pacman -S nfs-utils
     sudo pacman -S inkscape uniconverter
@@ -421,12 +421,12 @@ TODO: AUR helpers are needed earlier on
 
 Install extra AUR packages:
 
-    pacaur -S google-chrome
-      pacaur -S google-talkplugin
+    pacaur -Sy google-chrome
+      pacaur -Sy google-talkplugin
 
     # good free fonts
     sudo pacman -S ttf-liberation
-    pacaur -S ttf-google-fonts-git
+    pacaur -Sy ttf-google-fonts-git
     sudo pacman -S ttf-linux-libertine
     sudo pacman -S ttf-freefont
     # CJKV
@@ -435,25 +435,25 @@ Install extra AUR packages:
     sudo pacman -S wqy-zenhei
     sudo pacman -S ttf-arphic-ukai
     sudo pacman -S ttf-arphic-uming
-    pacaur -S ttf-tw
-    pacaur -S ttf-mplus
+    pacaur -Sy ttf-tw
+    pacaur -Sy ttf-mplus
     sudo pacman -S ttf-baekmuk
     # Apple, non-free
-    pacaur -S ttf-mac-fonts
+    pacaur -Sy ttf-mac-fonts
 
-    pacaur -S briss
-    pacaur -S sublime-text
-    pacaur -S atom-editor
-    pacaur -S dropbox
-      pacaur -S nautilus-dropbox
-    pacaur -S ansible
-    pacaur -S zeal-git
-    pacaur -S shutter
-    pacaur -S qgis-git   # this version without grass
-    pacaur -S jq
-    pacaur -S v8
-    pacaur -S randomsound
-    pacaur -S lastpass
+    pacaur -Sy briss
+    pacaur -Sy sublime-text
+    pacaur -Sy atom-editor
+    pacaur -Sy dropbox
+      pacaur -Sy nautilus-dropbox
+    pacaur -Sy ansible
+    pacaur -Sy zeal-git
+    pacaur -Sy shutter
+    pacaur -Sy qgis-git   # this version without grass
+    pacaur -Sy jq
+    pacaur -Sy v8
+    pacaur -Sy randomsound
+    pacaur -Sy lastpass
 
 Let `wheel` users run wireshark in its group (`sudo -g wireshark wireshark`):
 
@@ -461,7 +461,7 @@ Let `wheel` users run wireshark in its group (`sudo -g wireshark wireshark`):
 
 Set up default applications for Gnome:
 
-    pacaur -S gnome-defaults-list
+    pacaur -Sy gnome-defaults-list
     cp /etc/gnome/defaults.list ~/.local/share/applications/defaults.list
 
 Take responsiblity for `inode/directory` away from filelight:
@@ -519,17 +519,17 @@ Music
     sudo pacman -S gmpc  # also works well with mopidy
     sudo pacman -S ario
     sudo pacman -S sonata
-    pacaur -S gbemol
+    pacaur -Sy gbemol
 
     # mpd client for android - MPDroid https://github.com/abarisain/dmix
 
 This is a native HipChat client (but it's better to just use the web one):
 
-    pacaur -S hipchat
+    pacaur -Sy hipchat
 
 Zeal (Dash-like docset viewer):
 
-    pacaur -S zeal-git
+    pacaur -Sy zeal-git
 
 E-books:
 
@@ -538,7 +538,7 @@ E-books:
 
 Terminal sharing:
 
-    pacaur -S tmate
+    pacaur -Sy tmate
 
 Kindle:
 
@@ -591,7 +591,7 @@ Install and setup MariaDB (mysqld):
     sudo systemctl start mysqld.service
     mysql_secure_installation
     sudo systemctl restart mysqld.service
-    pacaur -S mysql-workbench
+    pacaur -Sy mysql-workbench
 
 Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
 
@@ -606,8 +606,8 @@ Install and setup [PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL):
     createdb chris
     exit
 
-    pacaur -S uuid
-    pacaur -S postgresql-uuid-ossp
+    pacaur -Sy uuid
+    pacaur -Sy postgresql-uuid-ossp
     sudo systemctl restart postgresql
 
 Install and setup MongoDB:
@@ -652,11 +652,11 @@ Install `bitcoind` (see [the wiki](https://wiki.archlinux.org/index.php/Bitcoin#
 
 Other Bitcoin and crypto stuff:
 
-    pacaur -S multibit
-    pacaur -S electrum python2-zbar
-    pacaur -S sx-git
+    pacaur -Sy multibit
+    pacaur -Sy electrum python2-zbar
+    pacaur -Sy sx-git
     pacman -S tor vidalia
-    pacaur -S pybitmessage
+    pacaur -Sy pybitmessage
 
 Android file access:
 
@@ -665,10 +665,10 @@ Android file access:
 Android dev env:
 
     # install sdk and platform
-    pacaur -S android-sdk
-    pacaur -S android-sdk-platform-tools
-    pacaur -S android-sdk-build-tools
-    pacaur -S android-platform
+    pacaur -Sy android-sdk
+    pacaur -Sy android-sdk-platform-tools
+    pacaur -Sy android-sdk-build-tools
+    pacaur -Sy android-platform
 
     # make sdk usable as a normal user
     sudo groupadd sdkusers
@@ -677,7 +677,7 @@ Android dev env:
     sudo chmod -R g+w /opt/android-sdk/
 
     # IDE
-    pacaur -S android-studio
+    pacaur -Sy android-studio
 
     # Android Debug Bridge
     sudo pacman -S android-tools
@@ -690,7 +690,7 @@ Android dev env:
 Printer/scanner setup:
 
     sudo pacman -S cups ghostscript gsfonts avahi
-    pacaur -S epson-inkjet-printer-stylus-office-tx610fw-series
+    pacaur -Sy epson-inkjet-printer-stylus-office-tx610fw-series
     sudo systemctl start avahi-daemon.service
     sudo systemctl enable avahi-daemon.service
     sudo systemctl start org.cups.cupsd.service
@@ -700,7 +700,7 @@ Printer/scanner setup:
     sudo pacman -S system-config-printer python-pysmbc
     # then run GUI app "Print Settings"
 
-    pacaur -S iscan iscan-plugin-network
+    pacaur -Sy iscan iscan-plugin-network
     sudo vim /etc/sane.d/epkowa.conf  # add line 'net {IP_OF_SCANNER}'
     # then run GUI app "Image Scan! for Linux"
 
@@ -714,17 +714,17 @@ Video editing:
 OCR (see [guide on the wiki](https://wiki.archlinux.org/index.php/List_of_applications/Documents#OCR_software)):
 
     sudo pacman -S tesseract tesseract-data-eng
-    pacaur -S gscan2pdf
-    pacaur -S pdftk
+    pacaur -Sy gscan2pdf
+    pacaur -Sy pdftk
 
 
 PDF editing
 
-    pacaur -S masterpdfeditor   # closed source, free for non-commercial use
+    pacaur -Sy masterpdfeditor   # closed source, free for non-commercial use
 
 Google Earth
 
-    pacaur -S google-earth
+    pacaur -Sy google-earth
     sudo pacman -S lib32-intel-dri
 
 Emacs
@@ -733,7 +733,7 @@ Emacs
 
 Crate.io
 
-    pacaur -S crate
+    pacaur -Sy crate
     sudo systemctl start crate
     sudo systemctl status crate
     open http://localhost:4200/admin
@@ -762,7 +762,7 @@ OpenVPN client:
 
 BitTorrent client:
 
-    pacaur -S qbittorrent
+    pacaur -Sy qbittorrent
 
 qBittorrent can be configured to use a specific interface, such as tun0,
 however, if that is unavailable on start, it will fall back to the default
@@ -778,8 +778,8 @@ An alternative bittorrent client:
 
 Rust programming language:
 
-    pacaur -S rust-nightly-bin
-    pacaur -S libtinfo  # for building rust from source
+    pacaur -Sy rust-nightly-bin
+    pacaur -Sy libtinfo  # for building rust from source
 
 Scala programming language:
 
@@ -790,7 +790,7 @@ Extra fonts: copy `*.otf` files into `~/.fonts` and run `fc-cache`.
 
 Font viewer:
 
-    pacaur -S gnome-specimen
+    pacaur -Sy gnome-specimen
 
 Consider adjusting DPI settings in `dconf-editor` under `/org/gnome/desktop/interface/text-scaling-factor` and `scaling-factor`.
 Or, use `xrandr`'s `--scale` or `--transform` options.
