@@ -121,12 +121,29 @@ Move a preferable mirror to the top of the list:
 
 Install the base system:
 
-    pacstrap -i /mnt base
+    pacstrap -i /mnt base base-devel
+    swapon /dev/sda3 /dev/sdb3
 
 Generate an `fstab` file:
 
     genfstab -U -p /mnt >> /mnt/etc/fstab
     vi /mnt/etc/fstab   # Set last param of EFI partion to 0 (don't check)
+
+Optimise for SSD:
+
+    vi /mnt/etc/lvm/lvm.conf     # :s/issue_discards = 0/issue_discards = 1/
+    # Add kernel parameter: elevator=noop (maybe not...)
+	
+	# Change from nfq scheduler to noop. 
+	# Create: /mnt/etc/udev/rules.d/60-schedulers.rules
+    	# set deadline scheduler for non-rotating disks
+    	ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="deadline"
+	 
+	# Reduce swappiness (thus less SSD wear)
+	# Create: /mnt/etc/sysctl.d/99-sysctl.conf
+		vm.swappiness=10
+	#
+	#
 
 Chroot to base system:
 
@@ -148,6 +165,10 @@ Set the hardware clock to UTC:
 
     hwclock --systohc --utc
 
+Grab some useful stuff
+
+    pacman -S iotop htop
+
 NTP time synchronization with [Chrony](https://wiki.archlinux.org/index.php/Chrony):
 
     pacman -S chrony
@@ -156,7 +177,12 @@ NTP time synchronization with [Chrony](https://wiki.archlinux.org/index.php/Chro
 
 Set the hostname:
 
-    echo zenbook > /etc/hostname
+    echo myhostname > /etc/hostname
+
+And in `/etc/hosts`:
+
+    127.0.0.1 .... localhost myhostname
+    ::1       .... localhost myhostname
 
 Install packages for wireless networking:
 
@@ -166,19 +192,13 @@ Set the root password:
 
     passwd
 
-Install GRUB:
+Install rEFInd:
 
-    pacman -S grub efibootmgr
+    pacman -Ss refind-efi
+	vi /etc/mkinitcpio.conf     # add lvm2 AFTER block and BEFORE filesystems
+	mkinitcpio -p linux
+	refind-install
 
-    mdadm --examine --scan >> /etc/mdadm.conf   # may not be necessary
-
-    vi /etc/mkinitcpio.conf   # add `mdadm_udev` to `HOOKS`, as mentioned in https://wiki.archlinux.org/index.php/ASUS_UX301LA
-                              # add `encrypt` before `filesystems`, as mentioned in https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio
-    mkinitcpio -p linux
-
-    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub --recheck
-    vi /etc/default/grub      # add `cryptdevice=/dev/md126p2:cryptroot`, as mentioned in https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Configuring_the_boot_loader
-    grub-mkconfig -o /boot/grub/grub.cfg
 
 Unmount partitions and reboot:
 
